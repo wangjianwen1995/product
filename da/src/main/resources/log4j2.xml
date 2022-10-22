@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
+        </Console>
+        <File name="ERROR" fileName="D:/logs/dc_error.log" append="false">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
+        </File>
+        <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+        <RollingFile name="RollingFile" fileName="D:/logs/dc_app.log"
+                     filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.dc_log.gz">
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
+            <SizeBasedTriggeringPolicy size="5MB"/>
+        </RollingFile>
+    </Appenders>
+
+    <!--
+            普通的 logger
+            name：类名或包名，标志该 logger 与哪个包或哪个类绑定
+            level：该 logger 的日志级别
+            additivity：是否将日志信息传递给上一级
+    -->
+    <Loggers>
+        <logger name="org.springframework" level="INFO"></logger>
+        <logger name="org.mybatis" level="INFO"></logger>
+        <logger name="com" level="DEBUG" additivity="true">
+            <appender-ref ref="Console"/>
+        </logger>
+        <Root level="INFO">
+            <appender-ref ref="ERROR"/>
+            <appender-ref ref="RollingFile"/>
+            <appender-ref ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

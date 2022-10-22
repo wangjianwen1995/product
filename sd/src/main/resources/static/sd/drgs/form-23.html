@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- 出院前mRS评估分值 -->
+    <div id="mRSTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="STESS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">出院前mRS评估分值</div>
+                <div class="scoreTable">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>出院前mRS评估</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">完全无症状</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">尽管有症状，但无明显功能障碍，能完成所有日常职责和活动</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2分</td>
+                                        <td>
+                                            <div score="2" class="check-item">轻度残疾，不能完成病前所有活动，但不需帮助能照顾自己的事务</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3分</td>
+                                        <td>
+                                            <div score="3" class="check-item">中度残疾，要求一些帮助，但行走不需帮助</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4分</td>
+                                        <td>
+                                            <div score="4" class="check-item">重度残疾，不能独立行走，无他人帮助不能满足自身需求</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5分</td>
+                                        <td>
+                                            <div score="5" class="check-item">严重残疾，卧床、失禁，要求持续护理和关注</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6分</td>
+                                        <td>
+                                            <div score="6" class="check-item">死亡</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('aSAH-2.0')
+var create = new create();
+    create.createRender("aSAH",function() {
+        //评分表（单选）
+        $("#create_160").after('<a id="mRSScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#mRSScore").on("click", function () {
+            $("#mRSTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#mRSTable .calculate").click(function () {
+            $('#create_160').val($(this).data("score"))
+            $("#mRSTable").modal("hide");
+            $('#create_160').blur();
+            $('#create_160').change();
+        })
+    });
+</script>

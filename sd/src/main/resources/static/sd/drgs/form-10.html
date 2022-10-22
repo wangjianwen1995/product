@@ -1,0 +1,127 @@
+<!--
+ * @Description: 慢性阻塞性肺疾病急性发作（住院）'AECOPD-2.0'
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-05-26 18:31:12
+ * @FilePath: \single-disease\public\static\drgs\form-10.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- AECOPD---慢阻肺的综合评估  -->
+    <div id="AECOPDTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby=" AECOPD---慢阻肺的综合评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">AECOPD---慢阻肺的综合评估用表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>组别</th>
+                                <th>风险</th>
+                                <th>症状</th>
+                                <th>肺功能分级（级）</th>
+                                <th>急性加重（次/年）</th>
+                                <th>呼吸困难分级（级）</th>
+                                <th>CAI评分（分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7">
+                                    <div score="1" class="check-item clearfix">
+                                        <div class="item">A组</div>
+                                        <div class="item">低</div>
+                                        <div class="item">少</div>
+                                        <div class="item">I~II</div>
+                                        <div class="item">＜2</div>
+                                        <div class="item">＜2</div>
+                                        <div class="item">＜10</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <div score="2" class="check-item clearfix">
+                                        <div class="item">B组</div>
+                                        <div class="item">低</div>
+                                        <div class="item">多</div>
+                                        <div class="item">I~II</div>
+                                        <div class="item">＜2</div>
+                                        <div class="item">≥2</div>
+                                        <div class="item">≥10</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <div score="3" class="check-item clearfix">
+                                        <div class="item">C组</div>
+                                        <div class="item">高</div>
+                                        <div class="item">少</div>
+                                        <div class="item">III~IV</div>
+                                        <div class="item">≥2</div>
+                                        <div class="item">＜2</div>
+                                        <div class="item">＜10</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <div score="4" class="check-item clearfix">
+                                        <div class="item">D组</div>
+                                        <div class="item">高</div>
+                                        <div class="item">多</div>
+                                        <div class="item">III~IV</div>
+                                        <div class="item">≥2</div>
+                                        <div class="item">≥2</div>
+                                        <div class="item">≥10</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">
+                    <span class="num">0</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('AECOPD-2.0')
+    var create = new create();
+    create.createRender("AECOPD",function() {
+        $('#create_40').after('<a id="AECOPDScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#AECOPDScore').click(function () {
+            $("#AECOPDTable").modal();
+        })
+        $("#AECOPDTable .calculate").click(function () {
+            $('#create_40').val(["-1", "a", "b", "c", "d"][$(this).data("score")])
+            $("#AECOPDTable").modal("hide");
+            $('#create_40').blur();
+        })
+    })
+</script>

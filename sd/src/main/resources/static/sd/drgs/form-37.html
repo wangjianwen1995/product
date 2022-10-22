@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('TN-2.0')
+var create = new create();
+    create.createRender("TN", function() {
+        var eleHtml = '<div id="electrocar" class="end-report-content">' +
+            '<img class="end-img" src="../img/report-warn.png"/>' +
+            '<span class="end-title">该病例不符合上报要求</span>' +
+            '<p class="end-content">请重新填报</p></div>';
+        //终止上报     
+        $($('.create_58')[1]).next('span').click(function() {
+            unsureClose(".create_58")
+        })
+        $($('.create_77')[2]).next('span').click(function() {
+            unsureClose(".create_77")
+        })
+        $($('.create_119')[1]).next('span').click(function() {
+            unsureClose(".create_119")
+        })
+        $(".create_51").change(function() {
+            if ($(this).val() === "e") {
+                reportConfirm(eleHtml, unsureClose_51);
+            }
+        })
+        function unsureClose(className) {
+            reportConfirm(eleHtml, function() {
+                $(className).get(0).checked = true
+            });
+        }
+
+        function unsureClose_51(params) {
+            $('#create_51').val("def")
+        }
+
+    });
+</script>

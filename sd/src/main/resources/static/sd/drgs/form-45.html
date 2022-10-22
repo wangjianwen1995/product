@@ -1,0 +1,606 @@
+<!--
+ * @Description: 终末期肾病腹膜透析(DPD)
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-08-06 10:09:49
+ * @FilePath: \single-disease\public\static\drgs\form-45.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/handleProvinceSelect.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('DPD-2.0')
+    var create = new create();
+    // 全局变量
+    var PUBLIC = {
+      provinceCode: '', // 后台返回的省份原始code（与国家统计局的code不一样）
+      currentSeason: [], // 选中的上报季度
+      sex: '', // 性别
+      age: '' // 年龄
+    };
+    create.createRender("DPD", function () {
+      // 第二、四季度ESRD-PD-7体表面积固定为1.73并不可选(应要求暂放开)
+      // $('#create_DPD_149')[0].disabled = true;
+      // $('#create_DPD_149').val(1.73);
+      // $('#create_DPD_749')[0].disabled = true;
+      // $('#create_DPD_749').val(1.73);
+
+      doIDcheck();
+      // 省市区下拉框联动
+      // 省
+      $('#create_DPD_264').on("change", function(){
+        var provinceOldCode = $(this).val();
+        // fix: 避免模板上的blur事件影响到change事件
+        if(PUBLIC.provinceCode === provinceOldCode) {
+          return;
+        }
+        PUBLIC.provinceCode = provinceOldCode;
+        var provinceRealCode = getRealProvinceCode(provinceOldCode);
+        setCityOptionsInner(provinceRealCode);
+        // 清空市、区级下拉框
+        $('#create_DPD_265').val('def');
+        $('#create_DPD_266').val('def');
+        $('#create_DPD_266').html('<option value="def">请选择</option>');
+      });
+
+      // 市
+      $('#create_DPD_265').on('change', function(){
+        var cityCode = $(this).val();
+        var optionDefault = '<option value="def">请选择</option>';
+        if(cityCode === 'def') {
+          $('#create_DPD_266').html(optionDefault);
+        } else {
+          var areaDef = getArea(cityCode);
+          areaDef.done(function(data) {
+            var options = optionDefault;
+            data.forEach(function(val){
+              options += '<option value="'+ val.code +'">'+ val.name +'</option>';
+            });
+            $('#create_DPD_266').html(options);
+          });
+        }
+        $('#create_DPD_266').val('def');
+      });
+
+      // 上报季度选择
+      $('#itemDPD_351').on('change', function(){
+        $(this).find('input.create_DPD_351').each(function(i,v){
+          if(v.checked){
+            PUBLIC.currentSeason.push(v.value);
+          } else {
+            removeArrayItem(PUBLIC.currentSeason, v.value);
+          }
+        });
+        PUBLIC.currentSeason = getUniqueArray(PUBLIC.currentSeason);
+      });
+      // 获取患者性别 并对相关指标计算校验
+      $('#itemCM_14').on('change', function() {
+        if($(this).find('input.create_CM_14[value="M"]')[0].checked) {
+          PUBLIC.sex = 'M';
+        } else if ($(this).find('input.create_CM_14[value="F"]')[0].checked) {
+          PUBLIC.sex = 'F';
+        }
+        // 第二季度
+        if(PUBLIC.currentSeason.indexOf('b') > -1) {
+          // 计算总体水
+          var height = $('#create_DPD_146').val();
+          var weight = $('#create_DPD_147').val();
+          var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+          $('#create_DPD_150').val(ureaVolume);
+          // 计算体表面积
+          var bodyArea = calcBodyArea(height, weight, PUBLIC.sex);
+          $('#create_DPD_149').val(bodyArea);
+          // 计算尿素清除指数(Kt/V)
+          doSeason2Calc();
+        }
+        // 第四季度
+        if(PUBLIC.currentSeason.indexOf('d') > -1) {
+          // 计算总体水
+          var height = $('#create_DPD_746').val();
+          var weight = $('#create_DPD_747').val();
+          var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+          $('#create_DPD_750').val(ureaVolume);
+          // 计算体表面积
+          var bodyArea = calcBodyArea(height, weight, PUBLIC.sex);
+          $('#create_DPD_749').val(bodyArea);
+          // 计算尿素清除指数(Kt/V)
+          doSeason4Calc();
+        }
+      });
+      // 获取患者年龄 并对相关指标校验
+      $('#create_CM_26').on('input', function(){
+        PUBLIC.age = $('#create_CM_26').val();
+        if(PUBLIC.currentSeason.indexOf('a') > -1) {
+          var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_56', '#create_DPD_57');
+          autoSelect('#itemDPD_59', flag);
+        }
+        if(PUBLIC.currentSeason.indexOf('b') > -1) {
+          var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_355', '#create_DPD_356');
+          autoSelect('#itemDPD_359', flag);
+          // 计算总体水
+          var height = $('#create_DPD_146').val();
+          var weight = $('#create_DPD_147').val();
+          var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+          $('#create_DPD_150').val(ureaVolume);
+        }
+        if(PUBLIC.currentSeason.indexOf('c') > -1) {
+          var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_486', '#create_DPD_487');
+          autoSelect('#itemDPD_489', flag);
+        }
+        if(PUBLIC.currentSeason.indexOf('d') > -1) {
+          var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_635', '#create_DPD_636');
+          autoSelect('#itemDPD_639', flag);
+          // 计算总体水
+          var height = $('#create_DPD_746').val();
+          var weight = $('#create_DPD_747').val();
+          var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+          $('#create_DPD_750').val(ureaVolume);
+        }
+      });
+
+      // ----------- 第一季度 部分指标自动判断 ------------
+      // ESRD-PD-3 高血压是否达标
+      $('#create_DPD_55').on('input', function(){
+        var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_56', '#create_DPD_57');
+        autoSelect('#itemDPD_59', flag);
+      });
+      // ESRD-PD-4 血红蛋白是否达标
+      $('#create_DPD_72').on('input', function(){
+        var flag = judgeHemoglobin('#create_DPD_72');
+        autoSelect('#itemDPD_74', flag);
+      });
+      // ESRD-PD-6 血清蛋白是否达标
+      $('#create_DPD_300').on('input', function(){
+        var flag = judgeALB('#create_DPD_300');
+        autoSelect('#itemDPD_133', flag);
+      });
+      // --------------- 第一季度 END ---------------
+      // ---------------- 第二季度 BEGIN ----------------
+      // 监听身高改变 自动计算总体水、体表面积
+      $('#create_DPD_146').on('input', function(){
+        var height = $('#create_DPD_146').val();
+        var weight = $('#create_DPD_147').val();
+        var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+        $('#create_DPD_150').val(ureaVolume);
+        var bodyArea = calcBodyArea(height, weight, PUBLIC.sex);
+        $('#create_DPD_149').val(bodyArea);
+      });
+      // 监听体重改变 计算体表面积和总体水
+      $('#create_DPD_147').on('input', function(){
+        var height = $('#create_DPD_146').val();
+        var weight = $('#create_DPD_147').val();
+        var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+        $('#create_DPD_150').val(ureaVolume);
+        var bodyArea = calcBodyArea(height, weight, PUBLIC.sex);
+        $('#create_DPD_149').val(bodyArea);
+      });
+      // ESRD-PD-3 高血压是否达标
+      $('#create_DPD_354').on('input', function(){
+        var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_355', '#create_DPD_356');
+        autoSelect('#itemDPD_359', flag);
+      });
+      // ESRD-PD-4 血红蛋白是否达标
+      $('#create_DPD_382').on('input', function(){
+        var flag = judgeHemoglobin('#create_DPD_382');
+        autoSelect('#itemDPD_384', flag);
+      });
+      // ESRD-PD-5 三个指标
+      // 血总钙
+      $('#create_DPD_99').on('input', function(){
+        var flag = judgeTCa('#create_DPD_99');
+        autoSelect('#itemDPD_103', flag);
+      });
+      // 血磷
+      $('#create_DPD_100').on('input', function(){
+        var flag = judgePHOS('#create_DPD_100');
+        autoSelect('#itemDPD_104', flag);
+      });
+      // IPTH
+      $('#create_DPD_101').on('input', function(){
+        var flag = judgeIPTH('#create_DPD_101');
+        autoSelect('#itemDPD_105', flag);
+      });
+      // ESRD-PD-6 血清蛋白是否达标
+      $('#create_DPD_430').on('input', function(){
+        var flag = judgeALB('#create_DPD_430');
+        autoSelect('#itemDPD_413', flag);
+      });
+      // ESRD-PD-7 两个指标 计算并判断达标
+      $('#create_DPD_143').find('input.form-number:not(:disabled)').on('input', function() {
+        doSeason2Calc();
+      });
+      // ------------- 第二季度 END ----------------
+      // ------------- 第三季度 BEGIN ----------------
+      // ESRD-PD-3 高血压是否达标
+      $('#create_DPD_485').on('input', function(){
+        var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_486', '#create_DPD_487');
+        autoSelect('#itemDPD_489', flag);
+      });
+      // ESRD-PD-4 血红蛋白是否达标
+      $('#create_DPD_512').on('input', function(){
+        var flag = judgeHemoglobin('#create_DPD_512');
+        autoSelect('#itemDPD_514', flag);
+      });
+      // ESRD-PD-6 血清蛋白是否达标
+      $('#create_DPD_550').on('input', function(){
+        var flag = judgeALB('#create_DPD_550');
+        autoSelect('#itemDPD_543', flag);
+      });
+      // ------------- 第三季度 END ----------------
+      // ------------- 第四季度 BEGIN ----------------
+      // 监听身高改变 自动计算总体水、体表面积
+      $('#create_DPD_746').on('input', function(){
+        var height = $('#create_DPD_746').val();
+        var weight = $('#create_DPD_747').val();
+        var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+        $('#create_DPD_750').val(ureaVolume);
+        
+        var bodyArea = calcBodyArea(height, weight, PUBLIC.sex);
+        $('#create_DPD_749').val(bodyArea);
+      });
+      // 监听体重改变 计算体表面积
+      $('#create_DPD_747').on('input', function(){
+        var height = $('#create_DPD_746').val();
+        var weight = $('#create_DPD_747').val();
+        var ureaVolume = calcAllBodyWater(height, PUBLIC.sex, PUBLIC.age, weight);
+        $('#create_DPD_750').val(ureaVolume);
+        var bodyArea = calcBodyArea(height, weight, PUBLIC.sex);
+        $('#create_DPD_749').val(bodyArea);
+      });
+      // ESRD-PD-3 高血压是否达标
+      $('#create_DPD_634').on('input', function(){
+        var flag = judgeBloodPressure(PUBLIC.age, '#create_DPD_635', '#create_DPD_636');
+        autoSelect('#itemDPD_639', flag);
+      });
+      // ESRD-PD-4 血红蛋白是否达标
+      $('#create_DPD_652').on('input', function(){
+        var flag = judgeHemoglobin('#create_DPD_652');
+        autoSelect('#itemDPD_654', flag);
+      });
+      // ESRD-PD-5 三个指标
+      // 血总钙
+      $('#create_DPD_689').on('input', function(){
+        var flag = judgeTCa('#create_DPD_689');
+        autoSelect('#itemDPD_693', flag);
+      });
+      // 血磷
+      $('#create_DPD_690').on('input', function(){
+        var flag = judgePHOS('#create_DPD_690');
+        autoSelect('#itemDPD_694', flag);
+      });
+      // IPTH
+      $('#create_DPD_691').on('input', function(){
+        var flag = judgeIPTH('#create_DPD_691');
+        autoSelect('#itemDPD_695', flag);
+      });
+      // ESRD-PD-6 血清蛋白是否达标
+      $('#create_DPD_740').on('input', function(){
+        var flag = judgeALB('#create_DPD_740');
+        autoSelect('#itemDPD_723', flag);
+      });
+      // ESRD-PD-7 两个指标 计算（不需要判断达标）
+      $('#create_DPD_745').find('input.form-number:not(:disabled)').on('input', function() {
+        doSeason4Calc();
+      });
+      // ------------- 第四季度 END ----------------
+
+      // 给市级下拉框赋值(与全局方法区分开)
+      function setCityOptionsInner(provinceCode){
+        var optionDefault = '<option value="def">请选择</option>';
+        // 获取市级下拉框
+        if(provinceCode === 'def'){
+          $('#create_DPD_265').html(optionDefault);
+        } else {
+          var cityDef = getCitys(provinceCode);
+          cityDef.done(function(data) {
+            var options = optionDefault;
+            data.forEach(function(val){
+              options += '<option value="'+ val.code +'">'+ val.name +'</option>';
+            });
+            $('#create_DPD_265').html(options);
+          });
+        }
+      }
+    });
+    // 计算尿素分布容积（总体水）
+    function calcAllBodyWater(height, sex, age, weight) {
+      if(height === '' || age === '' || sex === '' || weight === '') {
+        return 0;
+      }
+      // 年龄小于等于13为儿童
+      if(age > 13){
+        if(sex === 'M') {
+          return (2.447 - 0.09516 * age + 0.1704 * height + 0.3362 * weight).toFixed(2);
+        } else {
+          return (-2.097 + 0.1069 * height + 0.2466 * weight).toFixed(2);
+        }
+      } else {
+        if(sex === 'M') {
+          return (0.01 * Math.pow((height * weight), 0.68) - 0.37 * weight).toFixed(2);
+        } else {
+          return (0.14 * Math.pow((height * weight), 0.64) - 0.35 * weight).toFixed(2);
+        }
+      }
+
+    }
+    // 计算体表面积
+    function calcBodyArea(height, weight, sex) {
+      if(sex === 'M') {
+        return (0.0057 * height + 0.0121 * weight + 0.0882).toFixed(2);
+      } else if (sex === 'F') {
+        return (0.0073 * height + 0.0127 * weight - 0.2106).toFixed(2);
+      } else {
+        return 0;
+      }
+    }
+    /**
+     * @description: 计算 每周总Kt/V尿素清除指数 （ESRD-PD-7 选第二或第四季度时有）
+     * @param {number} weeklyTXAmount 每周透析天数
+     * @param {number} urea24h 24小时透出液尿素氮(透析液尿素)
+     * @param {number} FTY24h 24小时腹透液排出总量(透析液排出总量)
+     * @param {number} bloodUrea 血尿素氮(血清尿素)
+     * @param {number} ureaUrine24h 24小时尿中尿素氮(尿尿素)
+     * @param {number} urine24h 24小时尿量
+     * @param {string} ureaVolume 总体水
+     * @return {number}
+     */
+    function calcFinalKtDivideV(weeklyTXAmount, urea24h, FTY24h, bloodUrea, ureaUrine24h, urine24h,ureaVolume) {
+      var dailyFTKtV = 0; // 每日腹透Kt/V
+      var dailyCSKtV = 0; // 每日残肾Kt/V
+      var weeklyTXAmountInner = weeklyTXAmount || 0; // 每周透析天数
+      var ureaVolumeInner = ureaVolume || 0; // 尿素分布容积（总体水）
+      if(bloodUrea*ureaVolumeInner) {
+        dailyFTKtV = (urea24h * FTY24h) / (bloodUrea * ureaVolumeInner);
+        dailyCSKtV = (ureaUrine24h * urine24h) / (bloodUrea * ureaVolumeInner);
+      }
+      return ((dailyFTKtV + dailyCSKtV) * weeklyTXAmountInner).toFixed(2);
+    }
+
+    /**
+     * @description: 计算 总内生肌酐清除率（Ccr）（ESRD-PD-7 选第二或第四季度时有）
+     * @param {number} Cr24h 24小时尿肌酐
+     * @param {number} Scr 血肌酐
+     * @param {number} ureaUrine24h 24小时尿中尿素氮(尿尿素)
+     * @param {number} bloodUrea 血尿素氮(血清尿素)
+     * @param {number} urine24h 24小时尿量
+     * @param {number} Cr24hTXY 24小时透出液肌酐(透析液肌酐)
+     * @param {number} FTY24h 24小时腹透液排出总量
+     * @param {number} bodyArea 体表面积
+     * @return {number}
+     */
+    function clacFinalCcr(Cr24h, Scr, ureaUrine24h, bloodUrea, urine24h, Cr24hTXY, FTY24h, bodyArea) {
+      var CSCcr = 0; // 残肾Ccr
+      var FMCcr = 0; // 腹膜Ccr
+      var bodyAreaInner = bodyArea || 0;
+      if(Scr) {
+        FMCcr = (Cr24hTXY * FTY24h * 7) / Scr;
+      }
+      if(Scr && bloodUrea) {
+        CSCcr = ((Cr24h/Scr) + (ureaUrine24h/bloodUrea)) * urine24h * 7 / 2;
+      }
+      var resOriginal = CSCcr + FMCcr; // Ccr原始计算值
+      // return (resOriginal * bodyAreaInner / 1.73).toFixed(2);
+
+      // 不需要校正结果
+      return resOriginal.toFixed(2);
+    }
+
+    /**
+     * @description: 部分单选自动选中
+     * @param {string} fatherID
+     * @param {number} flag 0-不选中; 1-选择达标; 2-选择不达标
+     * @return {void}
+     */
+    function autoSelect(fatherID, flag) {
+      if(flag) {
+        if(flag === 1) {
+          $(fatherID).find('span[key="y"]').click();
+        } else {
+          $(fatherID).find('span[key="n"]').click();
+        }
+      }
+    }
+
+    // 第二季度 PD-7两个指标的计算过程
+    function doSeason2Calc() {
+      var weeklyTXAmount = $('#create_DPD_810').val();
+      var urea24h = $('#create_DPD_342').val();
+      var height = $('#create_DPD_146').val();
+      var Cr24h = $('#create_DPD_155').val();
+      var Scr = $('#create_DPD_152').val();
+      var ureaUrine24h = $('#create_DPD_154').val();
+      var bloodUrea = $('#create_DPD_151').val();
+      var urine24h = $('#create_DPD_153').val();
+      var Cr24hTXY = $('#create_DPD_343').val();
+      var FTY24h = $('#create_DPD_341').val();
+      var bodyArea = $('#create_DPD_149').val();
+      var ureaVolume = $('#create_DPD_150').val();
+      
+      // 每周总Kt/V尿素清除指数
+      var finalKtDivideV = calcFinalKtDivideV(weeklyTXAmount, urea24h, FTY24h, bloodUrea, ureaUrine24h, urine24h, ureaVolume);
+      $('#create_DPD_344').val(finalKtDivideV);
+      // 判断达标
+      var flag1 = judgeKtV('#create_DPD_344');
+      autoSelect('#itemDPD_158', flag1);
+
+      // 总内生肌酐清除率
+      var Ccr = clacFinalCcr(Cr24h, Scr, ureaUrine24h, bloodUrea, urine24h, Cr24hTXY, FTY24h, bodyArea);
+      $('#create_DPD_345').val(Ccr);
+      // 判断达标
+      var flag2 = judgeKtV('#create_DPD_345');
+      autoSelect('#itemDPD_159', flag2);
+    }
+    // 第四季度 PD-7两个指标的计算过程
+    function doSeason4Calc() {
+      var weeklyTXAmount = $('#create_DPD_811').val();
+      var urea24h = $('#create_DPD_782').val();
+      var height = $('#create_DPD_746').val();
+      var Cr24h = $('#create_DPD_755').val();
+      var Scr = $('#create_DPD_752').val();
+      var ureaUrine24h = $('#create_DPD_754').val();
+      var bloodUrea = $('#create_DPD_751').val();
+      var urine24h = $('#create_DPD_753').val();
+      var Cr24hTXY = $('#create_DPD_783').val();
+      var FTY24h = $('#create_DPD_781').val();
+      var bodyArea = $('#create_DPD_749').val();
+      var ureaVolume = $('#create_DPD_750').val();
+
+      // 每周总Kt/V尿素清除指数
+      var finalKtDivideV = calcFinalKtDivideV(weeklyTXAmount, urea24h, FTY24h, bloodUrea, ureaUrine24h, urine24h, ureaVolume);
+      $('#create_DPD_784').val(finalKtDivideV);
+
+      // 总内生肌酐清除率
+      var Ccr = clacFinalCcr(Cr24h, Scr, ureaUrine24h, bloodUrea, urine24h, Cr24hTXY, FTY24h, bodyArea);
+      $('#create_DPD_785').val(Ccr);
+    }
+    /**
+     * @description: 高血压控制情况达标判断
+     * @param {number} age 年龄
+     * @param {string} SBPID 舒张压input id
+     * @param {string} DBPID 收缩压input id
+     * @return {number}
+     */
+    function judgeBloodPressure(age, SBPID, DBPID) {
+      var SBP = $(SBPID).val(); // 舒张压
+      var DBP = $(DBPID).val(); // 收缩压
+      var flag = 0; // 有未填项时返回0
+      if(!age || SBP === '' || DBP === '') {
+        return flag;
+      }
+      if(age < 60) {
+        if(DBP < 140 && SBP < 90) {
+          flag = 1;
+        } else {
+          flag = 2;
+        }
+      } else if (age >= 60) {
+        if(DBP < 150 && SBP < 90) { 
+          flag = 1;
+        } else {
+          flag = 2;
+        }
+      }
+      return flag;
+    }
+
+    // 血红蛋白达标判断
+    function judgeHemoglobin(inputID) {
+      var value = $(inputID).val();
+      var flag = 0; // 有未填项时返回0
+      if(value === '') {
+        return flag;
+      }
+      if(value>=110) {
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+    // 血清蛋白达标判断
+    function judgeALB(inputID) {
+      var value = $(inputID).val();
+      var flag = 0; // 有未填项时返回0
+      if(value === '') {
+        return flag;
+      }
+      if(value>35) {
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+    // 血总钙达标判断
+    function judgeTCa(inputID) {
+      var value = $(inputID).val();
+      var flag = 0; // 有未填项时返回0
+      if(value === '') {
+        return flag;
+      }
+      if(value>=2.1 && value<=2.5){
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+    // 血磷达标判断
+    function judgePHOS(inputID) {
+      var value = $(inputID).val();
+      var flag = 0; // 有未填项时返回0
+      if(value === '') {
+        return flag;
+      }
+      if(value>=1.13 && value<=1.78){
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+    // IPTH达标判断
+    function judgeIPTH(inputID) {
+      var value = $(inputID).val();
+      var flag = 0; // 有未填项时返回0
+      if(value === '') {
+        return flag;
+      }
+      if(value>=150 && value<=600){
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+    // 尿素清除指数 总ktv达标判断
+    function judgeKtV(inputID) {
+      var value = $(inputID).val();
+      if(value === '') {
+        return flag;
+      }
+      if(value>1.7) {
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+    // 总内生肌酐清除率 总ccr是否达标
+    function judgeCcr(inputID) {
+      var value = $(inputID).val();
+      if(value === '') {
+        return flag;
+      }
+      if(value>50) {
+        flag = 1;
+      } else {
+        flag = 2;
+      }
+      return flag;
+    }
+</script>

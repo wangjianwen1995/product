@@ -1,0 +1,104 @@
+server:
+  application:
+    name: 山西雕龙智慧病案管理平台
+  port: 23305
+  servlet:
+    session:
+      timeout: 36000s
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/javascript,application/json,application/xml,text/html,text/xml,text/plain,text/css,image/*
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    third:
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=YQ_dl_base_0218
+      password: ckboar123!@#
+    primary:
+#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://175.27.170.104:1433;databaseName=dl_hpdqrmyy
+#      password: DLKJdlkj2022
+#      url: jdbc:sqlserver://192.168.5.233:1433;databaseName=dl_hp
+#      password: abc..123
+#      url: jdbc:sqlserver://192.168.0.174:1433;databaseName=dl_hp
+#      password: 123.com
+#      url: jdbc:sqlserver://192.168.10.35:1433;databaseName=dl_hp
+#      password: hgxrmyy123!@#
+#      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=YQ_DL_HP_0218
+#      password: ckboar123!@#
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_hp
+      password: ckboar123!@#
+#      url: jdbc:sqlserver://111.111.118.20:1433;databaseName=dl_hp
+#      password: dl@123
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_hp
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=empty_dl_hp
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_hp_yq
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_hp_qyxyy
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_hp_qyzyy
+#      password: Admin@123
+#      username: sa
+    secondary:
+#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://175.27.170.104:1433;databaseName=dl_dcdqrmyy
+#      password: DLKJdlkj2022
+#      url: jdbc:sqlserver://192.168.10.35:1433;databaseName=dl_dc
+#      password: hgxrmyy123!@#
+#      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=YQ_dl_dc_0218
+#      password: ckboar123!@#
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc
+      password: ckboar123!@#
+#      url: jdbc:sqlserver://111.111.118.20:1433;databaseName=dl_dc
+#      password: dl@123
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_qyxyy
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_qyzyy
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_yq
+#      password: Admin@123
+#      url: jdbc:sqlserver://192.168.5.233:1433;databaseName=dl_dc
+#      password: abc..123
+#      url: jdbc:sqlserver://192.168.0.174:1433;databaseName=dl_dc
+#      password: 123.com
+#      username: sa
+  jpa:
+    database: sql_server
+#    show-sql: true
+    properties:
+      hibernate:
+#        format_sql: true
+        dialect: org.hibernate.dialect.SQLServerDialect
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  is-print: false
+logging:
+  level:
+    com.sxdl.base.dao : debug
+HBI:
+  url: http://140.143.190.251:23306
+#  url: http://127.0.0.1:23306
+#  url: http://192.168.5.233:23306
+#  url: http://192.168.0.174:23306
+  isNew: 1
+  index: 3FBA688D-FD94-40D6-9680-3747408D99F6
+  #exe运行的
+  publicKey: 0601855e2c6048fb2752f0a23081dfb8a064a4d4d6a5d36d6a470f58b191ec8a
+#  服务器
+#  publicKey: 705c4a78503056f673f4df1bdd2e18ccba35a843caaf65b6134538efba75dce3
+#  #沁源县医院
+#  publicKey: d188456a8cdc581a8716489a30b6eaa92e4a5cc2bec4677b0036b9469d2b8f79
+basePackage: com.sxdl.hp.controller
+#dcip: http://localhost:23300
+dcip: http://140.143.190.251:23300
+dcLink: dl_dc
+#dcLink: dl_dcdqrmyy
+#dcLink: dl_dc_qyzyy
+#dcLink: dl_dc_qyxyy
+#dcLink: dl_dc_yq
+drPros: ETL_dc_sta_dc_homepage_to_YQDRGS,ETL_dc_sta_dc_homepage_to_XYJXKHZB,ETL_dc_sta_dc_homepage_to_XYJXKHFB,ETL_dc_sta_dc_homepage_to_WT4_1,ETL_dc_sta_dc_homepage_to_WT4_2,  ETL_dc_sta_dc_homepage_to_ZYJXKHZB,  ETL_dc_sta_dc_homepage_to_ZYJXKHFB

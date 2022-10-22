@@ -1,0 +1,13 @@
+[
+  {"col":"PRIMAEYKEY varchar(250) NOT NULL,","name": "PRIMAEYKEY","zh": "主键" },
+  {"col":"CQSJ varchar(250) null,","name": "CQSJ","zh": "用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"},
+  {"col":"drplus_extract_detailed_id  int  NOT NULL,","name": "drplus_extract_detailed_id","zh": "抽取id,无需对映"},
+
+  {"col":"diag_name varchar(100) null,","name": "diag_name","zh": "诊断名称" },
+  {"col":"diag_code varchar(100) null,","name": "diag_code","zh": "诊断代码" },
+  {"col":"oprn_oprt_name varchar(500) null,","name": "oprn_oprt_name","zh": "手术操作名称" },
+  {"col":"oprn_oprt_code varchar(100) null,","name": "oprn_oprt_code","zh": "手术操作代码" },
+  {"col":"maindiag_flag varchar(100) null,","name": "maindiag_flag","zh": "主诊断标志" }
+
+
+]

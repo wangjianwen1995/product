@@ -1,0 +1,58 @@
+server:
+  application:
+    name: 山西雕龙医疗服务能力评估系统
+  port: 23309
+  servlet:
+    session:
+      timeout: 3600s
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_pp
+      password: ckboar123!@#
+      username: sa
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc
+      password: ckboar123!@#
+      #      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_base
+      #      password: Admin@123
+      username: sa
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+logging:
+  level:
+    com.sxdl.performance.dao : debug
+HBI:
+#  name: 山西雕龙演示
+#  url: http://119.45.6.44:9013
+#  isNew: 0
+  url: http://140.143.190.251:23306
+  isNew: 1
+  index: 3FBA688D-FD94-40D6-9680-3747408D99F6
+  #exe运行的
+  publicKey: 705c4a78503056f673f4df1bdd2e18ccba35a843caaf65b6134538efba75dce3
+#  url: http://192.168.2.200:23306
+#  isNew: 1
+#  publicKey: 87c38a352ac6ff5a4b82f59737aafc419c835a3d3f010a39bc12bc15837fa102
+basePackage: com.sxdl.performance.controller
+#drpath: http://140.143.190.251:8077
+back_path: D:\bf
+back_time: 10
+dcip: http://192.168.2.200:23300
+#drip:
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  is-print: false

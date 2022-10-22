@@ -1,0 +1,881 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- SinoSCOREⅡ（多个单选） -->
+    <div id="mRSTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby="SinoSCOREⅡ">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">SinoSCOREⅡ</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>年龄</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item"><60 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">60-69</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">≥70</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>性别</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">男性</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">女性</div>
+                                </td>
+                            </tr>
+                        <tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>患者的体重指数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item"><18.5Kg/m2</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">18.5至<24Kg/m2</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>纽约心功能分级</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">NYHA I</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">NYHA II</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">NYHA III</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9分</td>
+                                <td>
+                                    <div score="9" class="check-item">NYHA IV</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>术前曾发生过心肌梗死</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">心肌梗死发生于术前21天之内，包括本次住院期间术前发生的心肌梗死</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">心肌梗死发生于术前21天之前</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">术前未发生心肌梗死</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>术前危重状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">心源性休克</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">心肺复苏</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">室颤或室扑</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">术前使用主动脉球囊反搏</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">没有术前危重状态</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肾功能（肌酐清除率）Ccr</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>6分</td>
+                                <td>
+                                    <div score="6" class="check-item"><50 ml/min 或透析</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">≥50 to <80ml/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">≥80 ml/min</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>慢性阻塞性肺疾病</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>是否有心绞痛症状</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>左心室射血分数（LVEF）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9分</td>
+                                <td>
+                                    <div score="9" class="check-item"><35%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">35-45%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">45-55%</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>曾接受心脏手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>非择期手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>7分</td>
+                                <td>
+                                    <div score="7" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>联合瓣膜手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>7分</td>
+                                <td>
+                                    <div score="7" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>除瓣膜外联合手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>既往脑血管意外（脑中风）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>既往PCI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 欧洲心血管手术危险因素评分EurosCORE系统（多个单选） -->
+    <div id="heartTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby="欧洲心血管手术危险因素评分EurosCORE系统">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">欧洲心血管手术危险因素评分EurosCORE系统</div>
+                <div class="scoreTable">
+                    <h4 style="padding:10px 0">病人相关危险因素</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>年龄</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">60~65</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">66~70</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">71~75</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">76~80</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">81~85</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6分</td>
+                                <td>
+                                    <div score="6" class="check-item">86~90</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7分</td>
+                                <td>
+                                    <div score="7" class="check-item">91~94</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">95~100</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>女性</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>慢性肺疾患</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心外动脉系统疾病</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>既往心脏手术史</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>血浆肌酐浓度>200umol/L</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>活动性心内膜炎</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>术前危急状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 style="padding:10px 0">心脏相关因素</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>需要药物干预的不稳定心绞痛</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>左室功能不全</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">LVEF 30-50%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">LVEF <30%</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>90天内的既往心梗史</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肺动脉收缩压>60mmHg</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 style="padding:10px 0">手术相关因素</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>急诊手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>CABG合并其他心脏手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>胸主动脉手术</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心梗后室间隔穿孔</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">否</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('MVR-2.0')
+var create = new create();
+    create.createRender("MVR",function() {
+        //评分表（单选）
+        $("#create_46").after('<a id="mRSScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_5").after('<a id="heartScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#mRSScore").on("click", function () {
+            $("#mRSTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#mRSTable .calculate").click(function () {
+            $('#create_46').val($(this).data("score"))
+            $("#mRSTable").modal("hide");
+            $('#create_46').blur();
+            $('#create_46').change();
+        })
+        $("#heartScore").on("click", function () {
+            $("#heartTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#heartTable .calculate").click(function () {
+            $('#create_5').val($(this).data("score"))
+            $("#heartTable").modal("hide");
+            $('#create_5').blur();
+            $('#create_5').change();
+        })
+    });
+</script>

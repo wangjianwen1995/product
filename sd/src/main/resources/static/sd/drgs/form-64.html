@@ -1,0 +1,4632 @@
+<!--
+ * @Description: 重症胰腺炎 SAP
+ * @LastEditors: yuexiaoyan yuexiaoyan@ewell.cc
+ * @LastEditTime: 2022-08-01 16:12:59
+ * @FilePath: \single-disease\public\static\drgs\form-64.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css" />
+<link rel="stylesheet" href="../js/layui/css/layui.css" />
+
+<body>
+  <div id="form-content" class="container-fluid">
+    <form class="form-horizontal">
+      <div id="dragslot" class="container" style="width:100%;padding:0;">
+        <div id="contend" class="slot-list"></div>
+        <div class="submit-button"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- SAP-1-3-3 改良CT严重指数（MCTSI）分值-->
+  <div
+    id="SAPTable1"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="改良CT严重指数的评分标准"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 1000px;">
+      <div class="modal-content">
+        <div class="scoreHeader">改良CT严重指数的评分标准</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>胰腺炎性反应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">正常胰腺</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">胰腺和（或）胰周炎性改变</div></td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">单个或多个积液区或胰周脂肪坏死</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>胰腺坏死</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">无胰腺坏死</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">坏死范围≤30%</div></td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">坏死范围>30%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">胰外并发症，包括胸腔积液、腹水、血管或胃肠道受累等</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 急性胰腺炎严重程度床边指标（BISAP）评分 -->
+  <div
+    id="SAPTable2a"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="急性胰腺炎严重程度床边指标（BISAP）评分"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">急性胰腺炎严重程度床边指标（BISAP）评分</div>
+        <div class="scoreTable ">
+          <div class="row" style="margin: 0 auto;">
+            <div class="col-md-10">
+              <table class="multiple">
+                <!-- <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead> -->
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">血尿素氮>8.9 mmol/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">神志异常</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">存在全身炎症反应综合征</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">年龄>60</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">影像检查提示胸腔积液</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- 急性胰腺炎严重程度床边指标（BISAP）评分 -->
+   <div
+   id="SAPTable2b"
+   class="modal fade bs-example-modal-sm"
+   tabindex="-1"
+   role="dialog"
+   aria-labelledby="急性胰腺炎严重程度床边指标（BISAP）评分"
+ >
+   <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+     <div class="modal-content">
+       <div class="scoreHeader">急性胰腺炎严重程度床边指标（BISAP）评分</div>
+       <div class="scoreTable ">
+         <div class="row" style="margin: 0 auto;">
+           <div class="col-md-10">
+             <table class="multiple">
+               <!-- <thead>
+                 <tr>
+                   <th style="width: 80;"></th>
+                   <th>年龄</th>
+                 </tr>
+               </thead> -->
+               <tbody>
+                 <tr>
+                   <td>1分</td>
+                   <td>
+                     <div score="1" class="check-item">血尿素氮>8.9 mmol/L</div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>1分</td>
+                   <td>
+                     <div score="1" class="check-item">神志异常</div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>1分</td>
+                   <td>
+                     <div score="1" class="check-item">存在全身炎症反应综合征</div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>1分</td>
+                   <td>
+                     <div score="1" class="check-item">年龄>60</div>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>1分</td>
+                   <td>
+                     <div score="1" class="check-item">影像检查提示胸腔积液</div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+         </div>
+       </div>
+       <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+       <div class="scoreFooter">
+         <button class="calculate btn btn-primary">确定</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+  <!-- 急性胰腺炎严重程度床边指标（BISAP）评分 -->
+  <div
+    id="SAPTable2c"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="急性胰腺炎严重程度床边指标（BISAP）评分"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">急性胰腺炎严重程度床边指标（BISAP）评分</div>
+        <div class="scoreTable ">
+          <div class="row" style="margin: 0 auto;">
+            <div class="col-md-10">
+              <table class="multiple">
+                <!-- <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead> -->
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">血尿素氮>8.9 mmol/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">神志异常</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">存在全身炎症反应综合征</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">年龄>60</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">影像检查提示胸腔积液</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 急性生理学评分值 -->
+  <div
+    id="SAPTable3"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="急性生理学评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">急性生理学评分值</div>
+        <div class="scoreTable scoreTable3">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>体温-肛温（℃）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥41</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">39-40.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">38.5-38.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">36-38.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">34-35.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">32-33.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">30-31.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤29.9</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>动脉 pH</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">>7.70</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">7.60-7.69</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">7.50-7.59</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">7.33-7.49</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">7.25-7.32</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">7.15-7.24</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;7.15</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>呼吸频率（包括机械通气和非机械通气的频率）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥50</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">35-49</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">25-34</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">12-24</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">10-11</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">6-9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤5</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>FIO₂≥0.5，AaDO₂</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥500</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">350-499</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">200-349</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;200</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>FiO₂&lt;0.5，PaO₂ (mmHg)</th>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">&lt;55</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">55-60</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">61-70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>70</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>白细胞计数（×10⁹/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥40</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">20-39.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">15-19.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">3-14.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">1-2.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;1</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 钠（mmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥180</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">160-179</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">155-159</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">150-154</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">130-149</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">120-129</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">111-119</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤110</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 钾（mmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥7.0</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">6.0-6.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">5.5-5.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">3.5-5.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">3.0-3.4</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">2.5-2.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤2.5</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 肌酐（mg/dL）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">&lt;0.6</div></td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">0.6-1.4</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">1.5-1.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">2.0-3.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≥3.5</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血细胞压积（%）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥60</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">50-59.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">46-49.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">30-45.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">20-29.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;20</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>心率（心室率）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥180</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">140-179</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">110-139</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">70-109</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">55-69</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">40-54</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤39</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>平均动脉压（mmHg）</th>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥160</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">130-159</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">110-129</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">70-109</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">50-69</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤49</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 年龄及慢性健康状况评分值 -->
+  <div
+    id="SAPTable4"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="年龄及慢性健康状况评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">年龄及慢性健康状况评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤44</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">45– 54</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">55– 64</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">65– 74</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6分</td>
+                    <td>
+                      <div score="6" class="check-item">≥75</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-8">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>有严重器官功能不全或免疫损害</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">非手术或择期手术后</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">不能手术或急诊手术后</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无上述情况</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glasgow 昏迷评分值 -->
+  <div
+    id="SAPTable5"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="Glasgow 昏迷评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">Glasgow 昏迷评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>睁眼反应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">自动睁眼</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">呼唤睁眼</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">刺痛睁眼</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">不能睁眼</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>语言反应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">回答切题</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">回答不切题</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">答非所问</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">只能发音</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">不能言语</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>运动反应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>6分</td>
+                    <td>
+                      <div score="6" class="check-item">按吩咐动作</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">刺疼能定位</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">刺疼能躲避</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">刺疼肢体屈曲</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">刺疼肢体伸展</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">不能活动</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 入院时 Ranson评分值 -->
+  <div id="SAPTable6" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肝脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肝脏评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤55</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">>55</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>白细胞计数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤16.00×10⁹/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">>16.00×10⁹/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>血糖</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤11.1 mmol/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">>11.1 mmol/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>血清LDH</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤350 U/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">>350 U/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>血清AST</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤250 U/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">>250 U/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 入院后第一个24小时 Ranson评分值 -->
+  <div
+    id="SAPTable7"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="入院后第一个24小时 Ranson评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 800px;">
+      <div class="modal-content">
+        <div class="scoreHeader">入院后第一个24小时 Ranson评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>血清钙</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≥2 mmol/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">&lt;2 mmol/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>红细胞压积</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无下降或比入院时下降≤10%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">比入院时下降>10%</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>尿素氮</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无上升或上升≤1.79 mmol/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">比入院时上升>1.79 mmol/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>动脉PO₂</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≥60 mmHg</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">&lt;60 mmHg</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>酸碱平衡</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">代谢性酸中毒，碱缺失≤4mmol/L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">代谢性酸中毒，碱缺失>4mmol/L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>液体潴留（入-出）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤6L</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">>6L</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 呼吸系统 氧合指数(mmHg) -->
+  <div
+    id="SAPTable8"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="呼吸系统 氧合指数(mmHg)"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">呼吸系统 氧合指数(mmHg)</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>呼吸（PaO₂/FiO₂）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">301 -400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">201 - 300</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">101 - 200</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;101</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 肾脏 血肌酐(μmol/L) -->
+  <div
+    id="SAPTable9"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="肾脏 血肌酐(μmol/L)"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肾脏 血肌酐(μmol/L)</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>肾脏（肌酐，μmmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;134</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">134-169</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">170-310</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">311-439</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>439</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 心血管系统 收缩压 (mmHg) -->
+  <div
+    id="SAPTable10"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="心血管系统 收缩压 (mmHg)"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">心血管系统 收缩压 (mmHg)</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>循环（收缩压，mmHg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>90</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">&lt;90，补液后可纠正</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">&lt;90，补液后不能纠正</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">&lt;90，pH&lt;7.3</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;90，pH&lt;7.2</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Atlanta分级（RAC）结论  -->
+  <div
+    id="SAPTable11"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="Atlanta分级（RAC）结论"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 500px;height: 300px;">
+      <div class="modal-content">
+        <div class="scoreHeader">Atlanta分级（RAC）结论</div>
+        <div class="scoreTable RACTable11">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>RAC分级</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="check-item" score="a">
+                    <td>轻症</td>
+                    <td>
+                      <div>无器官功能障碍和局部并发症</div>
+                    </td>
+                  </tr>
+                  <tr class="check-item" score="b">
+                    <td>中度重症</td>
+                    <td>
+                      <div>出现一过性（&lt;48h）器官功能障碍和（或）局部并发症</div>
+                    </td>
+                  </tr>
+                  <tr class="check-item" score="c">
+                    <td>重症</td>
+                    <td>
+                      <div>出现持续性（>48h）器官功能障碍</div>
+                    </td>
+                  </tr>
+                  <tr class="check-item" score="">
+                    <td>危重症</td>
+                    <td>
+                      <div>无</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="display:none ;" class="resultScore">
+          得分： <span class="num"></span><span class="num-score"></span>
+        </div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--呼吸系统评分值  -->
+  <div
+    id="SAPTable12"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="呼吸系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">呼吸系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>呼吸系统：PaO₂/FiO₂，mmHg，呼吸机支持</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤300</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤200</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤100</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--血液系统评分值  -->
+  <div
+    id="SAPTable13"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="血液系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">血液系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血液系统：血小板（10⁹/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>150</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤150</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤100</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤50</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤20</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--肝脏评分值  -->
+  <div id="SAPTable14" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肝脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肝脏评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>肝脏：胆红素（μmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;20.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤34.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤102.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤205.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>205.2</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--心血管系统评分值  -->
+  <div
+    id="SAPTable15"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="心血管系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">心血管系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>循环：平均动脉压，mmHg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≥70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">&lt;70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>循环：多巴胺，μg/(kg·min)</th>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">>5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>15</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>循环：多巴酚丁胺，μg/(kg·min)</th>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">任何剂量</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>循环：肾上腺素，μg/(kg·min)</th>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤0.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>0.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>循环：去甲肾上腺素，μg/(kg·min)</th>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤0.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>0.1</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--中枢神经系统评分值  -->
+  <div
+    id="SAPTable16"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="中枢神经系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">中枢神经系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>神经：GCS评分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">15</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">13-14</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">10-12</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">6-9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;6</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--肾脏评分值  -->
+  <div id="SAPTable17" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肾脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肾脏评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>肾脏：肌酐，μmol/L</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;106</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤176</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤308</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤442</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>442</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>肾脏：尿量，ml/d</th>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤500</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Atlanta分级（DBC）结论  -->
+  <div
+    id="SAPTable18"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="Atlanta分级（DBC）结论"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 500px;height: 300px;">
+      <div class="modal-content">
+        <div class="scoreHeader">Atlanta分级（DBC）结论</div>
+        <div class="scoreTable DBCTable18">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>DBC分级</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr score="a" class="check-item">
+                    <td>轻症</td>
+                    <td>
+                      <div>无器官功能障碍和胰腺（胰周）坏死</div>
+                    </td>
+                  </tr>
+                  <tr score="b" class="check-item">
+                    <td>中度重症</td>
+                    <td>
+                      <div>出现一过性（&lt;48h）器官功能障碍和（或）无菌性坏死</div>
+                    </td>
+                  </tr>
+                  <tr score="c" class="check-item">
+                    <td>重症</td>
+                    <td>
+                      <div>出现持续性（>48h）器官功能障碍或感染性坏死</div>
+                    </td>
+                  </tr>
+                  <tr score="d" class="check-item">
+                    <td>危重症</td>
+                    <td>
+                      <div>出现持续性（>48h）器官功能障碍和感染性坏死</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="display: none;" class="resultScore">
+          得分： <span class="num"></span><span class="num-score"></span>
+        </div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-2-3-2 NRS-2002营养风险筛查分值 -->
+  <div
+    id="SAPTable19"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="营养风险筛查分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">营养风险筛查分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>疾病评分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">髋骨骨折</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">慢性疾病急性发作或有并发症</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">血液透析</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">肝硬化</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">一般恶性肿瘤患者</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">糖尿病</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">腹部大手术</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">脑卒中</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">重度肺炎</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">血液恶性肿瘤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">颅脑损伤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">骨髓移植</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-5">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>营养状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">BMI&lt;18.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">
+                        因严重的胸腹水、水肿得不到准确的BMI值时，无严重肝肾功能异常者，用白蛋白替代的
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">3个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">2个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">一周内进食量较从前减少25%-50%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">一周内进食量较从前减少51%-75%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">一周内进食量较从前减少76%-100%</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 50;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">年龄&lt;70岁</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">年龄>70岁</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-2-3-2 NRS-2002营养风险筛查分值 -->
+  <div
+    id="SAPTable19b"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="营养风险筛查分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">营养风险筛查分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>疾病评分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">髋骨骨折</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">慢性疾病急性发作或有并发症</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">血液透析</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">肝硬化</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">一般恶性肿瘤患者</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">糖尿病</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">腹部大手术</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">脑卒中</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">重度肺炎</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">血液恶性肿瘤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">颅脑损伤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">骨髓移植</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-5">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>营养状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">BMI&lt;18.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">
+                        因严重的胸腹水、水肿得不到准确的BMI值时，无严重肝肾功能异常者，用白蛋白替代的
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">3个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">2个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">一周内进食量较从前减少25%-50%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">一周内进食量较从前减少51%-75%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">一周内进食量较从前减少76%-100%</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 50;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">年龄&lt;70岁</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">年龄>70岁</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-2-3-2 NRS-2002营养风险筛查分值 -->
+  <div
+    id="SAPTable19c"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="营养风险筛查分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">营养风险筛查分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>疾病评分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">髋骨骨折</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">慢性疾病急性发作或有并发症</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">血液透析</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">肝硬化</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">一般恶性肿瘤患者</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">糖尿病</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">腹部大手术</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">脑卒中</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">重度肺炎</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">血液恶性肿瘤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">颅脑损伤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">骨髓移植</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-5">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>营养状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">BMI&lt;18.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">
+                        因严重的胸腹水、水肿得不到准确的BMI值时，无严重肝肾功能异常者，用白蛋白替代的
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">3个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">2个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1个月内体重下降>5%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">一周内进食量较从前减少25%-50%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">一周内进食量较从前减少51%-75%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">一周内进食量较从前减少76%-100%</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 50;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">年龄&lt;70岁</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">年龄>70岁</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--SAP-3-1-3-1 改良CT严重指数（MCTSI）分值  -->
+  <div
+    id="SAPTable20"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="改良CT严重指数（MCTSI）分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">改良CT严重指数（MCTSI）分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>胰腺炎性反应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">正常胰腺</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">胰腺和（或）胰周炎性改变</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">单个或多个积液区或胰周脂肪坏死</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>胰腺坏死</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无胰腺坏死</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">坏死范围≤30%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">坏死范围>30%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">胰外并发症，包括胸腔积液、腹水、血管或胃肠道受累等</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--SAP-3-1-3-3胰腺炎胰外炎症(EPIC评分)分值  -->
+  <div
+    id="SAPTable21"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="胰腺炎胰外炎症(EPIC评分)分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">胰腺炎胰外炎症(EPIC评分)分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>胸腔积液</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">单侧</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">双侧</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>腹腔积液（胰周、肝周、肠间、盆腔）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1个部位</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">>1个部位</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>腹膜后炎症</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">单侧</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">双侧</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>肠系膜炎症</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">无</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">有</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--SAP-4-2-3-2 SOFA评分值  -->
+  <!-- <div id="SAPTable22" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="qSOFA评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">qSOFA评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>意识形态改变</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">否</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">是</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>收缩压≤100 mmHg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">否</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">是</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>呼吸频率≥22 次/min</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">否</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">是</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!--SAP-4-2-3-2第一部分 呼吸系统评分值-->
+  <div
+    id="SAPTable22"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="呼吸系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">呼吸系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-8">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>呼吸（PaO₂/FiO₂）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤300</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤200 on MV</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤100 on MV</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-2-3-3第二部分 血液系统评分值 -->
+  <div
+    id="SAPTable23"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="血液系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">血液系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-10">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血液系统：血小板（10⁹/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>150</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤150</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤100</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤50</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤20</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-2-3-4第三部分 肝脏评分值 -->
+  <div id="SAPTable24" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肝脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肝脏评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>肝脏：胆红素（μmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;20.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤34.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤102.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤205.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>205.2</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-2-3-5第四部分 心血管系统评分值-->
+  <div
+    id="SAPTable25"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="心血管系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">心血管系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>循环：平均动脉压（mmHg）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≥70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">&lt;70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>循环：多巴胺（μg/kg⁻¹·min⁻¹）</th>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">>5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>15</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>循环：多巴酚丁胺（μg/kg⁻¹·min⁻¹）</th>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">任何剂量</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>循环：肾上腺素（μg/kg⁻¹·min⁻¹）</th>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤0.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>0.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>循环：去甲肾上腺素（μg/kg⁻¹·min⁻¹）</th>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤0.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>0.1</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-2-3-5 中枢神经系统评分值-->
+  <div
+    id="SAPTable26"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="中枢神经系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">中枢神经系统评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>中枢神经系统：GCS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">15</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">13-14</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">10-12</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">6-9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;6</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-2-3-5 肾脏评分值-->
+  <div id="SAPTable27" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肾脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肾脏评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>肾脏：肌酐（μmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;106</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">≤176</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≤308</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤442</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>442</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>肾脏：尿量（mL/day）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤500</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-2-3-9 qSOFA评分值-->
+  <div id="SAPTable28" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="qSOFA评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">qSOFA评分值</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>意识形态改变</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">否</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">是</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>收缩压≤100 mmHg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">否</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">是</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>呼吸频率≥22 次/min</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">否</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">是</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 改良Marshall评分系统 -->
+  <!-- SAP-4-4-3-2 呼吸系统 氧合指数(mmHg)-->
+  <div
+    id="SAPTable29"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="呼吸系统 氧合指数(mmHg)"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">呼吸系统 氧合指数(mmHg)</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>呼吸（PaO₂/FiO₂）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">301 -400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">201 - 300</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">101 - 200</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;101</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-4-3-2 心血管系统 收缩压 (mmHg)-->
+  <div
+    id="SAPTable30"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="心血管系统 收缩压 (mmHg)"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">心血管系统 收缩压 (mmHg)</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>循环（收缩压，mmHg)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>90</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">&lt;90，补液后可纠正</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">&lt;90，补液后不能纠正</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">&lt;90，pH&lt;7.3</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;90，pH&lt;7.2</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-4-4-3-2 肾脏 血肌酐(μmol/L)-->
+  <div
+    id="SAPTable31"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="肾脏 血肌酐(μmol/L)"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肾脏 血肌酐(μmol/L)</div>
+        <div class="scoreTable ">
+          <div class="row">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>肾脏（肌酐，μmmol/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;134</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">134-169</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">170-310</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">311-439</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>439</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              注：PaO₂为动脉血氧分压；FiO₂为吸入气氧体积分数，按照空气（21%）、纯氧2L/min（25%）、纯氧4L/min（30%）、纯氧6~8L/min（40%）、纯氧9~10L/min（50%）换算；1
+              mmHg=0.133kPa
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAP-1-3-7 EPIC分值	-->
+  <div
+    id="SAPTable32"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="胰腺炎胰外炎症严重程度（EPIC评分）评估要素"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 1000px;">
+      <div class="modal-content">
+        <div class="scoreHeader">胰腺炎胰外炎症严重程度（EPIC评分）评估要素</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">评分</th>
+                    <th>胸腔积液</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">无</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">单侧</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">双侧</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">评分</th>
+                    <th>腹腔积液（胰周、肝周、肠间、盆腔）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">无</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">1个部位</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">>1个部位</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">评分</th>
+                    <th>腹膜后炎症</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">无</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">单侧</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">双侧</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">评分</th>
+                    <th>肠系膜炎症</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td><div score="0" class="check-item">无</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">有</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  console.log('SAP');
+  var create = new create();
+  create.createRender('SAP', function() {
+    // 添加评分表
+    // SAP-1 是否腹部CT检查: 是
+    //SAP-1-3-3 改良CT严重指数（MCTSI）分值
+    $('#create_SAP_308').after(
+      '<a id="SAPScore1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_SAP_308').attr('disabled', true);
+    $('#SAPScore1').on('click', function() {
+      $('#SAPTable1').modal();
+    });
+    $('#SAPTable1 .calculate').click(function() {
+      $('#create_SAP_308').val($(this).data('score'));
+      $('#SAPTable1').modal('hide');
+      $('#create_SAP_308').blur();
+    });
+    // SAP-1 急性胰腺炎严重程度床边指标（BISAP）评分（多选）
+    // SAP-1-4-1-1首次床旁AP严重度BISAP评分值
+    $('#create_SAP_387').after(
+      '<a id="SAPScore2a" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_SAP_387').attr('disabled', true);
+    $('#SAPScore2a').on('click', function() {
+      $('#SAPTable2a').modal();
+    });
+    $('#SAPTable2a .calculate').click(function() {
+      $('#create_SAP_387').val($(this).data('score'));
+      $('#SAPTable2a').modal('hide');
+      $('#create_SAP_387').blur();
+    });
+    // SAP-1-4-2-1床旁AP严重度BISAP评分值
+    $('#create_SAP_322').after(
+      '<a id="SAPScore2b" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_SAP_322').attr('disabled', true);
+    $('#SAPScore2b').on('click', function() {
+      $('#SAPTable2b').modal();
+    });
+    $('#SAPTable2b .calculate').click(function() {
+      $('#create_SAP_322').val($(this).data('score'));
+      $('#SAPTable2b').modal('hide');
+      $('#create_SAP_322').blur();
+    });
+    // SAP-1-4-2-5床旁AP严重度评分（BISAP）评分值
+    $('#create_SAP_394').after(
+      '<a id="SAPScore2c" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_SAP_394').attr('disabled', true);
+    $('#SAPScore2c').on('click', function() {
+      $('#SAPTable2c').modal();
+    });
+    $('#SAPTable2c .calculate').click(function() {
+      $('#create_SAP_394').val($(this).data('score'));
+      $('#SAPTable2c').modal('hide');
+      $('#create_SAP_394').blur();
+    });
+    // SAP-1-4-3-2 急性胰腺炎严重程度的评估：选择=>是, 入住ICU患者-APACHE Ⅱ评分
+    // SAP-1-4-3-2 第一部分：急性生理学评分值
+    $('#create_SAP_329').after(
+      '<a id="SAPScore3" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_329').attr('disabled', true);
+    $('#SAPScore3').on('click', function() {
+      $('#SAPTable3').modal();
+    });
+    $('#SAPTable3 .calculate').click(function() {
+      $('#create_SAP_329').val($(this).data('score'));
+      $('#SAPTable3').modal('hide');
+      $('#create_SAP_329').blur();
+    });
+    // SAP-1-4-3-3第二部分: 年龄及慢性健康状况评分值
+    $('#create_SAP_330').after(
+      '<a id="SAPScore4" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_330').attr('disabled', true);
+    $('#SAPScore4').on('click', function() {
+      $('#SAPTable4').modal();
+    });
+    $('#SAPTable4 .calculate').click(function() {
+      $('#create_SAP_330').val($(this).data('score'));
+      $('#SAPTable4').modal('hide');
+      $('#create_SAP_330').blur();
+    });
+    // SAP-1-4-3-4第三部分: Glasgow 昏迷评分值
+    $('#create_SAP_331').after(
+      '<a id="SAPScore5" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_331').attr('disabled', true);
+    $('#SAPScore5').on('click', function() {
+      $('#SAPTable5').modal();
+    });
+    $('#SAPTable5 .calculate').click(function() {
+      $('#create_SAP_331').val($(this).data('score'));
+      $('#SAPTable5').modal('hide');
+      $('#create_SAP_331').blur();
+    });
+    // SAP-1-4-4-1 急性胰腺炎严重程度的评估：选择=>是, 入住ICU患者-APACHE Ⅱ评分
+    // SAP-1-4-4-1入院时 Ranson评分值
+    $('#create_SAP_340').after(
+      '<a id="SAPScore6" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_340').attr('disabled', true);
+    $('#SAPScore6').on('click', function() {
+      $('#SAPTable6').modal();
+    });
+    $('#SAPTable6 .calculate').click(function() {
+      $('#create_SAP_340').val($(this).data('score'));
+      $('#SAPTable6').modal('hide');
+      $('#create_SAP_340').blur();
+    });
+    // SAP-1-4-4-3入院后第一个24小时 Ranson评分值
+    $('#create_SAP_343').after(
+      '<a id="SAPScore7" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_343').attr('disabled', true);
+    $('#SAPScore7').on('click', function() {
+      $('#SAPTable7').modal();
+    });
+    $('#SAPTable7 .calculate').click(function() {
+      $('#create_SAP_343').val($(this).data('score'));
+      $('#SAPTable7').modal('hide');
+      $('#create_SAP_343').blur();
+    });
+    // SAP-1-4-4-1 急性胰腺炎严重程度的评估：是否进行严重程度的分级评估=====  选择=>否，不进行严重程度的分级评估
+    // 器官功能障碍评估及RAC/或DBC分级：是否进行严重程度的分级评估=====  选择=>是, RAC分级诊断评估
+    //是否使用改良Marshall 评分:  是
+    // SAP-1-5-2-1呼吸系统 氧合指数(mmHg)
+    $('#create_SAP_352').after(
+      '<a id="SAPScore8" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_352').attr('disabled', true);
+    $('#SAPScore8').on('click', function() {
+      $('#SAPTable8').modal();
+    });
+    $('#SAPTable8 .calculate').click(function() {
+      $('#create_SAP_352').val($(this).data('score'));
+      $('#SAPTable8').modal('hide');
+      $('#create_SAP_352').blur();
+    });
+    // SAP-1-5-2-2肾脏 血肌酐(μmol/L)
+    $('#create_SAP_353').after(
+      '<a id="SAPScore9" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_353').attr('disabled', true);
+    $('#SAPScore9').on('click', function() {
+      $('#SAPTable9').modal();
+    });
+    $('#SAPTable9 .calculate').click(function() {
+      $('#create_SAP_353').val($(this).data('score'));
+      $('#SAPTable9').modal('hide');
+      $('#create_SAP_353').blur();
+    });
+    // SAP-1-5-2-3心血管系统 收缩压 (mmHg)
+    $('#create_SAP_354').after(
+      '<a id="SAPScore10" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_354').attr('disabled', true);
+    $('#SAPScore10').on('click', function() {
+      $('#SAPTable10').modal();
+    });
+    $('#SAPTable10 .calculate').click(function() {
+      $('#create_SAP_354').val($(this).data('score'));
+      $('#SAPTable10').modal('hide');
+      $('#create_SAP_354').blur();
+    });
+    //SAP-1-5-2-6 Atlanta分级（RAC）结论
+    $('#create_SAP_357').after(
+      '<a id="SAPScore11" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_357').attr('disabled', true);
+    $('#SAPScore11').on('click', function() {
+      $('#SAPTable11').modal();
+    });
+    $('#SAPTable11 .calculate').click(function() {
+      $('#create_SAP_357').val($(this).data('score'));
+      $('#SAPTable11').modal('hide');
+    });
+    // SAP-1-4-4-1 急性胰腺炎严重程度的评估：是否进行严重程度的分级评估=====  选择=>否，不进行严重程度的分级评估
+    // 器官功能障碍评估及RAC/或DBC分级：是否进行严重程度的分级评估=====  选择=>是, DBC分级诊断评估
+    //是否实施器官衰竭评分（SOFA） 评分:  是
+    // SAP-1-5-3-2第一部分：呼吸系统评分值
+    $('#create_SAP_363').after(
+      '<a id="SAPScore12" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_363').attr('disabled', true);
+    $('#SAPScore12').on('click', function() {
+      $('#SAPTable12').modal();
+    });
+    $('#SAPTable12 .calculate').click(function() {
+      $('#create_SAP_363').val($(this).data('score'));
+      $('#SAPTable12').modal('hide');
+      $('#create_SAP_363').blur();
+    });
+    // SAP-1-5-3-3第二部分：血液系统评分值
+    $('#create_SAP_364').after(
+      '<a id="SAPScore13" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_364').attr('disabled', true);
+    $('#SAPScore13').on('click', function() {
+      $('#SAPTable13').modal();
+    });
+    $('#SAPTable13 .calculate').click(function() {
+      $('#create_SAP_364').val($(this).data('score'));
+      $('#SAPTable13').modal('hide');
+      $('#create_SAP_364').blur();
+    });
+    // SAP-1-5-3-4第三部分：肝脏评分值
+    $('#create_SAP_365').after(
+      '<a id="SAPScore14" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_365').attr('disabled', true);
+    $('#SAPScore14').on('click', function() {
+      $('#SAPTable14').modal();
+    });
+    $('#SAPTable14 .calculate').click(function() {
+      $('#create_SAP_365').val($(this).data('score'));
+      $('#SAPTable14').modal('hide');
+      $('#create_SAP_365').blur();
+    });
+    //SAP-1-5-3-5第四部分：心血管系统评分值
+    $('#create_SAP_366').after(
+      '<a id="SAPScore15" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_366').attr('disabled', true);
+    $('#SAPScore15').on('click', function() {
+      $('#SAPTable15').modal();
+    });
+    $('#SAPTable15 .calculate').click(function() {
+      $('#create_SAP_366').val($(this).data('score'));
+      $('#SAPTable15').modal('hide');
+      $('#create_SAP_366').blur();
+    });
+    //SAP-1-5-3-6第五部分：中枢神经系统评分值
+    $('#create_SAP_367').after(
+      '<a id="SAPScore16" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_367').attr('disabled', true);
+    $('#SAPScore16').on('click', function() {
+      $('#SAPTable16').modal();
+    });
+    $('#SAPTable16 .calculate').click(function() {
+      $('#create_SAP_367').val($(this).data('score'));
+      $('#SAPTable16').modal('hide');
+      $('#create_SAP_367').blur();
+    });
+    //SAP-1-5-3-7第六部分：肾脏评分值
+    $('#create_SAP_368').after(
+      '<a id="SAPScore17" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_368').attr('disabled', true);
+    $('#SAPScore17').on('click', function() {
+      $('#SAPTable17').modal();
+    });
+    $('#SAPTable17 .calculate').click(function() {
+      $('#create_SAP_368').val($(this).data('score'));
+      $('#SAPTable17').modal('hide');
+      $('#create_SAP_368').blur();
+    });
+    // SAP-1-5-3-8Atlanta分级（DBC）结论
+    $('#create_SAP_370').after(
+      '<a id="SAPScore18" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_370').attr('disabled', true);
+    $('#SAPScore18').on('click', function() {
+      $('#SAPTable18').modal();
+    });
+    $('#SAPTable18 .calculate').click(function() {
+      $('#create_SAP_370').val($(this).data('score'));
+      $('#SAPTable18').modal('hide');
+    });
+    // 营养评估 SAP-2-3-3 营养风险筛查分值
+    //     SAP-2-3-2-2 NRS-2002营养风险筛查分值
+    $('#create_SAP_437').after(
+      '<a id="SAPScore19" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_437').attr('disabled', true);
+    $('#SAPScore19').on('click', function() {
+      $('#SAPTable19').modal();
+    });
+    $('#SAPTable19 .calculate').click(function() {
+      $('#create_SAP_437').val($(this).data('score'));
+      $('#SAPTable19').modal('hide');
+      $('#create_SAP_437').blur();
+    });
+    // SAP-2-3-3-2 NRS-2002营养风险筛查分值
+    $('#create_SAP_440').after(
+      '<a id="SAPScore19b" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_440').attr('disabled', true);
+    $('#SAPScore19b').on('click', function() {
+      $('#SAPTable19b').modal();
+    });
+    $('#SAPTable19b .calculate').click(function() {
+      $('#create_SAP_440').val($(this).data('score'));
+      $('#SAPTable19b').modal('hide');
+      $('#create_SAP_440').blur();
+    });
+    // SAP-2-3-4-2 NRS-2002营养风险筛查分值
+    $('#create_SAP_443').after(
+      '<a id="SAPScore19c" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_443').attr('disabled', true);
+    $('#SAPScore19c').on('click', function() {
+      $('#SAPTable19c').modal();
+    });
+    $('#SAPTable19c .calculate').click(function() {
+      $('#create_SAP_443').val($(this).data('score'));
+      $('#SAPTable19c').modal('hide');
+      $('#create_SAP_443').blur();
+    });
+
+    // SAP-3-1-3-1改良CT严重指数（MCTSI）分值
+    $('#create_SAP_497').after(
+      '<a id="SAPScore20" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_497').attr('disabled', true);
+    $('#SAPScore20').on('click', function() {
+      $('#SAPTable20').modal();
+    });
+    $('#SAPTable20 .calculate').click(function() {
+      $('#create_SAP_497').val($(this).data('score'));
+      $('#SAPTable20').modal('hide');
+      $('#create_SAP_497').blur();
+    });
+
+    // SAP-3-1-3-3胰腺炎胰外炎症(EPIC评分)分值
+    $('#create_SAP_507').after(
+      '<a id="SAPScore21" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_507').attr('disabled', true);
+    $('#SAPScore21').on('click', function() {
+      $('#SAPTable21').modal();
+    });
+    $('#SAPTable21 .calculate').click(function() {
+      $('#create_SAP_507').val($(this).data('score'));
+      $('#SAPTable21').modal('hide');
+      $('#create_SAP_507').blur();
+    });
+
+    // SAP-4-2-3-1 qSOFA评分值
+    // $('#create_SAP_485').after(
+    //   '<a id="SAPScore22" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    // );
+    // $('#create_SAP_485').attr('disabled', true);
+    // $('#SAPScore22').on('click', function() {
+    //   $('#SAPTable22').modal();
+    // });
+    // $('#SAPTable22 .calculate').click(function() {
+    //   $('#create_SAP_485').val($(this).data('score'));
+    //   $('#SAPTable22').modal('hide');
+    //   $('#create_SAP_485').blur();
+    // });
+    // 器官衰竭评分（SOFA ）量表：
+    // SAP-4-4-3-2呼吸系统评分值
+    $('#create_SAP_589').after(
+      '<a id="SAPScore22" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_589').attr('disabled', true);
+    $('#SAPScore22').on('click', function() {
+      $('#SAPTable22').modal();
+    });
+    $('#SAPTable22 .calculate').click(function() {
+      $('#create_SAP_589').val($(this).data('score'));
+      $('#SAPTable22').modal('hide');
+      $('#create_SAP_589').blur();
+    });
+
+    // SAP-4-2-3-3第二部分 血液系统评分值
+    $('#create_SAP_590').after(
+      '<a id="SAPScore23" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_590').attr('disabled', true);
+    $('#SAPScore23').on('click', function() {
+      $('#SAPTable23').modal();
+    });
+    $('#SAPTable23 .calculate').click(function() {
+      $('#create_SAP_590').val($(this).data('score'));
+      $('#SAPTable23').modal('hide');
+      $('#create_SAP_590').blur();
+    });
+
+    //SAP-4-2-3- 肝脏评分值
+    $('#create_SAP_591').after(
+      '<a id="SAPScore24" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_591').attr('disabled', true);
+    $('#SAPScore24').on('click', function() {
+      $('#SAPTable24').modal();
+    });
+    $('#SAPTable24 .calculate').click(function() {
+      $('#create_SAP_591').val($(this).data('score'));
+      $('#SAPTable24').modal('hide');
+      $('#create_SAP_591').blur();
+    });
+
+    //SAP-4-2-3-5第四部分 心血管系统评分值
+    $('#create_SAP_592').after(
+      '<a id="SAPScore25" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_592').attr('disabled', true);
+    $('#SAPScore25').on('click', function() {
+      $('#SAPTable25').modal();
+    });
+    $('#SAPTable25 .calculate').click(function() {
+      $('#create_SAP_592').val($(this).data('score'));
+      $('#SAPTable25').modal('hide');
+      $('#create_SAP_592').blur();
+    });
+
+    //SAP-4-2-3-6第五部分 中枢神经系统评分值
+    $('#create_SAP_593').after(
+      '<a id="SAPScore26" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_593').attr('disabled', true);
+    $('#SAPScore26').on('click', function() {
+      $('#SAPTable26').modal();
+    });
+    $('#SAPTable26 .calculate').click(function() {
+      $('#create_SAP_593').val($(this).data('score'));
+      $('#SAPTable26').modal('hide');
+      $('#create_SAP_593').blur();
+    });
+
+    //SAP-4-2-3-6第五部分 肾脏评分值
+    $('#create_SAP_594').after(
+      '<a id="SAPScore27" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_594').attr('disabled', true);
+    $('#SAPScore27').on('click', function() {
+      $('#SAPTable27').modal();
+    });
+    $('#SAPTable27 .calculate').click(function() {
+      $('#create_SAP_594').val($(this).data('score'));
+      $('#SAPTable27').modal('hide');
+      $('#create_SAP_594').blur();
+    });
+
+    // 快速序贯器官衰竭评分（qSOFA）
+    // SAP-4-2-3-9 qSOFA评分值
+    $('#create_SAP_586').after(
+      '<a id="SAPScore28" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_586').attr('disabled', true);
+    $('#SAPScore28').on('click', function() {
+      $('#SAPTable28').modal();
+    });
+    $('#SAPTable28 .calculate').click(function() {
+      $('#create_SAP_586').val($(this).data('score'));
+      $('#SAPTable28').modal('hide');
+      $('#create_SAP_586').blur();
+    });
+
+    // SAP-4-4-3-2呼吸系统 氧合指数(mmHg)
+    $('#create_SAP_558').after(
+      '<a id="SAPScore29" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_558').attr('disabled', true);
+    $('#SAPScore29').on('click', function() {
+      $('#SAPTable29').modal();
+    });
+    $('#SAPTable29 .calculate').click(function() {
+      $('#create_SAP_558').val($(this).data('score'));
+      $('#SAPTable29').modal('hide');
+      $('#create_SAP_558').blur();
+    });
+
+    // SAP-4-4-3-4心血管系统 收缩压 (mmHg)
+    $('#create_SAP_560').after(
+      '<a id="SAPScore30" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_560').attr('disabled', true);
+    $('#SAPScore30').on('click', function() {
+      $('#SAPTable30').modal();
+    });
+    $('#SAPTable30 .calculate').click(function() {
+      $('#create_SAP_560').val($(this).data('score'));
+      $('#SAPTable30').modal('hide');
+      $('#create_SAP_560').blur();
+    });
+
+    // SAP-4-4-3-3肾脏 血肌酐(μmol/L)
+    $('#create_SAP_559').after(
+      '<a id="SAPScore31" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_559').attr('disabled', true);
+    $('#SAPScore31').on('click', function() {
+      $('#SAPTable31').modal();
+    });
+    $('#SAPTable31 .calculate').click(function() {
+      $('#create_SAP_559').val($(this).data('score'));
+      $('#SAPTable31').modal('hide');
+      $('#create_SAP_559').blur();
+    });
+
+    // SAP-1-3-7 EPIC分值
+    $('#create_SAP_380').after(
+      '<a id="SAPScore32" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_SAP_380').attr('disabled', true);
+    $('#SAPScore32').on('click', function() {
+      $('#SAPTable32').modal();
+    });
+    $('#SAPTable32 .calculate').click(function() {
+      $('#create_SAP_380').val($(this).data('score'));
+      $('#SAPTable32').modal('hide');
+      $('#create_SAP_380').blur();
+    });
+
+    /**
+     * SAP-1-5-2-6 Atlanta分级（RAC）结论   评分表事件（点击选中一整行）
+     */
+    $(document).on('click', '.RACTable11 .check-item', function() {
+      if (
+        $(this)
+          .closest('table')
+          .hasClass('Choice')
+      ) {
+        $(this)
+          .toggleClass('active')
+          .parent('tr');
+        $(this)
+          .parent()
+          .siblings()
+          .each(function() {
+            $(this)
+              .find('.check-item')
+              .removeClass('active');
+          });
+      } else {
+        $(this).toggleClass('active');
+        var index = $(this)
+          .toggleClass('active')
+          .index();
+        $(this)
+          .siblings()
+          .removeClass('active');
+      }
+      var scoreTable = $(this).closest('.scoreTable');
+      var result = $(this).attr('score');
+      var num = scoreTable.siblings('.resultScore').find('.num');
+      num.text(num.data('text') ? num.data('text')(result) : result);
+      scoreTable
+        .siblings('.scoreFooter')
+        .find('.calculate')
+        .data('score', result);
+    });
+    /**
+     * SAP-1-5-3-8 Atlanta分级（DBC）结论   评分表事件（点击选中一整行）
+     */
+    $(document).on('click', '.DBCTable18 .check-item', function() {
+      if (
+        $(this)
+          .closest('table')
+          .hasClass('Choice')
+      ) {
+        $(this)
+          .toggleClass('active')
+          .parent('tr');
+        $(this)
+          .parent()
+          .siblings()
+          .each(function() {
+            $(this)
+              .find('.check-item')
+              .removeClass('active');
+          });
+      } else {
+        $(this).toggleClass('active');
+        var index = $(this)
+          .toggleClass('active')
+          .index();
+        $(this)
+          .siblings()
+          .removeClass('active');
+      }
+      var scoreTable = $(this).closest('.scoreTable');
+      var result = $(this).attr('score');
+      var num = scoreTable.siblings('.resultScore').find('.num');
+      num.text(num.data('text') ? num.data('text')(result) : result);
+      scoreTable
+        .siblings('.scoreFooter')
+        .find('.calculate')
+        .data('score', result);
+    });
+
+    //影像学检查主要阳性征象 选项加逻辑校验
+    // 1:无异常发现、2:无记录、3:(腹部超声检查/核磁共振MRI（可包含MRCP）/内镜超声（EUS）/其他检查)
+    // 以上三种类型选项互斥
+    var eleHtml =
+      '<div id="electrocar" class="end-report-content">' +
+      '<img class="end-img" src="../img/report-warn.png"/>' +
+      '<span class="end-title">该病例不符合上报要求</span>' +
+      '<p class="end-content">请重新填报</p></div>';
+    var chooseItem = ['a', 'b', 'c', 'oth'];
+    $('.create_SAP_301').on('change', function() {
+      var allData = [];
+      var othItem = false;
+      allData = $('[id=create_SAP_301]:checked').map(function() {
+        return this.value;
+      });
+      var lastVal = allData.toArray();
+      console.log(lastVal);
+      console.log(othItem);
+      var noItem = $.inArray('N', allData);
+      for (var i = 0; i < chooseItem.length; i++) {
+        for (var j = 0; j < lastVal.length; j++) {
+          if (chooseItem[i] == lastVal[j]) {
+            othItem = true;
+            break;
+          }
+        }
+      }
+      if (noItem != '-1' && othItem) {
+        // 弹窗加清空选项
+        var checkData = $('[id=create_SAP_301]:checked');
+        layer.ready(function() {
+          layer.open({
+            title: '提示',
+            content: '填报内容不符合规范，请重新填报',
+            yes: function(index) {
+              layer.close(index);
+              checkData.map(function() {
+                $(this).prop('checked', false);
+              });
+            },
+            cancel: function(index) {
+              layer.close(index);
+              checkData.map(function() {
+                $(this).prop('checked', false);
+              });
+            },
+          });
+          // 页面结构过于复杂，直接重设当前层的定位
+          layer.style(layer.index, {
+            top: '100px',
+          });
+        });
+      }
+    });
+
+    //其他影像检查方法
+    $('.create_SAP_312').on('change', function() {
+      var allData = [];
+      var othItem = false;
+      allData = $('[id=create_SAP_312]:checked').map(function() {
+        return this.value;
+      });
+      var lastVal = allData.toArray();
+      console.log(lastVal);
+      console.log(othItem);
+      var noItem = $.inArray('N', allData);
+      for (var i = 0; i < chooseItem.length; i++) {
+        for (var j = 0; j < lastVal.length; j++) {
+          if (chooseItem[i] == lastVal[j]) {
+            othItem = true;
+            break;
+          }
+        }
+      }
+      if (noItem != '-1' && othItem) {
+        // 弹窗加清空选项
+        var checkData = $('[id=create_SAP_312]:checked');
+        layer.ready(function() {
+          layer.open({
+            title: '提示',
+            content: '填报内容不符合规范，请重新填报',
+            yes: function(index) {
+              layer.close(index);
+              checkData.map(function() {
+                $(this).prop('checked', false);
+              });
+            },
+            cancel: function(index) {
+              layer.close(index);
+              checkData.map(function() {
+                $(this).prop('checked', false);
+              });
+            },
+          });
+          // 页面结构过于复杂，直接重设当前层的定位
+          layer.style(layer.index, {
+            top: '100px',
+          });
+        });
+      }
+    });
+  });
+</script>
+<style>
+  .scoreTable table tr.check-item.active td div {
+    color: #ffffff;
+  }
+  .scoreTable table tr.check-item.active td {
+    color: #ffffff;
+  }
+</style>

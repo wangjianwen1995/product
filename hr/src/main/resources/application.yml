@@ -1,0 +1,48 @@
+server:
+  application:
+    name: 山西雕龙医院感染上报平台
+  port: 23314
+  servlet:
+    session:
+      timeout: 36000s
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/javascript,application/json,application/xml,text/html,text/xml,text/plain,text/css,image/*
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    primary:
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=DLGR_zl
+      password: sa@123
+    secondary:
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=DLGR_zl
+      password: sa@123
+  jpa:
+    database: sql_server
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  is-print: false
+logging:
+  level:
+    com.sxdl.base.dao : debug
+HBI:
+  url: http://140.143.190.251:23306
+  isNew: 1
+  index: 3FBA688D-FD94-40D6-9680-3747408D99F6
+  #exe运行的
+  publicKey: 0601855e2c6048fb2752f0a23081dfb8a064a4d4d6a5d36d6a470f58b191ec8a
+basePackage: com.sxdl.hr.controller
+#dcip: http://140.143.190.251:23300
+dcLink: dl_dc

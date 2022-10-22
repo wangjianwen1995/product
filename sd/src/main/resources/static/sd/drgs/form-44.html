@@ -1,0 +1,405 @@
+<!--
+ * @Description: 终末期肾病血液透析
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-06-21 17:11:34
+ * @FilePath: \single-disease\public\static\drgs\form-44.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/handleProvinceSelect.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('HD-2.0')
+    var create = new create();
+    create.createRender("HD", function () {
+      var PUBLIC = {
+        provinceCode: '', // fix：默认值为def会导致编辑时出现问题
+        pageType: getQueryVariable("type"), // create.js 获取页面类型 1-新增 3-编辑
+        defaultSeason: '', // 第一次选中的季度(a,b,c,d) 空字符串代表初次进入页面,-1代表叉掉了第一次选的季度
+        defaultVessel: '', // 默认血管通路类型
+        defaultVesselDate: '', // 默认血管通路开始使用时间
+        // 透析治疗时间映射
+        treatmentTimeMap: new Map([
+          ['def', 0],
+          ['a', 2],
+          ['b', 2.5],
+          ['c', 3],
+          ['d', 3.5],
+          ['e', 4],
+          ['f', 4.5],
+          ['g', 5],
+          ['h', 5.5],
+          ['i', 6],
+          ['j', 6.5],
+          ['k', 7],
+          ['l', 7.5],
+          ['m', 8],
+        ])
+      }
+      doIDcheck();
+      // 新建时对ESRD-HD-1进行判断
+      if(PUBLIC.pageType === '1') {
+        // 保存默认季度
+        $('#itemHD_288').on('change', 'input.create_HD_288', function(){
+          var season = $(this).val();
+          if(PUBLIC.defaultSeason === '') {
+            PUBLIC.defaultSeason = season;
+          } else if (PUBLIC.defaultSeason === season) {
+            PUBLIC.defaultSeason = '-1';
+            ableAllESRDHD1();
+          }
+        });
+        // 监听ESRD-HD-1-1的并改变后续选项状态
+        setESRDHD1Status();
+        // 监听ESRD-HD-1-2/3的改变设置默认值
+        setESRDHD1Default();
+      }
+      // 省市区下拉框联动
+      // 省
+      $('#create_HD_294').on("change", function(){
+        var provinceOldCode = $(this).val();
+        // fix: 避免模板上的blur事件影响到change事件
+        if(PUBLIC.provinceCode === provinceOldCode) {
+          return;
+        }
+        PUBLIC.provinceCode = provinceOldCode;
+        var provinceRealCode = getRealProvinceCode(provinceOldCode);
+        setCityOptionsInner(provinceRealCode);
+        // 清空市、区级下拉框
+        $('#create_HD_295').val('def');
+        $('#create_HD_296').val('def');
+        $('#create_HD_296').html('<option value="def">请选择</option>');
+      });
+      // 市
+      $('#create_HD_295').on('change', function(){
+        var cityCode = $(this).val();
+        var optionDefault = '<option value="def">请选择</option>';
+        if(cityCode === 'def') {
+          $('#create_HD_296').html(optionDefault);
+        } else {
+          var areaDef = getArea(cityCode);
+          areaDef.done(function(data) {
+            var options = optionDefault;
+            data.forEach(function(val){
+              options += '<option value="'+ val.code +'">'+ val.name +'</option>';
+            });
+            $('#create_HD_296').html(options);
+          });
+        }
+        $('#create_HD_296').val('def');
+      });
+      
+      // 监听ESRD-HD-3指标并自动计算 (无全局指标所以无需监听季度选择)
+      // 透前血尿素氮
+      watchBloodUreaBeforeAndCalc();
+      // 透后血尿素氮
+      watchBloodUreaAfterAndCalc();
+      // 透析治疗时间
+      watchTreatmentTimeAndCalc();
+      // 透析体重
+      watchWeightAndCalc();
+      // 超滤量
+      watchCLLAndCalc();
+
+      // 给市级下拉框赋值(与全局方法区分开)
+      function setCityOptionsInner(provinceCode){
+        var optionDefault = '<option value="def">请选择</option>';
+        // 获取市级下拉框
+        if(provinceCode === 'def'){
+          $('#create_HD_295').html(optionDefault);
+        } else {
+          var cityDef = getCitys(provinceCode);
+          cityDef.done(function(data) {
+            var options = optionDefault;
+            data.forEach(function(val){
+              options += '<option value="'+ val.code +'">'+ val.name +'</option>';
+            });
+            $('#create_HD_295').html(options);
+          });
+        }
+      }
+      
+      // 选择是否改变通路->改变后面两个指标的可选状态(为方便做映射和dom元素遍历监听事件所以用es6+语法)
+      function setESRDHD1Status() {
+        // 季度与id映射表
+        const seasonMap = new Map([
+          ['#itemHD_331', 'a'],
+          ['#itemHD_431', 'b'],
+          ['#itemHD_531', 'c'],
+          ['#itemHD_631', 'd']
+        ]);
+        const elements = ['#itemHD_331', '#itemHD_431', '#itemHD_531', '#itemHD_631'];
+        for (let i = 0; i < elements.length; i++) {
+          const selector = elements[i];
+          $(selector).find('input[type="radio"]').on('change', function(){
+            // 有默认季度且非默认季度的情况
+            if(PUBLIC.defaultSeason !== '-1' && PUBLIC.defaultSeason !== seasonMap.get(selector)) {
+              const $children1 = $(selector).next().find('.slot-list .slot-item:first .slot-list .slot-item:first select');
+              const $children2 = $(selector).next().find('.slot-list').children().eq(1).find('input[type="text"]');
+              if($(this).val() === 'n'){
+                $children1[0].disabled = true;
+                $children2[0].disabled = true;
+                $children1.val(PUBLIC.defaultVessel);
+                $children2.val(PUBLIC.defaultVesselDate);
+              } else {
+                $children1[0].disabled = false;
+                $children2[0].disabled = false;
+              }
+            }
+          });
+        }
+      }
+
+      // 设置ESRD-HD-1的默认值(为方便编码使用es6+)
+      function setESRDHD1Default() {
+        // 季度与id映射表
+        const seasonMap1 = new Map([
+          ['#create_HD_333', 'a'],
+          ['#create_HD_433', 'b'],
+          ['#create_HD_533', 'c'],
+          ['#create_HD_633', 'd']
+        ]);
+        const elements1 = ['#create_HD_333', '#create_HD_433', '#create_HD_533', '#create_HD_633'];
+        for (let i = 0; i < elements1.length; i++) {
+          const selector = elements1[i];
+          $(selector).on('change', function() {
+            // 有默认季度且当前项处于默认季度的情况
+            if(PUBLIC.defaultSeason !== '-1' && PUBLIC.defaultSeason === seasonMap1.get(selector)) {
+              PUBLIC.defaultVessel = $(this).val();
+              const id = $(this).attr('id');
+              setESRDHD1Value1(id);
+            }
+          });
+        }
+        const seasonMap2 = new Map([
+          ['#create_HD_334', 'a'],
+          ['#create_HD_434', 'b'],
+          ['#create_HD_534', 'c'],
+          ['#create_HD_634', 'd']
+        ]);
+        const elements2 = ['#create_HD_334', '#create_HD_434', '#create_HD_534', '#create_HD_634'];
+        for (let i = 0; i < elements2.length; i++) {
+          const selector = elements2[i];
+          $(selector).on('change', function() {
+            // 有默认季度且当前项处于默认季度的情况
+            if(PUBLIC.defaultSeason !== '-1' && PUBLIC.defaultSeason === seasonMap2.get(selector)) {
+              PUBLIC.defaultVesselDate = $(this).attr('data-value') || $(this).val();
+              const id = $(this).attr('id');
+              setESRDHD1Value2(id);
+            }
+          });
+        }
+      }
+      
+      // 为ESRD-HD-1-2血管通路类型赋默认值
+      function setESRDHD1Value1(id) {
+        var elements = ['#create_HD_333', '#create_HD_433', '#create_HD_533', '#create_HD_633'];
+        for (var i = 0; i < elements.length; i++) {
+          var selector = elements[i];
+          var $parentRadioElement = $(selector).parent().parent().parent().parent('.slot-list').parent('.slot-item').prev();
+          // 只有“是否改变通路”选否 才能自动赋值并且变为不可选
+          if($parentRadioElement.find('input[value="n"]')[0].checked) {
+            $(selector).val(PUBLIC.defaultVessel);
+            $(selector)[0].disabled = true; // 非默认季度的ESRD-HD-1-2的值置为不可选
+          }
+        }
+        $('#' + id)[0].disabled = false;
+      }
+
+      // 为ESRD-HD-1-3血管通路开始使用时间赋默认值
+      function setESRDHD1Value2(id) {
+        var elements = ['#create_HD_334', '#create_HD_434', '#create_HD_534', '#create_HD_634'];
+        for (var i = 0; i < elements.length; i++) {
+          var selector = elements[i];
+          var $parentRadioElement = $(selector).parent().parent('.slot-list').parent('.slot-item').prev();
+          // “是否改变通路”选否 才能自动赋值并且变为不可选
+          if($parentRadioElement.find('input[value="n"]')[0].checked) {
+            $(selector).val(PUBLIC.defaultVesselDate);
+            $(selector)[0].disabled = true; // 非默认季度的ESRD-HD-1-3的值置为不可选
+          }
+        }
+        $('#' + id)[0].disabled = false;
+      }
+
+      // 清除ESRD-HD-1所有不可选状态
+      function ableAllESRDHD1() {
+        var elements = ['#create_HD_333', '#create_HD_433', '#create_HD_533', '#create_HD_633', '#create_HD_334', '#create_HD_434', '#create_HD_534', '#create_HD_634'];
+        for (var i = 0; i < elements.length; i++) {
+          var element = elements[i];
+          $(element)[0].disabled = false;
+        }
+      }
+
+      /**
+       * @description: 计算ESRD-HD-3  UUR(%)
+       * @param {string} bloodUreaBefore 透前血尿素氮
+       * @param {string} bloodUreaAfter 透后血尿素氮
+       * @return {string}
+       */          
+      function calcUUR(bloodUreaBefore, bloodUreaAfter) {
+        var before = Number(bloodUreaBefore) || 0;
+        var after = Number(bloodUreaAfter) || 0;
+        if(before === 0) {
+          return 0;
+        } else {
+          return (((bloodUreaBefore - bloodUreaAfter) / bloodUreaBefore) * 100).toFixed(2);
+        }
+      }
+
+      /**
+       * @description: 计算ESRD-HD-3  spKt/V
+       * @param {string} bloodUreaBefore 透前血尿素氮
+       * @param {string} bloodUreaAfter 透后血尿素氮
+       * @param {string} treatmentTime 透析治疗时间
+       * @param {string} CLL           超滤量
+       * @param {string} weight        透前体重
+       * @return {string}
+       */      
+      function calcVDividedBySpKt(bloodUreaBefore, bloodUreaAfter, treatmentTime, CLL, weight) {
+        var bloodBefore = Number(bloodUreaBefore) || 0;
+        var bloodAfter = Number(bloodUreaAfter) || 0;
+        var time = Number(treatmentTime) || 0;
+        var CLLInner = Number(CLL) || 0;
+        var weightInner = Number(weight) || 0;
+        var formula1, formula2, formula3;
+        if(bloodBefore === 0) {
+          formula1 = 0;
+          formula2 = 0;
+        } else {
+          formula1 = -Math.log((bloodAfter / bloodBefore) - (0.008 * time));
+          formula2 = 4 - 3.5 * bloodAfter / bloodBefore;
+        }
+        if(weightInner === CLLInner) {
+          formula3 = 0;
+        } else {
+          formula3 = CLLInner / (weightInner - CLLInner);
+        }
+        return (formula1 + formula2 * formula3).toFixed(2);
+      }
+
+      // 监听透前血尿素氮改变并完成计算
+      function watchBloodUreaBeforeAndCalc() {
+        const BloodUreaBeforeElements = ['#create_HD_357', '#create_HD_457', '#create_HD_557', '#create_HD_657'];
+        for (let i = 0; i < BloodUreaBeforeElements.length; i++) {
+          const selector = BloodUreaBeforeElements[i];
+          $(selector).on('input', function() {
+            // 计算UUR
+            const bloodUreaBefore = $(this).val();
+            const bloodUreaAfter = $(this).parent().next().find('input[type="number"]').val();
+            const UUR = calcUUR(bloodUreaBefore, bloodUreaAfter);
+            $(this).parent().next().next().find('input[type="number"]').val(UUR);
+
+            // 计算spkt/v
+            const treatmentTimeVal = $(this).parent().parent().parent().parent().parent().prev().prev().find('select').val();
+            const treatmentTime = PUBLIC.treatmentTimeMap.get(treatmentTimeVal);
+            const CLL = $(this).parent().prev().find('input[type="number"]').val();
+            const weight = $(this).parent().prev().prev().find('input[type="number"]').val();
+            const spktv = calcVDividedBySpKt(bloodUreaBefore, bloodUreaAfter, treatmentTime, CLL, weight);
+            $(this).parent().next().next().next().find('input[type="number"]').val(spktv);
+          });
+        }
+      }
+
+      // 监听透后血尿素氮改变并完成计算
+      function watchBloodUreaAfterAndCalc() {
+        const BloodUreaAfterElements = ['#create_HD_358', '#create_HD_458', '#create_HD_558', '#create_HD_658'];
+        for (let i = 0; i < BloodUreaAfterElements.length; i++) {
+          const selector = BloodUreaAfterElements[i];
+          $(selector).on('input', function() {
+            // 计算UUR
+            const bloodUreaAfter = $(this).val();
+            const bloodUreaBefore = $(this).parent().prev().find('input[type="number"]').val();
+            const UUR = calcUUR(bloodUreaBefore, bloodUreaAfter);
+            $(this).parent().next().find('input[type="number"]').val(UUR);
+
+            // 计算spkt/v
+            const treatmentTimeVal = $(this).parent().parent().parent().parent().parent().prev().prev().find('select').val();
+            const treatmentTime = PUBLIC.treatmentTimeMap.get(treatmentTimeVal);
+            const CLL = $(this).parent().prev().prev().find('input[type="number"]').val();
+            const weight = $(this).parent().prev().prev().prev().find('input[type="number"]').val();
+            const spktv = calcVDividedBySpKt(bloodUreaBefore, bloodUreaAfter, treatmentTime, CLL, weight);
+            $(this).parent().next().next().find('input[type="number"]').val(spktv);
+          });
+        }
+      }
+
+      // 监听透析治疗时间并完成计算
+      function watchTreatmentTimeAndCalc() {
+        const elements = ['#create_HD_350', '#create_HD_450', '#create_HD_550', '#create_HD_650'];
+        for (let i = 0; i < elements.length; i++) {
+          const selector = elements[i];
+          $(selector).on('change', function() {
+            // 计算spkt/v
+            const treatmentTime = $(this).val();
+            const weight = $(this).parent().next().next().find('.slot-list>.slot-item>.slot-list').children().eq(0).find('input[type="number"]').val();
+            const CLL = $(this).parent().next().next().find('.slot-list>.slot-item>.slot-list').children().eq(1).find('input[type="number"]').val();
+            const bloodUreaBefore = $(this).parent().next().next().find('.slot-list>.slot-item>.slot-list').children().eq(2).find('input[type="number"]').val();
+            const bloodUreaAfter = $(this).parent().next().next().find('.slot-list>.slot-item>.slot-list').children().eq(3).find('input[type="number"]').val();
+            const spktv = calcVDividedBySpKt(bloodUreaBefore, bloodUreaAfter, treatmentTime, CLL, weight);
+            $(this).parent().next().next().find('.slot-list>.slot-item>.slot-list').children().eq(5).find('input[type="number"]').val(spktv);
+          });
+        }
+      }
+
+      // 监听透前体重并完成计算
+      function watchWeightAndCalc() {
+        const elements = ['#create_HD_355', '#create_HD_455', '#create_HD_555', '#create_HD_655'];
+        for (let i = 0; i < elements.length; i++) {
+          const selector = elements[i];
+          $(selector).on('input', function(){
+            // 计算spkt/v
+            const weight = $(this).val();
+            const treatmentTimeVal = $(this).parent().parent().parent().parent().parent().prev().prev().find('select').val();
+            const treatmentTime = PUBLIC.treatmentTimeMap.get(treatmentTimeVal);
+            const CLL = $(this).parent().next().find('input[type="number"]').val();
+            const bloodUreaBefore = $(this).parent().next().next().find('input[type="number"]').val();
+            const bloodUreaAfter = $(this).parent().next().next().next().find('input[type="number"]').val();
+            const spktv = calcVDividedBySpKt(bloodUreaBefore, bloodUreaAfter, treatmentTime, CLL, weight);
+            $(this).parent().next().next().next().next().next().find('input[type="number"]').val(spktv);
+          });
+        }
+      }
+      // 监听超滤量并完成计算
+      function watchCLLAndCalc() {
+        const elements = ['#create_HD_356', '#create_HD_456', '#create_HD_556', '#create_HD_656'];
+        for (let i = 0; i < elements.length; i++) {
+          const selector = elements[i];
+          $(selector).on('input', function() {
+            const CLL = $(this).val();
+            const treatmentTimeVal = $(this).parent().parent().parent().parent().parent().prev().prev().find('select').val();
+            const treatmentTime = PUBLIC.treatmentTimeMap.get(treatmentTimeVal);
+            const weight = $(this).parent().prev().find('input[type="number"]').val();
+            const bloodUreaBefore = $(this).parent().next().find('input[type="number"]').val();
+            const bloodUreaAfter = $(this).parent().next().next().find('input[type="number"]').val();
+            const spktv = calcVDividedBySpKt(bloodUreaBefore, bloodUreaAfter, treatmentTime, CLL, weight);
+            $(this).parent().next().next().next().next().find('input[type="number"]').val(spktv);
+          });
+        }
+      }
+
+    });
+</script>

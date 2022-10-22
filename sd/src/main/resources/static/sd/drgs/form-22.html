@@ -1,0 +1,426 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- 癫痫持续状态严重程度STESS的评估分值 -->
+    <div id="STESSTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="STESS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 800px;">
+            <div class="modal-content">
+                <div class="scoreHeader">癫痫持续状态严重程度STESS的评估分值</div>
+                <div class="scoreTable">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>意识</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">反应灵敏或嗜睡/迷茫</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">木僵或昏迷</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>既往癫痫病史</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">是</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">否或未知</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>年龄</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item"><65</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">≥65</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>最严重的发作类型</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">简单部分，复杂部分，失神，肌阵挛</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">全面性惊厥</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2分</td>
+                                        <td>
+                                            <div score="2" class="check-item">昏迷状态下非惊厥持续状态</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- EMSE -->
+    <div id="EMSETable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby=" GRACE危险评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 800px;">
+            <div class="modal-content">
+                <div class="scoreHeader">流行病学死亡率的癫痫持续状态评分(EMSE)</div>
+                <div class="scoreTable">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>病因，选取其中一项</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2分</td>
+                                        <td>
+                                            <div score="2" class="check-item">中枢神经系统异常</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2分</td>
+                                        <td>
+                                            <div score="2" class="check-item">抗癫痫药物低药量、抵抗、依从性差</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5分</td>
+                                        <td>
+                                            <div score="5" class="check-item">多发性硬化</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7分</td>
+                                        <td>
+                                            <div score="7" class="check-item">陈旧脑血管事件、颅脑损伤</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8分</td>
+                                        <td>
+                                            <div score="8" class="check-item">脑积水</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10分</td>
+                                        <td>
+                                            <div score="10" class="check-item">酗酒</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11分</td>
+                                        <td>
+                                            <div score="11" class="check-item">药物滥用</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12分</td>
+                                        <td>
+                                            <div score="12" class="check-item">颅脑损伤</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12分</td>
+                                        <td>
+                                            <div score="12" class="check-item">不明原因</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>16分</td>
+                                        <td>
+                                            <div score="16" class="check-item">颅脑肿瘤</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>17分</td>
+                                        <td>
+                                            <div score="17" class="check-item">代谢性:水钠失衡</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>22分</td>
+                                        <td>
+                                            <div score="22" class="check-item">代谢紊乱</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>26分</td>
+                                        <td>
+                                            <div score="26" class="check-item">急性脑血管事件</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>33分</td>
+                                        <td>
+                                            <div score="33" class="check-item">中枢神经系统感染</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>65分</td>
+                                        <td>
+                                            <div score="65" class="check-item">缺血缺氧脑病</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col">
+                            <div class="col-md-6" style="padding-bottom: 10px;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 80px;"></th>
+                                            <th>年龄，选取其中一项</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1分</td>
+                                            <td>
+                                                <div score="1" class="check-item">21~30</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2分</td>
+                                            <td>
+                                                <div score="2" class="check-item">31~40</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3分</td>
+                                            <td>
+                                                <div score="3" class="check-item">41~50</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5分</td>
+                                            <td>
+                                                <div score="5" class="check-item">51~60</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>7分</td>
+                                            <td>
+                                                <div score="7" class="check-item">61~70</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>8分</td>
+                                            <td>
+                                                <div score="8" class="check-item">71~80</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10分</td>
+                                            <td>
+                                                <div score="10" class="check-item">>80</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 80px;"></th>
+                                            <th>脑电图特征：选取最严重的一种脑电图表现</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>60分</td>
+                                            <td>
+                                                <div score="60" class="check-item">爆发抑制(白发)</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>40分</td>
+                                            <td>
+                                                <div score="40" class="check-item">癫痫持续状态后发作性痫样放电(持续数秒至数分钟 ASIDs)</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>40分</td>
+                                            <td>
+                                                <div score="40" class="check-item">单侧同期性放电(LPDs)</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>40分</td>
+                                            <td>
+                                                <div score="40" class="check-item">全面周期性放电(GPDs)</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>0分</td>
+                                            <td>
+                                                <div score="0" class="check-item">无ASIDs、GFDs、ASIDs</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="multiple">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>合并症：选取一个或多个疾病</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10分</td>
+                                        <td>
+                                            <div score="10" class="check-item">心梗、充血性心力衰竭、周围血管疾病、脑血管疾病、痴呆、慢性肺部疾病、结缔组织病、溃疡、轻度肝病、糖尿病</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>20分</td>
+                                        <td>
+                                            <div score="20" class="check-item">偏瘫、中重度肾病、糖尿病靶器官损害、肿瘤(包括白血病和淋巴癌)</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>30分</td>
+                                        <td>
+                                            <div score="30" class="check-item">中重度肝病</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>60分</td>
+                                        <td>
+                                            <div score="60" class="check-item">转移性实质瘤、艾滋病</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('CSE-2.0')
+var create = new create();
+    create.createRender("CSE",function() {
+        $("#create_47").after('<a id="STESSScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_CSE_280").after('<a id="EMSEScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        //评分表
+        $("#STESSScore").on("click", function () {
+            $("#STESSTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#STESSTable .calculate").click(function () {
+            $('#create_47').val($(this).data("score"))
+            $("#STESSTable").modal("hide");
+            $('#create_47').blur();
+            $('#create_47').change();
+        })
+        $("#EMSEScore").on("click", function () {
+            $("#EMSETable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#EMSETable .calculate").click(function () {
+            $('#create_CSE_280').val($(this).data("score"))
+            $("#EMSETable").modal("hide");
+            $('#create_CSE_280').blur();
+            $('#create_CSE_280').change();
+        })
+    });
+</script>

@@ -1,0 +1,935 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- TIA---ABCD评分用表 -->
+    <div id="ABCDTable0" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---ABCD评分用表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---ABCD评分用表</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th> ABCD评分用表（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄(A)：≥60岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血压(B)≥ 140/90 mmHg
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-c1">临床症状(C)：单侧力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-c2">临床症状(C)：言语障碍不伴力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-d1">症状持续时间(D)：＞60min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-d2">症状持续时间(D)：10-59min</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TIA---ABCD评分用表 -->
+    <div id="ABCDTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---ABCD评分用表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---ABCD2评分用表</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th> ABCD2评分用表（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄(A)：≥60岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血压(B)≥ 140/90 mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-c11">临床症状(C)：单侧力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-c22">临床症状(C)：言语障碍不伴力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-d11">症状持续时间(D)：＞60min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-d22">症状持续时间(D)：10-59min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有糖尿病(D)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TIA---ABCD评分用表2 -->
+    <div id="ABCDTable2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---ABCD评分用表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---ABCD3评分用表</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th> ABCD3评分用表（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄(A)：≥60岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血压(B)≥ 140/90 mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-c18">临床症状(C)：单侧力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-c28">临床症状(C)：言语障碍不伴力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-d18">症状持续时间(D)：＞60min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-d28">症状持续时间(D)：10-59min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有糖尿病(D)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">双重（7d内）TIA发作(D)：有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TIA---ABCD评分用表3 -->
+    <div id="ABCDTable3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---ABCD评分用表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---ABCD3-1评分用表</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th> ABCD3-1评分用表（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄(A)：≥60岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血压(B)≥ 140/90 mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-c10">临床症状(C)：单侧力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-c20">临床症状(C)：言语障碍不伴力弱</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-d10">症状持续时间(D)：＞60min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-d20">症状持续时间(D)：10-59min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有糖尿病(D)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">双重（7d内）TIA发作(D)：有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">颈动脉狭窄 ≥50%</div>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">DW出现 高信号</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TIA---房颤患者脑卒中风险评估 -->
+    <div id="CHA2DS2Table" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---房颤患者脑卒中风险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---房颤患者脑卒中风险评估（CHA<sub>2</sub>DS<sub>2</sub>-VAS<sub>c</sub>评分）值</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>患者脑卒中风险评估（CHA<sub>2</sub>DS<sub>2</sub>-VAS<sub>c</sub>评分）值（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">年龄65-74岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age4">年龄≥75岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">充血性心衰C</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压H</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">糖尿病D</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">卒中或TIA病史S</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">外周动脉疾病或主动脉斑块Va</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">女性S</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TIA---Braden压疮危险评估 -->
+    <div id="HBIPS-BradenTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---Braden压疮危险评估</div>
+                <div class="scoreTable">
+                    <table class="Choice">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">项目</th>
+                                <th>1分</th>
+                                <th>2分</th>
+                                <th>3分</th>
+                                <th>4分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="background-color: #f1f1f1;">感觉</td>
+                                <td>
+                                    <div score="1" class="check-item">完全受限</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">非常受限</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">轻度受限</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">未受限</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #f1f1f1;">潮湿</td>
+                                <td>
+                                    <div score="1" class="check-item">持续潮湿</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">潮湿</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">有时潮湿</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">很少潮湿</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #f1f1f1;">活动力</td>
+                                <td>
+                                    <div score="1" class="check-item">限制卧床</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">可以坐椅子</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">偶尔行走</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">经常行走</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #f1f1f1;">移动力</td>
+                                <td>
+                                    <div score="1" class="check-item">完全无法移动</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">严重受限</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">轻度受限</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">未受限</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #f1f1f1;">营养</td>
+                                <td>
+                                    <div score="1" class="check-item">非常差</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">可能不足够</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">足够</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">非常好</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #f1f1f1;">摩擦力和剪切力</td>
+                                <td>
+                                    <div score="1" class="check-item">有问题</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">有潜在问题</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">无明显问题</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Essen 评分表 -->
+    <div id="EssenTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">TIA---Essen卒中风险评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">+1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age1">年龄65-75岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age2">年龄≥75岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">糖尿病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">既往心肌梗死</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">其他心血管疾病（除外心肌梗死和心房颤动）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">周围血管病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">吸烟</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">除本次事件之外的TIA或缺血性卒中</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 房颤鉴别STAF评分值 -->
+    <div id="STAFTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---房颤患者脑卒中风险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">房颤鉴别STAF评分值</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>房颤鉴别STAF评分值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">年龄>62岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age4">基础NIHSS≥8</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">有左房扩大</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">无血管原因</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 房颤抗凝出血风险评估HAS-BLED评分值 -->
+    <div id="HASBLEDTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="TIA---房颤患者脑卒中风险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">房颤抗凝出血风险评估HAS-BLED评分值</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>房颤抗凝出血风险评估HAS-BLED评分值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">高血压 （未控制高血压，收缩压>160mmHg）H  +1分</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age4">肝功能不全（肝硬化，胆红素大于2倍正常值，转氨酶大于3倍正常值） A</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">肾功能不全，透析、移植或Cr>200μ㏖/L   A</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">卒中 S </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">出血 B </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">异常INR值（INR高或不稳定、达标时间<60%） L </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄>65岁 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">药物（服用抗血小板药物或非甾体类药物一种或两种使用）D </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">饮酒史 D  </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('TIA-2.0.1')
+var create = new create();
+    create.createRender("TIA",function() {
+        $('#create_TIA_2056').after('<a id="ABCDScore0" href="javascript:" style="font-size:12px;margin-left:12px"  class="score-table">评分工具计算</a>')
+        $('#create_27').after('<a id="ABCDScore" href="javascript:" style="font-size:12px;margin-left:12px"  class="score-table">评分工具计算</a>')
+        $('#create_28').after('<a id="ABCDScore3" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_29').after('<a id="ABCDScore3L" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_61').after('<a id="CHA2DS2Score" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        // $('#create_104').after('<a id="HBIPS-BradenScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_133').after('<a id="EssenScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_TIA_2067').after('<a id="STAFScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_TIA_2071').after('<a id="HASBLEDScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        //三选一
+
+        // $("#ABCDScore,#ABCDScore3,#ABCDScore3L").on("click", function () {
+        //     $("#ABCDTable").attr('data-id', $(this).attr('id')).modal()
+        //     // .find(".check-item").removeClass("active").end().find(".num").html(0);
+        // })
+        $('#ABCDScore').click(function () {
+            $("#ABCDTable").modal();
+            
+        })
+        $('#ABCDScore0').click(function () {
+            $("#ABCDTable0").modal();
+            
+        })
+        $('#ABCDScore3').click(function () {
+            $("#ABCDTable2").modal();
+        })
+        $('#ABCDScore3L').click(function () {
+            $("#ABCDTable3").modal();
+        })
+        $('#STAFScore').click(function () {
+            $("#STAFTable").modal();
+        })
+        $('#HASBLEDScore').click(function () {
+            $("#HASBLEDTable").modal();
+        })
+
+        $("#STAFTable .calculate").click(function () {
+            $("#create_TIA_2067").val($(this).data("score"));
+            $("#STAFTable").modal("hide");
+            $("#create_TIA_2067").blur();
+            $("#create_TIA_2067").change();
+        })
+        $("#HASBLEDTable .calculate").click(function () {
+            $("#create_TIA_2071").val($(this).data("score"));
+            $("#HASBLEDTable").modal("hide");
+            $("#create_TIA_2071").blur();
+            $("#create_TIA_2071").change();
+        })
+
+        $("#ABCDTable .calculate").click(function () {
+            $("#create_27").val($(this).data("score"));
+            $("#ABCDTable").modal("hide");
+            $("#create_27").blur();
+            $("#create_27").change();
+        })
+        $("#ABCDTable2 .calculate").click(function () {
+            $("#create_28").val($(this).data("score"));
+            $("#ABCDTable2").modal("hide");
+            $("#create_28").blur();
+            $("#create_28").change();
+        })
+        $("#ABCDTable3 .calculate").click(function () {
+            $("#create_29").val($(this).data("score"));
+            $("#ABCDTable3").modal("hide");
+            $("#create_29").blur();
+            $("#create_29").change();
+        })
+        $("#ABCDTable0 .calculate").click(function () {
+            $("#create_TIA_2056").val($(this).data("score"));
+            $("#ABCDTable0").modal("hide");
+            $("#create_TIA_2056").blur();
+            $("#create_TIA_2056").change();
+        })
+        $('#CHA2DS2Score').click(function () {
+            $("#CHA2DS2Table").modal();
+        })
+        $('#HBIPS-BradenScore').click(function () {
+            $("#HBIPS-BradenTable").modal();
+        })
+        $('#EssenScore').click(function () {
+            $("#EssenTable").modal();
+        })
+
+        $("#CHA2DS2Table .calculate").click(function () {
+            $("#create_61").val($(this).data("score"));
+            $("#CHA2DS2Table").modal("hide");
+            $("#create_61").blur();
+            $("#create_61").change();
+        })
+        $("#HBIPS-BradenTable .calculate").click(function () {
+            $("#create_104").val($(this).data("score"));
+            $("#HBIPS-BradenTable").modal("hide");
+            $("#create_104").blur();
+            $("#create_104").change();
+        })
+        $("#EssenTable .calculate").click(function () {
+            $("#create_133").val($(this).data("score"));
+            $("#EssenTable").modal("hide");
+            $("#create_133").blur();
+            $("#create_133").change();
+        })
+        //互斥
+        $(".check-age3").on('click', function () {
+            if ($(".check-age4").attr("class") == "check-item check-age4 active") {
+                $(".check-age4").removeClass("active")
+            }
+        })
+        $(".check-age4").on('click', function () {
+            if ($(".check-age3").attr("class") == "check-item check-age3 active") {
+                $(".check-age3").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-age1").on('click', function () {
+            if ($(".check-age2").attr("class") == "check-item check-age2 active") {
+                $(".check-age2").removeClass("active")
+            }
+        })
+        $(".check-age2").on('click', function () {
+            if ($(".check-age1").attr("class") == "check-item check-age1 active") {
+                $(".check-age1").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-c1").on('click', function () {
+            if ($(".check-c2").attr("class") == "check-item check-c2 active") {
+                $(".check-c2").removeClass("active")
+            }
+        })
+        $(".check-c2").on('click', function () {
+            if ($(".check-c1").attr("class") == "check-item check-c1 active") {
+                $(".check-c1").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-c18").on('click', function () {
+            if ($(".check-c28").attr("class") == "check-item check-c28 active") {
+                $(".check-c28").removeClass("active")
+            }
+        })
+        $(".check-c28").on('click', function () {
+            if ($(".check-c18").attr("class") == "check-item check-c18 active") {
+                $(".check-c18").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-c10").on('click', function () {
+            if ($(".check-c20").attr("class") == "check-item check-c20 active") {
+                $(".check-c20").removeClass("active")
+            }
+        })
+        $(".check-c20").on('click', function () {
+            if ($(".check-c10").attr("class") == "check-item check-c10 active") {
+                $(".check-c10").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-c11").on('click', function () {
+            if ($(".check-c22").attr("class") == "check-item check-c22 active") {
+                $(".check-c22").removeClass("active")
+            }
+        })
+        $(".check-c22").on('click', function () {
+            if ($(".check-c11").attr("class") == "check-item check-c11 active") {
+                $(".check-c11").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-d1").on('click', function () {
+            if ($(".check-d2").attr("class") == "check-item check-d2 active") {
+                $(".check-d2").removeClass("active")
+            }
+        })
+        $(".check-d2").on('click', function () {
+            if ($(".check-d1").attr("class") == "check-item check-d1 active") {
+                $(".check-d1").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-d18").on('click', function () {
+            if ($(".check-d28").attr("class") == "check-item check-d28 active") {
+                $(".check-d28").removeClass("active")
+            }
+        })
+        $(".check-d28").on('click', function () {
+            if ($(".check-d18").attr("class") == "check-item check-d18 active") {
+                $(".check-d18").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-d10").on('click', function () {
+            if ($(".check-d20").attr("class") == "check-item check-d20 active") {
+                $(".check-d20").removeClass("active")
+            }
+        })
+        $(".check-d20").on('click', function () {
+            if ($(".check-d10").attr("class") == "check-item check-d10 active") {
+                $(".check-d10").removeClass("active")
+            }
+        })
+        //互斥
+        $(".check-d11").on('click', function () {
+            if ($(".check-d22").attr("class") == "check-item check-d22 active") {
+                $(".check-d22").removeClass("active")
+            }
+        })
+        $(".check-d22").on('click', function () {
+            if ($(".check-d11").attr("class") == "check-item check-d11 active") {
+                $(".check-d11").removeClass("active")
+            }
+        })
+        // TIA-8风险因素评估联动
+        $('.create_135').on('change', function () {
+            var a = $('.create_135').val()
+            var b = $("#item136").find("input[type=checkbox]")
+            for (var i = 0; i < b.length; i++) {
+                if (a == $(b[i]).val() && a!== 'UTD') {
+                    $(b[i]).css('display', 'none')
+                    $(b[i]).next('span').css('display', 'none')
+                    $(b[i]).attr('checked', false)
+                    $(b[i]).blur()
+                } else {
+                    $(b[i]).css('display', 'inline-block');
+                    $(b[i]).next("span").css('display', 'inline-block')
+                }
+            }
+        }) 
+    })
+</script>

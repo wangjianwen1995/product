@@ -1,0 +1,101 @@
+<!--
+ * @Author: yuexiaoyan yuexiaoyan@ewell.cc
+ * @Date: 2022-05-20 11:20:43
+ * @LastEditors: yuexiaoyan yuexiaoyan@ewell.cc
+ * @LastEditTime: 2022-07-04 18:39:06
+ * @FilePath: \single-disease\public\static\drgs\form-18.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css" />
+<link rel="stylesheet" href="../js/layui/css/layui.css" />
+<body>
+  <div id="form-content" class="container-fluid">
+    <form class="form-horizontal">
+      <div id="dragslot" class="container" style="width:100%;padding:0;">
+        <div id="contend" class="slot-list"></div>
+        <div class="submit-button"></div>
+      </div>
+    </form>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  console.log('PIP-2.0');
+  var create = new create();
+  create.createRender('PIP', function() {
+    var PUBLIC = {
+      birthDayTimeStemp: '', // 出生日期
+      standardTimeStemp: '', // 入院日期
+    };
+
+    //根据出生日期和入院日期判断患者入院时是否大于18岁，大于18岁患者身份证号必填，否则不必填：
+    // 身份证号判断;
+    $('#create_CM_6').on('change', function() {
+      if ($(this).val() !== '') {
+        $(this)
+          .parent()
+          .children('.sp-error')
+          .remove();
+      }
+    });
+    // 出生日期
+    $('#create_CM_13').on('change', function() {
+      PUBLIC.birthDayTimeStemp = new Date($(this).attr('data-value') || $(this).val()).getTime();
+      // getAge方法来自create.js
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 入院日期时间
+    $('#create_CM_16').on('change', function() {
+      PUBLIC.standardTimeStemp = new Date($(this).attr('data-value') || $(this).val()).getTime();
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 出院日期时间
+    $('#create_CM_17').on('change', function() {
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 判断年龄是否大于18
+    function setIDEmptyError(age) {
+      var startTime = '2021-01-01 00:00'; // 出院日期从2021年1月1日开始，大于18周岁的就需要填身份证了
+      var endTime = $('#create_CM_17').val(); //出院日期
+      var start = new Date(startTime.replace('-', '/').replace('-', '/'));
+      var end = new Date(endTime.replace('-', '/').replace('-', '/'));
+      var idCard = $('#itemCM_6').css('display');
+      if (age > 18 && end > start) {
+        if (
+          $('#create_CM_6').val() === '' &&
+          !$('#create_CM_6')
+            .parent()
+            .children('.sp-error').length
+        ) {
+          $('#create_CM_6')
+            .parent()
+            .append('<span class="sp-error"><font size=-1 color=red>该项为必填项</font></span>');
+        }
+      } else {
+        $('#create_CM_6')
+          .parent()
+          .children('.sp-error')
+          .remove();
+      }
+    }
+  });
+</script>

@@ -1,0 +1,694 @@
+<!--
+ * @Description: 社区获得性肺炎（成人，首次住院） Cap-Adult
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-01-13 17:53:49
+ * @FilePath: \single-disease\public\static\drgs\form-13.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- CURBTable---成人心脏手术术前危险因素评分值 -->
+    <div id="CURBTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="CAP---CURB-65 评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CAP---CURB-65 评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>严重指数评分要素（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄＞65岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">呼吸频率≥30次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">动脉收缩压＜90mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">意识障碍</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血肌酐（SCr）＞106μmol/L或血尿素氮（BUN）＞7.1mmol/L</div>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PSITable---成人心脏手术术前危险因素评分值 -->
+    <div id="PSITable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="CAP---PSI评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CAP---PSI评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>严重指数评分要素（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">年龄＞65岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">慢性阻塞性肺疾病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">糖尿病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">慢性心、肾功能不全</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30分</td>
+                                <td>
+                                    <div score="30" class="check-item">恶性实体肿瘤或血液病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">获得性免疫缺陷综合征（AIDS）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">吸入性肺炎或存在容易发生吸入的因素</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">近1年内曾因CAP住院</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">精神状态异常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">脾切除术后</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">器官移植术后</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">慢性酗酒或营养不良</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">长期应用免疫抑制剂</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">呼吸频率≥30次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">脉搏≥120次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">动脉收缩压＜90mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15分</td>
+                                <td>
+                                    <div score="15" class="check-item">体温≥40℃或＜35℃</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">意识障碍</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">呼吸空气时PaO₂＜60mmHg，PaO₂/FiO₂＜300，或PaCO₂＞50mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">血肌酐（SCr）＞106μmol/L或血尿素氮（BUN）＞7.1mmol/L</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">血红蛋白＜90g/L或红细胞压积（HCT）＜30%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">X线胸片显示病变累及1个肺叶以上，出现空洞、病灶迅速扩散或出现胸腔积液</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30分</td>
+                                <td>
+                                    <div score="30" class="check-item">PH≤7.35</div>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CRB-65Table---成人心脏手术术前危险因素评分值 -->
+    <div id="CRBTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="CAP---CURB-65 评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CAP---CRB-65 评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>严重指数评分要素（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄＞65岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">呼吸频率≥30次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">动脉收缩压＜90mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">意识障碍</div>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SMART-COP Table---成人心脏手术术前危险因素评分值 -->
+    <div id="SMARTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="CAP---SMART-COP评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CAP---SMART-COP 评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>严重指数评分要素（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">呼吸频率≥30次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">脉搏≥120次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">动脉收缩压＜90mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">意识障碍</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">呼吸空气时PaO₂＜60mmHg，PaO₂/FiO₂＜300，或PaCO₂＞50mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">X线胸片显示病变累及1个肺叶以上，出现空洞、病灶迅速扩散或出现胸腔积液</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">PH≤7.35</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血清白蛋白
+                                        <35g/L</div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check1">≤50岁；PaO₂＜70mmHg，或Sp02＞93%，或PaO₂/FiO₂＜333mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check2">≤50岁；PaO₂＜60mmHg，或Sp02＞90%，或PaO₂/FiO₂＜250mmHg</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CURBTable2---成人心脏手术术前危险因素评分值 -->
+    <div id="CURBTable2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="CAP---CURB-65 评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CAP---CURB-65 评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>严重指数评分要素（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄＞65岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">呼吸频率≥30次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">动脉收缩压＜90mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">意识障碍</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血肌酐（SCr）＞106μmol/L或血尿素氮（BUN）＞7.1mmol/L</div>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PSITable2---成人心脏手术术前危险因素评分值 -->
+    <div id="PSITable2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="CAP---PSI评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CAP---PSI评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>严重指数评分要素（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">年龄＞65岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">慢性阻塞性肺疾病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">糖尿病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">慢性心、肾功能不全</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30分</td>
+                                <td>
+                                    <div score="30" class="check-item">恶性实体肿瘤或血液病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">获得性免疫缺陷综合征（AIDS）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">吸入性肺炎或存在容易发生吸入的因素</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">近1年内曾因CAP住院</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">精神状态异常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">脾切除术后</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">器官移植术后</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">慢性酗酒或营养不良</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">长期应用免疫抑制剂</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">呼吸频率≥30次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">脉搏≥120次/min</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">动脉收缩压＜90mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15分</td>
+                                <td>
+                                    <div score="15" class="check-item">体温≥40℃或＜35℃</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">意识障碍</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">呼吸空气时PaO₂＜60mmHg，PaO₂/FiO₂＜300，或PaCO₂＞50mmHg</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">血肌酐（SCr）＞106μmol/L或血尿素氮（BUN）＞7.1mmol/L</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">血红蛋白＜90g/L或红细胞压积（HCT）＜30%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">X线胸片显示病变累及1个肺叶以上，出现空洞、病灶迅速扩散或出现胸腔积液</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30分</td>
+                                <td>
+                                    <div score="30" class="check-item">PH≤7.35</div>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('Cap-Adult-2.0')
+var create = new create();
+    create.createRender("Cap-Adult",function() {
+        //页面添加
+        $("#create_25").after('<a id="CURBcore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#create_27").after('<a id="PSIcore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#create_189").after('<a id="CRBcore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#create_191").after('<a id="SMARTcore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#create_133").after('<a id="CURBcore2" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#create_135").after('<a id="PSIcore2" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        //评分表
+        $("#CURBcore").on("click", function () {
+            $("#CURBTable").modal();
+            $("#CURBTable .calculate").data("score", 0);
+        })
+        $("#CURBcore2").on("click", function () {
+            $("#CURBTable2").modal();
+            $("#CURBTable2 .calculate").data("score", 0);
+        })
+        $("#PSIcore").on("click", function () {
+            $("#PSITable").modal();
+            $("#PSITable .calculate").data("score", 0);
+        })
+        $("#PSIcore2").on("click", function () {
+            $("#PSITable2").modal();
+            $("#PSITable2 .calculate").data("score", 0);
+        })
+        $("#CRBcore").on("click", function () {
+            $("#CRBTable").modal();
+            $("#CRBTable .calculate").data("score", 0);
+        })
+        $("#SMARTcore").on("click", function () {
+            $("#SMARTable").modal();
+            $("#SMARTable .calculate").data("score", 0);
+        })
+        //分值判断
+        //CURBTable---成人心脏手术术前危险因素评分值 
+        $("#CURBTable .calculate").click(function () {
+            var scope = $(this).data("score")
+            $('#create_25').val(scope);
+            $('#create_25').change();
+            $("#CURBTable").modal("hide");
+        })
+        $("#CURBTable2 .calculate").click(function () {
+            var scope = $(this).data("score")
+            $('#create_133').val(scope);
+            $("#CURBTable2").modal("hide");
+            $('#create_133').blur();
+            $('#create_133').change();
+        })
+        $("#PSITable .calculate").click(function () {
+            var scope = $(this).data("score")
+            $('#create_27').val(scope);
+            $('#create_27').change();
+            $('#create_27').blur();
+            $("#PSITable").modal("hide");
+        })
+        $("#PSITable2 .calculate").click(function () {
+            var scope = $(this).data("score")
+            $('#create_135').val(scope);
+            $('#create_135').change();
+            $("#PSITable2").modal("hide");
+            $('#create_135').blur();
+        })
+        $("#CRBTable .calculate").click(function () {
+            var scope = $(this).data("score")
+            $('#create_189').val(scope);
+            $('#create_189').change();
+            $("#CRBTable").modal("hide");
+            $('#create_189').blur();
+        })
+        $("#SMARTable .calculate").click(function () {
+            var scope = $(this).data("score")
+            $('#create_191').val(scope);
+            $('#create_191').change();
+            $("#SMARTable").modal("hide");
+            $('#create_191').blur();
+        })
+        // 互斥
+        $(".check1").on('click', function () {
+            if ($(".check2").attr("class") == "check-item check2 active") {
+                $(".check2").removeClass("active")
+            }
+        })
+        $(".check2").on('click', function () {
+            if ($(".check1").attr("class") == "check-item check1 active") {
+                $(".check1").removeClass("active")
+            }
+        });
+    });
+</script>

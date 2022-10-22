@@ -1,0 +1,932 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- NIHSS 评分表 -->
+    <div id="nihssTable" class="modal fade bs-example-modal-sm  public-table" tabindex="-1" role="dialog"
+        aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">ICH---NIHSS卒中量表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>意识水平</th>
+                                <th>两项提问</th>
+                                <th>两项指令</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">清醒、反应敏锐</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">均回答正确</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">均可正确完成</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">嗜睡</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">答对一项</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">可正确完成一项</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">昏睡</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">均回答错误</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">均不能完成</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">昏迷</div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>凝视</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">侧视动作受限</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">眼球固定偏向一侧</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>视野</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无视野缺损</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">部分偏盲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">完全偏盲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">双侧偏盲</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>面瘫</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻微面瘫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">部分面瘫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">完全面瘫</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>左上肢肌力</th>
+                                <th>右上肢肌力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无晃动</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">无晃动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有晃动</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">有晃动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">不能完全抵抗重力</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">不能完全抵抗重力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">不能维持</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">不能维持</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">不能移动</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">不能移动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>左下肢肌力</th>
+                                <th>右下肢肌力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无晃动</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">无晃动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有晃动</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">有晃动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">不能完全抵抗重力</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">不能完全抵抗重力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">不能维持</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">不能维持</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">不能移动</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">不能移动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肢体共济障碍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">存在于上肢或下肢</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">存在于上肢和下肢</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>感觉</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">部分缺失</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">严重缺失</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>失语</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻度失语</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">重度失语</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">完全失语</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>构音障碍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常发音</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻度构音障碍</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">严重构音障碍</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>忽视</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">部分忽视</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">完全忽视</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 格拉斯哥昏迷 评分表 -->
+    <div id="glasgowTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby="格拉斯哥昏迷评估表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">格拉斯哥昏迷评估表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>睁眼反应</th>
+                                <th>言语反应</th>
+                                <th>非偏瘫侧运动反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">任何刺激不睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">无语言</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">对任何疼痛无运动反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">疼痛刺激时睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">难以理解</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">痛刺激时有伸展反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">语言刺激时睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">能理解,不连贯</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">痛刺激时有屈曲反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">自己睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">对话含糊</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">痛刺激有逃避反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td></td>
+                                <td>
+                                    <div score="5" class="check-item">正常</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">痛刺激时能拨开医生的手</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6分</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div score="6" class="check-item">正常(执行指令)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span>分</div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="glasgowTable2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby="格拉斯哥昏迷评估表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">格拉斯哥昏迷评估表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>睁眼反应</th>
+                                <th>言语反应</th>
+                                <th>非偏瘫侧运动反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">任何刺激不睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">无语言</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">对任何疼痛无运动反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">疼痛刺激时睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">难以理解</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">痛刺激时有伸展反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">语言刺激时睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">能理解,不连贯</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">痛刺激时有屈曲反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">自己睁眼</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">对话含糊</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">痛刺激有逃避反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td></td>
+                                <td>
+                                    <div score="5" class="check-item">正常</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">痛刺激时能拨开医生的手</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6分</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div score="6" class="check-item">正常(执行指令)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span>分</div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 出院前mRS评估分值 -->
+    <div id="mRSTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="STESS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">ICH评分量表</div>
+                <div class="scoreTable">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>GCS评分</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2分</td>
+                                        <td>
+                                            <div score="2" class="check-item">3~4</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">5~12</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">13~15</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>血肿量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">≥30ml</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item"><30ml</div></30ml>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>血肿破入脑室</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">是</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">否</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                         <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>血肿源自幕下</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">是</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item">否</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                         <div class="col-md-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;"></th>
+                                        <th>患者年龄</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1分</td>
+                                        <td>
+                                            <div score="1" class="check-item">≥80岁</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0分</td>
+                                        <td>
+                                            <div score="0" class="check-item"><80岁</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Essen 评分表 -->
+    <div id="EssenTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">Essen卒中风险评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age1">年龄65~75岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age2">或,年龄≥75岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">糖尿病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">既往心肌梗死</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">其他心血管疾病（除外心肌梗死和心房颤动）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">周围血管病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">吸烟</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">除本次事件之外的TIA或缺血性卒中</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('ICH-2.0')
+var create = new create();
+    create.createRender("ICH",function() {
+        $('#create_51').after('<a data-link="ICH[ICH-1-2-4][ICH-1-2-6]" href="javascript:" class="public-trigger score-table" data-id="nihssTable0" style="font-size:12px;margin-left:12px">评分工具计算</a>')
+        $('#create_46').after('<a href="javascript:"  id="glasgowTable1" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_197').after('<a id="EssenScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        //评分表（单选）
+        $("#create_198").after('<a id="mRSScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a>')
+        $('#create_199').after('<a id="glasgowScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a>')
+        $("#create_47").on("click", ".public-trigger", function () {
+            var id = $(this).attr("data-id")
+            console.log(id, "id")
+            var link = $(this).attr("data-link")
+            $(".public-table").attr("data-value", link).attr("id", id).find(".check-item").removeClass("active")
+            $(".public-table").modal().find(".num").html(0)
+        })
+
+        $(".public-table .calculate").click(function () {
+            var name = $(this).parents(".public-table").attr("data-value")
+            var dataLink = $('#create_47').find('.public-trigger')
+            for (var i = 0; i < dataLink.length; i++) {
+                if ($(dataLink[i]).attr('data-link') == name) {
+                    $(dataLink[i]).prev().val($(this).data("score"))
+                }
+            }
+            $(this).parents(".public-table").modal("hide");
+            $("#create_51").blur();
+        })
+        //第一个
+        $('#glasgowTable1').click(function () {
+            $("#glasgowTable").modal();
+        })
+        $("#glasgowTable .calculate").click(function () {
+            $("#create_46").val($(this).data("score"));
+            $("#glasgowTable").modal("hide");
+            $("#create_46").blur();
+        })
+        //ich评分量表
+        $("#mRSScore").on("click", function () {
+            $("#mRSTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#mRSTable .calculate").click(function () {
+            $('#create_198').val($(this).data("score"))
+            $("#mRSTable").modal("hide");
+            $('#create_198').blur();
+            $('#create_198').change();
+        })
+        // 第二个
+        $('#glasgowScore').click(function () {
+            $("#glasgowTable2").modal()
+        })
+        $("#glasgowTable2 .calculate").click(function () {
+            $("#create_199").val($(this).data("score"));
+            $("#glasgowTable2").modal("hide");
+            $("#create_199").change();
+            $("#create_199").blur();
+        })
+        // Essen
+        $('#EssenScore').click(function () {
+            $("#EssenTable").modal()
+        })
+        $("#EssenTable .calculate").click(function () {
+            $("#create_197").val($(this).data("score"));
+            $("#EssenTable").modal("hide");
+            $("#create_197").blur();
+        })
+        $(".check-age1").on('click', function () {
+            if ($(".check-age2").attr("class") == "check-item check-age2 active") {
+                $(".check-age2").removeClass("active")
+            }
+        })
+        $(".check-age2").on('click', function () {
+            if ($(".check-age1").attr("class") == "check-item check-age1 active") {
+                $(".check-age1").removeClass("active")
+            }
+        })
+    });
+</script>

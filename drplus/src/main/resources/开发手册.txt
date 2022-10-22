@@ -1,0 +1,57 @@
+
+1:     (path_file)生成文件路径     (file_header)文件头信息    (filen_name)生成全名称包括文件后缀
+
+2 :  (report_url)上报平台上报地址    (content_type)contentType      (token)令牌    (useragent)user-agent
+
+3:  (report_url)上报平台上报地址   (content_type)contentType
+
+4:   (report_url)上报平台上报地址   (reportname)用户名    (reportpass)密码  (reportversion)版本   (reportmethod)方法名
+
+5:(report_url)上报平台上报地址     (content_type)contentType   (Accept)accept    (appid)APP_ID   (orgcode) 机构代码
+
+有新平台加入,需要
+  第一步: drplus_center_table 表中添加左侧标准数据
+  第二部: 平台维护需要弄, json文件中添加数据,和对映关系
+  第三步:  查看平台患者数据,第一个医保上报默认的时候出院时间CYSJ ,可以根据不同平台设置定死不同的值
+
+
+平台id = 2/3
+    zyh 存储里面没有加 没有加
+    p3--->病案号(BAH)  p4--->姓名(NAME)  p25-->出院时间(CYSJ)  p26-->出院科别(KSROLE)   p433-->主治医师(USERROLE)
+    zylsh0-->主键(清单流水号 PRIMAEYKEY)  jsrq-->抽取/上报时间(结算日期  CQSJ)
+    手术编码    手术名称      疾病编码    疾病名称
+    p490    ,   p492         p321   ,   p322
+    p4911   ,   p4913        p324   ,   p325
+    p4922   ,   p4924        p327   ,   p328
+    p4533   ,   p4535        p3291  ,   p3292
+    p4544   ,   p4546        p3294  ,   p3295
+    p45002  ,   p45004       p3297  ,   p3298
+    p45014  ,   p45016       p3281  ,    p3282
+    xxxx    ,  xxxxx        p3284   ,   p3285
+    xxxx    ,  xxxxx        p3287   ,   p3288
+    xxxx    ,  xxxxx        p3271   ,   p3272
+    xxxx    ,  xxxxx        p3274   ,   p3275
+
+平台 7 6 绩效考核 的 表 查分成 a /  b 表
+   b表存放 平台id 抽取时间CQSJ 和 病人主键 三个值外 还有 其他手术(1~40) 其他手术名称(1~40)
+   a 表中 主要手术/主要疾病存放到
+
+
+6平台
+   BAH 里面的数据不是唯一的,,CYSJ 格式不是120 格式 需要注意
+
+所有平台需要遵守   (可以直接添加,无需将上报字段修改成我的要求,)
+  PRIMAEYKEY-->"主键"
+  BAH-->病案号
+  CQSJ  -->"用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"
+  ZYH ---.>"住院号"
+  CYSJ--->"出院时间"
+  NAME---->"患者姓名"
+  KSROLE---->"科室权限"
+  USERROLE---->"人员权限,登录人员需要看到哪些数据,若无需数据权限,提供的视图可以不写该字段"
+  drplus_extract_detailed_id -->抽取id,无需对映,无需添加,代码已经维护
+
+  若存在附表
+  PRIMAEYKEY-->"主键"
+  CQSJ  -->"用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"
+  drplus_extract_detailed_id -->抽取id,无需对映,无需添加,代码已经维护

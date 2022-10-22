@@ -1,0 +1,56 @@
+server:
+  application:
+    name: 山西雕龙护理管理平台
+  port: 23304
+productName: 山西雕龙护理管理平台
+
+istest: 400
+dcip: 127.0.0.1
+drip: 127.0.0.1
+
+spring:
+  http:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_hn
+      username: sa
+      password: sa
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+#  mvc:
+#    static-path-pattern: /static/**
+#  resources:-asspath:static/**,file:static/**
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#logging:
+ # level:
+ #   com.sxdl.product.dc.dao : debug
+HBI:
+  name: 山西雕龙演示
+  url: http://127.0.0.1:8014
+  #url: http://140.143.190.251:8077
+
+basePackage: com.sxdl.hn.controller
+swagger:
+  enable: true
+
+personnelfiles: D:\my_files\
+back_path: D:\bf
+back_time: 10

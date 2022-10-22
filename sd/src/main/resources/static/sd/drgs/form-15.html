@@ -1,0 +1,77 @@
+<!--
+ * @Description: 乳腺癌（手术治疗） BC
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-01-10 09:10:52
+ * @FilePath: \single-disease\public\static\drgs\form-15.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<style>
+  #itemBC_299, #itemBC_300, #itemBC_287{
+    margin-top: 24px!important;
+  }
+</style>
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<!-- <script>document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");</script> -->
+<script>
+    console.log('BC-2.0')
+    var create = new create();
+    create.createRender("BC",function() {
+      // // 术后化疗/放疗 主要诊断ICD-10
+      // checkCommonICD('#create_BC_290', '#create_BC_291');
+      // // 术后化疗/放疗 治疗性操作 ICD-9-CMN-3
+      // checkCommonICD('#create_BC_292', '#create_BC_293');
+      // // 术后化疗/放疗 其他诊断ICD-10
+      // checkCommonICD('#create_BC_431', '#create_BC_432');
+
+      // BC-1-2 乳腺 X 线摄影选择联动 BC-2-1-3
+      $('.create_172').on('change', function(){
+        if($('.create_172[value="a"]')[0].checked || $('.create_172[value="b"]')[0].checked){
+          $('.create_38[value="b"]').next().click();
+        } else if ($('.create_172[value="n"]')[0].checked) {
+          $('.create_38[value="b"]')[0].checked = false;
+        }
+      });
+      // BC-1-3 乳腺超声 联动BC-2-1-3
+      $('.create_BC_261').on('change', function(){
+        if($('.create_BC_261[value="a"]')[0].checked || $('.create_BC_261[value="b"]')[0].checked){
+          $('.create_38[value="c"]').next().click();
+        } else if ($('.create_BC_261[value="n"]')[0].checked) {
+          $('.create_38[value="c"]')[0].checked = false;
+        }
+      });
+      // 关闭上报弹窗内容
+      var eleHtml = '<div id="electrocar" class="end-report-content">' +
+            '<img class="end-img" src="../img/report-warn.png"/>' +
+            '<span class="end-title">该病例不符合上报要求</span>' +
+            '<p class="end-content">请重新填报</p></div>';
+      // BC-3
+      $('.create_49').on('change', function() {
+        if($('.create_49[value="n"]')[0].checked) {
+          reportConfirm(eleHtml, function() {
+            $('.create_49[value="n"]')[0].checked = false;
+          })
+        }
+      });
+    });
+</script>

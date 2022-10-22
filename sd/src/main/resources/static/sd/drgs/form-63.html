@@ -1,0 +1,1890 @@
+<!--
+ * @Description: 急性呼吸窘迫综合征 ARDS
+ * @LastEditors: yuexiaoyan yuexiaoyan@ewell.cc
+ * @LastEditTime: 2022-07-01 10:43:43
+ * @FilePath: \single-disease\public\static\drgs\form-63.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css" />
+<link rel="stylesheet" href="../js/layui/css/layui.css" />
+
+<body>
+  <div id="form-content" class="container-fluid">
+    <form class="form-horizontal">
+      <div id="dragslot" class="container" style="width:100%;padding:0;">
+        <div id="contend" class="slot-list"></div>
+        <div class="submit-button"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- 急性生理学评分值 -->
+  <div
+    id="ARDSTable1"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="急性生理学评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 1000px;">
+      <div class="modal-content">
+        <div class="scoreHeader">急性生理学评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>体温-肛温（℃）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥41</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">39-40.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">38.5-38.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">36-38.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">34-35.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">32-33.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">30-31.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤29.9</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>平均动脉压（mmHg）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥160</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">130-159</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">110-129</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">70-109</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">50-69</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤49</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>心率（心室率）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥180</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">140-179</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">110-139</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">70-109</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">55-69</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">40-54</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤39</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table class="">
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>呼吸频率（包括机械通气和非机械通气的频率）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥50</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">35-49</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">25-34</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">12-24</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">10-11</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">6-9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤5</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 HCO₃ (静脉 – mmol/L) (仅在没有血气结果的情况下使用)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥52</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">41– 51.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">32– 40.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">22– 31.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">18 – 21.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">15– 17.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;15</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>白细胞（total/mm³）(in 1000s)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥40</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">20-39.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">15-19.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">3-14.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">1-2.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;1</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>动脉血 pH</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">>7.7</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">7.6-7.69</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">7.5-7.59</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">7.33-7.49</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">7.25-7.32</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">7.15-7.24</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;7.15</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 钠（mMOl/L或mEq/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥180</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">160-179</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">155-159</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">150-154</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">130-149</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">120-129</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">111-119</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤110</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 钾（mMOl/L或mEq/L）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥7</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">6-6.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">5.5-5.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">3.5-5.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">3-3.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">2.5-2.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">≤2.5</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            
+            <div class="col-md-7">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>氧合：A-aDO₂ or PaO₂ a.如果FIO₂≥0.5记录A-aDO₂(mmHg)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">>500</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">350-499</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">200-349</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;200</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>氧合：A-aDO₂ or PaO₂ a.如果FIO₂≥0.5记录A-aDO₂ (kPa)</th>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">>66.5</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">46.6-66.4</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">26.6-46.5</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;26.6</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>氧合：A-aDO₂ or PaO₂ b.如果FIO₂&lt;0.5仅记录PaO₂ (mmHg)</th>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">&lt;55</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">55-60</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">61-70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>70</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>氧合：A-aDO₂ or PaO₂ b.如果FIO₂&lt;0.5仅记录PaO₂ (kPa)</th>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">&lt;7.3</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">7.3-8.0</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">8.1-9.3</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>9.3</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-5">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 肌酐（mMOl/L）（无急性肾功能衰竭）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥0.300</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">0.171-0.299</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">0.121-0.17</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">0.05-0.12</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">&lt;0.05</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血清 肌酐（mMOl/L）（有急性肾功能衰竭）</th>
+                  </tr>
+                  <tr>
+                    <td>8分</td>
+                    <td>
+                      <div score="8" class="check-item">≥0.300</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6分</td>
+                    <td>
+                      <div score="6" class="check-item">0.171-0.299</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">0.121-0.17</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">0.05-0.12</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;0.05</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table style="margin-top: 20px;">
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>血球压积（%）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">≥60</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td><div score="2" class="check-item">50-59.9</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">46-49.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">30-45.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">20-29.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;20</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3">
+              
+            </div>
+            
+          </div>
+          <div class="row">
+            
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 年龄及慢性健康状况评分值 -->
+  <div
+    id="ARDSTable2"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="年龄及慢性健康状况评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">年龄及慢性健康状况评分值</div>
+        <div class="scoreTable">
+          <div class="row" style="margin: 0 auto;">
+            <div class="col-md-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>6分</td>
+                    <td>
+                      <div score="6" class="check-item">≥75</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">65–74</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">55–64</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">45–54</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤44</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" style="margin: 0 auto;">
+            <div class="col-md-12" style="margin-top:10px">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="width: 80;">2分</td>
+                    <td>
+                      <div score="2" class="check-item">择期手术</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">非手术/急诊手术</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">前提条件为慢性器官功能衰竭（如下）</th>
+                  </tr>
+                  <tr>
+                    <td>肝脏</td>
+                    <td>
+                      活检证实的肝硬化和确切诊断的门静脉高压
+                      (PH)；曾因门静脉高压引起的消化道出血；或曾患肝功能衰竭/肝性脑病/肝性昏迷。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>肾脏</td>
+                    <td>
+                      接受慢性透析治疗。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>心血管</td>
+                    <td>
+                      纽约心脏协会心功能四级：病人因心脏疾病导致无法参与任何程度的体力活动并可因此而导致不适。心力衰竭的症状或心绞痛可在静息时发生。如果参与任何程度的体力活动，都会导致症状的加重。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>呼吸</td>
+                    <td>
+                      慢性限制性、阻塞性或血管疾病导致严重活动受限(例如：不能爬楼梯，不能进行日常家务劳动等)；或有明确诊断的慢性低氧、高碳酸血症，红血球增多症，严重肺动脉高压(>40mmHg)或呼吸机依赖。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>免疫抑制</td>
+                    <td>
+                      病人接受了降低宿主抵抗感染的能力的治疗，例如：免疫抑制，化疗，放疗，长期或最近使用的高剂量激素，或者病人患有明显抑制抗感染能力的疾病(如：白血病、淋巴瘤、艾滋病)。
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glasgow 昏迷评分值 -->
+  <div
+    id="ARDSTable3"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby=" Glasgow 昏迷评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">Glasgow 昏迷评分值</div>
+        <div class="scoreTable scoreTable3">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>睁眼反应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">正常</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td><div score="3" class="check-item">对呼唤</div></td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">对疼痛</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">无</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>语言</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>5分</td>
+                    <td><div score="5" class="check-item">正常</div></td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td><div score="4" class="check-item">时常混淆</div></td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">不确切</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">不理解</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">无反应</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>肢体动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>6分</td>
+                    <td><div score="6" class="check-item">遵命动作</div></td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td><div score="5" class="check-item">定位动作</div></td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">缩回（疼）</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">屈曲（疼）</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">过伸（疼）</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">无反应</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 呼吸系统评分值 -->
+  <div
+    id="ARDSTable4"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="呼吸系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">呼吸系统评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>呼吸系统：PaO₂/FiO₂ (in mmHg)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">301 - 400</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">201-300 (没有呼吸支持*)</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">101 - 200 (有呼吸支持*)</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤100 (有呼吸支持*)</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th style="width: 80;"></th>
+                    <th>
+                      呼吸系统：PaO₂/FiO₂ (in kPa)
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>53.2</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">40.0 – 53.1</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">26.6-40.0 (没有呼吸支持*)</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">13.4 – 26.6 (有呼吸支持*)</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤13.3 (有呼吸支持*)</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 血液系统评分值 -->
+  <div
+    id="ARDSTable5"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="血液系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">血液系统评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>凝血 血小板 (x 10⁹ / L)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">>150</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">101 - 150</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">51 - 100</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">21 - 50</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">≤20</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 肝脏评分值 -->
+  <div id="ARDSTable6" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肝脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肝脏评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>肝脏胆红素 (mg / dl)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;1.2</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1.2 – 1.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">2.0 – 5.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">6.0 – 11.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>12.0</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>
+                      肝脏胆红素 (μmol / L)
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;20</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">20 - 32</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">33 - 101</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">102 - 204</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">>204</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 心血管系统评分值 -->
+  <div
+    id="ARDSTable7"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="心血管系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">心血管系统评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>心血管 低血压</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">MAP > 70 mmHg</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">MAP &lt; 70 mmHg</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">
+                        多巴胺 5.0 (剂量单位μg / kg / min) 或任何剂量的多巴胺/米力农/左西孟旦
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">
+                        多巴胺 > 5.0(剂量单位μg / kg / min) 或肾上腺素 0.1 或去甲肾上腺素 0.1 或任何剂量的垂体加压素
+                        或任何剂量的阿拉明 或任何剂量的苯肾上腺素
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">
+                        多巴胺 > 15.0 (剂量单位μg / kg / minute) 或肾上腺素 >0.1 或去甲肾上腺素 >0.1
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 中枢神经系统评分值 -->
+  <div
+    id="ARDSTable8"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="中枢神经系统评分值"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">中枢神经系统评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>格拉斯哥昏迷评分 (GCS)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">15</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">13-14</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">10-12</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">6-9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">&lt;6</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 肾脏评分值 -->
+  <div id="ARDSTable9" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="肾脏评分值">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肾脏评分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th>肾脏 血肌酐 (mg / dl)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;1.2</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1.2 – 1.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">2.0 – 3.4</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">3.5 – 4.9</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">> 5.0</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>
+                      肾脏 血肌酐 (μmol/l)
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">&lt;110</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">110 – 170</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">171 – 299</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">300 – 440</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">> 440</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>
+                      肾脏 尿量
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">or &lt; 500 ml / day</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">or &lt; 200 ml / day</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--ARDS-3-2-2  RASS评分  -->
+  <div id="ARDSTable10" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="RASS评分">
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">RASS评分</div>
+        <div class="scoreTable RASSTable10">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80;">分值</th>
+                    <th colspan="2"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="check-item" score="4">
+                    <td>4分</td>
+                    <td><div>有攻击性</div></td>
+                    <td><div>有暴力行为</div></td>
+                  </tr>
+                  <tr class="check-item" score="3">
+                    <td>3分</td>
+                    <td><div>非常躁动</div></td>
+                    <td><div>试着拔出呼吸管，胃管或静脉点滴</div></td>
+                  </tr>
+                  <tr class="check-item" score="2">
+                    <td>2分</td>
+                    <td><div>躁动焦虑</div></td>
+                    <td><div>身体激烈移动，无法配合呼吸机</div></td>
+                  </tr>
+                  <tr class="check-item" score="1">
+                    <td>1分</td>
+                    <td><div>不安焦虑</div></td>
+                    <td><div>焦虑紧张但身体只有轻微的移动</div></td>
+                  </tr>
+                  <tr class="check-item" score="0">
+                    <td>0分</td>
+                    <td><div>清醒平静</div></td>
+                    <td><div>清醒自然状态</div></td>
+                  </tr>
+                  <tr class="check-item" score="-1">
+                    <td>-1分</td>
+                    <td><div>昏昏欲睡</div></td>
+                    <td><div>没有完全清醒，但可保持清醒超过十秒</div></td>
+                  </tr>
+                  <tr class="check-item" score="-2">
+                    <td>-2分</td>
+                    <td><div>轻度镇静</div></td>
+                    <td><div>无法维持清醒超过十秒</div></td>
+                  </tr>
+                  <tr class="check-item" score="-3">
+                    <td>-3分</td>
+                    <td><div>中度镇静</div></td>
+                    <td><div>对声音有反应</div></td>
+                  </tr>
+                  <tr class="check-item" score="-4">
+                    <td>-4分</td>
+                    <td><div>重度镇静</div></td>
+                    <td><div>对身体刺激有反应</div></td>
+                  </tr>
+                  <tr class="check-item" score="-5">
+                    <td>-5分</td>
+                    <td><div>昏迷</div></td>
+                    <td><div>对声音及身体刺激都无反应</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--最高血管活性药物评分（VIS）评分  -->
+  <div
+    id="ARDSTable11"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="最高血管活性药物评分（VIS）评分"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 500px;height: 300px;">
+      <div class="modal-content">
+        <div class="scoreHeader">最高血管活性药物评分（VIS）评分</div>
+        <div class="RASSTable11" style="line-height: 30px;padding: 10px;">
+          血管活性药物评分VIS =
+          多巴胺[µg/kg/min]+多巴酚丁胺[µg/kg/min]+100*肾上腺素[µg/kg/min]+10*米力农[µg/kg/min]+10000*血管加压素[ug/kg/min]+100*去甲肾上腺素[µg/kg/min]
+        </div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  console.log('ARDS');
+  var create = new create();
+  create.createRender('ARDS', function() {
+    // 添加评分表
+    // ARDS-1: 急性呼吸窘迫综合征诊断与严重程度评估: 是否实施急性生理与慢性健康======是, 急性生理学评分值
+    $('#create_ARDS_281').after(
+      '<a id="ARDSScore1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_ARDS_281').attr('disabled', true);
+
+    $('#ARDSScore1').on('click', function() {
+      $('#ARDSTable1').modal();
+    });
+    $('#ARDSTable1 .calculate').click(function() {
+      $('#create_ARDS_281').val($(this).data('score'));
+      $('#ARDSTable1').modal('hide');
+      $('#create_ARDS_281').blur();
+    });
+
+    // ARDS-1 年龄及慢性健康状况评分值
+    $('#create_ARDS_282').after(
+      '<a id="ARDSScore2" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_ARDS_282').attr('disabled', true);
+
+    $('#ARDSScore2').on('click', function() {
+      $('#ARDSTable2').modal();
+    });
+    $('#ARDSTable2 .calculate').click(function() {
+      $('#create_ARDS_282').val($(this).data('score'));
+      $('#ARDSTable2').modal('hide');
+      $('#create_ARDS_282').blur();
+    });
+
+    // ARDS-1 Glasgow昏迷评分（GCS）
+    $('#create_ARDS_283').after(
+      '<a id="ARDSScore3" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_283').attr('disabled', true);
+    $('#ARDSScore3').on('click', function() {
+      $('#ARDSTable3').modal();
+    });
+    $('#ARDSTable3 .calculate').click(function() {
+      $('#create_ARDS_283').val($(this).data('score'));
+      $('#ARDSTable3').modal('hide');
+      $('#create_ARDS_283').blur();
+    });
+
+    // ARDS-1: 急性呼吸窘迫综合征诊断与严重程度评估======是, 呼吸系统评分值
+    $('#create_ARDS_291').after(
+      '<a id="ARDSScore4" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_291').attr('disabled', true);
+    $('#ARDSScore4').on('click', function() {
+      $('#ARDSTable4').modal();
+    });
+    $('#ARDSTable4 .calculate').click(function() {
+      $('#create_ARDS_291').val($(this).data('score'));
+      $('#ARDSTable4').modal('hide');
+      $('#create_ARDS_291').blur();
+    });
+
+    // 血液系统评分值
+    $('#create_ARDS_292').after(
+      '<a id="ARDSScore5" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_292').attr('disabled', true);
+    $('#ARDSScore5').on('click', function() {
+      $('#ARDSTable5').modal();
+    });
+    $('#ARDSTable5 .calculate').click(function() {
+      $('#create_ARDS_292').val($(this).data('score'));
+      $('#ARDSTable5').modal('hide');
+      $('#create_ARDS_292').blur();
+    });
+
+    // 肝脏评分值
+    $('#create_ARDS_293').after(
+      '<a id="ARDSScore6" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_293').attr('disabled', true);
+    $('#ARDSScore6').on('click', function() {
+      $('#ARDSTable6').modal();
+    });
+    $('#ARDSTable6 .calculate').click(function() {
+      $('#create_ARDS_293').val($(this).data('score'));
+      $('#ARDSTable6').modal('hide');
+      $('#create_ARDS_293').blur();
+    });
+
+    // 心血管系统评分值
+    $('#create_ARDS_294').after(
+      '<a id="ARDSScore7" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_294').attr('disabled', true);
+    $('#ARDSScore7').on('click', function() {
+      $('#ARDSTable7').modal();
+    });
+    $('#ARDSTable7 .calculate').click(function() {
+      $('#create_ARDS_294').val($(this).data('score'));
+      $('#ARDSTable7').modal('hide');
+      $('#create_ARDS_294').blur();
+    });
+
+    // 中枢神经系统评分值
+    $('#create_ARDS_295').after(
+      '<a id="ARDSScore8" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_295').attr('disabled', true);
+    $('#ARDSScore8').on('click', function() {
+      $('#ARDSTable8').modal();
+    });
+    $('#ARDSTable8 .calculate').click(function() {
+      $('#create_ARDS_295').val($(this).data('score'));
+      $('#ARDSTable8').modal('hide');
+      $('#create_ARDS_295').blur();
+    });
+
+    // 肾脏评分值
+    $('#create_ARDS_296').after(
+      '<a id="ARDSScore9" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_296').attr('disabled', true);
+    $('#ARDSScore9').on('click', function() {
+      $('#ARDSTable9').modal();
+    });
+    $('#ARDSTable9 .calculate').click(function() {
+      $('#create_ARDS_296').val($(this).data('score'));
+      $('#ARDSTable9').modal('hide');
+      $('#create_ARDS_296').blur();
+    });
+
+    // ARDS-3-2-2 RASS评分
+    $('#create_ARDS_400').after(
+      '<a id="ARDSScore10" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    );
+    $('#create_ARDS_400').attr('disabled', true);
+    $('#ARDSScore10').on('click', function() {
+      $('#ARDSTable10').modal();
+    });
+    $('#ARDSTable10 .calculate').click(function() {
+      $('#create_ARDS_400').val($(this).data('score'));
+      $('#ARDSTable10').modal('hide');
+      $('#create_ARDS_400').blur();
+    });
+
+    /**
+     * ARDS-3-2-2 RASS评分   评分表事件（点击选中一整行）
+     */
+    $(document).on('click', '.RASSTable10 .check-item', function() {
+      if (
+        $(this)
+          .closest('table')
+          .hasClass('Choice')
+      ) {
+        $(this)
+          .toggleClass('active')
+          .parent('tr');
+        $(this)
+          .parent()
+          .siblings()
+          .each(function() {
+            $(this)
+              .find('.check-item')
+              .removeClass('active');
+          });
+      } else {
+        $(this).toggleClass('active');
+        var index = $(this)
+          .toggleClass('active')
+          .index();
+        $(this)
+          .siblings()
+          .removeClass('active');
+      }
+      var scoreTable = $(this).closest('.scoreTable');
+      var result = $(this).attr('score');
+      var num = scoreTable.siblings('.resultScore').find('.num');
+      num.text(num.data('text') ? num.data('text')(result) : result);
+      scoreTable
+        .siblings('.scoreFooter')
+        .find('.calculate')
+        .data('score', result);
+    });
+
+    // 实施有创机械通气起始日期时间改变
+    $('#create_ARDS_330').blur(function() {
+      ventilationTime();
+    });
+
+    // 有创机械通气撤离日期时间改变
+    $('#create_ARDS_357').blur(function() {
+      ventilationTime();
+    });
+
+    //单选框点击
+    var item = $('#create_ARDS_353').siblings('.form-1-2 ');
+    item.click(function() {
+      ventilationTime();
+    });
+
+    function ventilationTime() {
+      var startTime = new Date($('#create_ARDS_330').val()).getTime(); //有创机械通气起始日期时间
+      var endTime = new Date($('#create_ARDS_357').val()).getTime(); //有创机械通气撤离日期时间
+      var leaveTime = new Date($('#create_CM_17').val()).getTime(); //出院时间
+      var hour = '';
+      if ($('#create_ARDS_353:checked').val() == 'y') {
+        hour = (Math.floor(endTime - startTime) / (1000 * 3600)).toFixed(2);
+      } else {
+        hour = (Math.floor(leaveTime - startTime) / (1000 * 3600)).toFixed(2);
+      }
+      $('#create_ARDS_358').val(hour);
+    }
+
+    // ARDS-3 是否实施其他治疗：是，选择使用血管活性药物；是否使用血管活性药物：是；最高血管活性药物评分（VIS）评分
+    $('#create_ARDS_470').after(
+      '<a id="ARDSScore11" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">计算公式</a></span>'
+    );
+    $('#ARDSScore11').on('click', function() {
+      $('#ARDSTable11').modal();
+    });
+    $('#ARDSTable11 .calculate').click(function() {
+      $('#ARDSTable11').modal('hide');
+    });
+   
+    // ARDS-3 是否实施其他治疗：是，激素治疗；诊断ARDS后是否使用激素：是；甲基强的松龙等效剂量
+    //甲基强的松龙等效剂量赋值
+    $('#create_ARDS_490').on('change', function() {  //激素药物选择：
+      getResult()
+    })
+    $('#create_ARDS_453').on('blur', function() {  //激素总剂量(mg)：
+      getResult()
+    });
+    function getResult(){
+      var allData=$("#jsonValARDS_491").val()    //隐藏的input的值
+      var newData=JSON.parse(allData).sonList
+      var idNum=''
+      for(var i=0;i<newData.length;i++){
+        if($("#create_ARDS_490").val()=='a'&&newData[i].title=='甲基强的松龙'){
+          idNum=newData[i].no
+        }
+        else if($("#create_ARDS_490").val()=='b'&&newData[i].title=='可的松'){
+          idNum=newData[i].no
+        }
+        else if($("#create_ARDS_490").val()=='c'&&newData[i].title=='氢化可的松'){
+          idNum=newData[i].no
+        }
+        else if($("#create_ARDS_490").val()=='d'&&newData[i].title=='强的松'){
+          idNum=newData[i].no
+        }
+        else if($("#create_ARDS_490").val()=='e'&&newData[i].title=='强的松龙'){
+          idNum=newData[i].no
+        }
+        else if($("#create_ARDS_490").val()=='f'&&newData[i].title=='地塞米松'){
+          idNum=newData[i].no
+        }
+      }
+      var resultId="#create_"+idNum
+      var resultData=$(resultId).val()
+      $("#create_ARDS_498").val(resultData)      //甲基强的松龙等效剂量的值
+    }
+    
+  });
+</script>
+<style>
+  .scoreTable table tr.check-item.active td div {
+    color: #ffffff;
+  }
+  .scoreTable table tr.check-item.active td {
+    color: #ffffff;
+  }
+</style>

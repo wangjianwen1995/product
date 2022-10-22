@@ -1,0 +1,107 @@
+<!--
+ * @Description: 室间隔缺损手术 VSD
+ * @LastEditors: yuexiaoyan yuexiaoyan@ewell.cc
+ * @LastEditTime: 2022-07-04 18:37:46
+ * @FilePath: \single-disease\public\static\drgs\form-31.html
+-->
+
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css" />
+<link rel="stylesheet" href="../js/layui/css/layui.css" />
+<style>
+  .top-tips {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 16px;
+    background-color: #fff9e6;
+    border: 1px solid #ffd77a;
+  }
+</style>
+<body>
+  <div id="form-content" class="container-fluid">
+    <p class="top-tips">
+      注意：房间隔缺损（成人）、室间隔缺损（成人）已更新至原房间隔缺损（儿童）、室间隔缺损（儿童）模块，病种名称变更为房间隔缺损、室间隔缺损
+    </p>
+    <form class="form-horizontal">
+      <div id="dragslot" class="container" style="width:100%;padding:0;">
+        <div id="contend" class="slot-list"></div>
+        <div class="submit-button"></div>
+      </div>
+    </form>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  console.log('VSD-2.0');
+  var create = new create();
+  create.createRender('VSD', function() {
+    var PUBLIC = {
+      birthDayTimeStemp: '', // 出生日期
+      standardTimeStemp: '', // 入院日期
+    };
+    // 身份证号判断
+    $('#create_CM_6').on('change', function() {
+      if ($(this).val() !== '') {
+        $(this)
+          .parent()
+          .children('.sp-error')
+          .remove();
+      }
+    });
+    // 出生日期
+    $('#create_CM_13').on('change', function() {
+      PUBLIC.birthDayTimeStemp = new Date($(this).attr('data-value') || $(this).val()).getTime();
+      // getAge方法来自create.js
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 入院日期时间
+    $('#create_CM_16').on('change', function() {
+      PUBLIC.standardTimeStemp = new Date($(this).attr('data-value') || $(this).val()).getTime();
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 出院日期时间
+    $('#create_CM_17').on('change', function() {
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 判断身份证号为空
+    function setIDEmptyError(age) {
+      var startTime = '2021-01-01 00:00'; // 出院日期从2021年1月1日开始，大于18周岁的就需要填身份证了
+      var endTime = $('#create_CM_17').val(); //出院日期
+      var start = new Date(startTime.replace('-', '/').replace('-', '/'));
+      var end = new Date(endTime.replace('-', '/').replace('-', '/'));
+      var idCard = $('#itemCM_6').css('display');
+      if (age > 18 && end > start) {
+        if (
+          $('#create_CM_6').val() === '' &&
+          !$('#create_CM_6')
+            .parent()
+            .children('.sp-error').length
+        ) {
+          $('#create_CM_6')
+            .parent()
+            .append('<span class="sp-error"><font size=-1 color=red>该项为必填项</font></span>');
+        }
+      }
+    }
+  });
+</script>

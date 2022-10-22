@@ -1,0 +1,18 @@
+[
+  {"col":"PRIMAEYKEY varchar(250) NOT NULL,","name": "PRIMAEYKEY","zh": "主键" },
+  {"col":"CQSJ varchar(250) null,","name": "CQSJ","zh": "用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"},
+  {"col":"drplus_extract_detailed_id  int  NOT NULL,","name": "drplus_extract_detailed_id","zh": "抽取id,无需对映"},
+
+{"col":"icu_codeid varchar(50) null,","name": "icu_codeid","zh": "重症监护室代码"},
+{"col":"inpool_icu_time varchar(50) null,","name": "inpool_icu_time","zh": "进入监护室时间"},
+{"col":"out_icu_time varchar(50) null,","name": "out_icu_time","zh": "退出监护室时间"},
+{"col":"medins_orgcode varchar(200) null,","name": "medins_orgcode","zh": "医疗机构组织机构代码"},
+{"col":"nurscare_lv_code varchar(50) null,","name": "nurscare_lv_code","zh": "护理等级代码"},
+{"col":"nurscare_lv_name varchar(200) null,","name": "nurscare_lv_name","zh": "护理等级名称"},
+{"col":"nurscare_days varchar(50) null,","name": "nurscare_days","zh": "护理天数"},
+{"col":"back_icu varchar(50) null,","name": "back_icu","zh": "重返重症监护室标志"},
+{"col":"vali_flag varchar(50) not null,","name": "vali_flag","zh": "有效标志"},
+{"col":"ipt_medcas_hmpg_sn varchar(100) not null,","name": "ipt_medcas_hmpg_sn","zh": "住院病案首页流水号"},
+{"col":"mdtrt_sn varchar(100) not null,","name": "mdtrt_sn","zh": "就医流水号" }
+
+]

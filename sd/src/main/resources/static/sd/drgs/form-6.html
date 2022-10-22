@@ -1,0 +1,645 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- Knee---膝关节HSS评分表 -->
+    <div id="HSSTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby=" Knee---膝关节HSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">Knee---膝关节HSS评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>疼痛（30分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>30分</td>
+                                <td>
+                                    <div score="30" class="check-item">任何时候均无疼痛</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>行走时</th>
+                                <th>休息时</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15分</td>
+                                <td>
+                                    <div score="15" class="check-item">行走时无疼痛</div>
+                                </td>
+                                <td>
+                                    <div score="15" class="check-item">休息时无疼痛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">行走时轻度疼痛</div>
+                                </td>
+                                <td>
+                                    <div score="10" class="check-item">休息时轻度疼痛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">行走时中度疼痛</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">休息时中度疼痛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">行走时严重疼痛</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">休息时严重疼痛</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>功能（22分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22分</td>
+                                <td>
+                                    <div score="22" class="check-item">行走站立无限制</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">行走2500~5000米和站立半小时以上</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">行走500~2500米和站立可达半小时</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">行走少于500米</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">不能行走</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">屋内行走，无需支具</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">屋内行走，需要支具</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">能上楼梯</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">能上楼梯，但需支具</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">活动度(18分)</td>
+                                <td>
+                                    <div>
+                                        <input id="huodongdu" placeholder="8度=1分，最高18分" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肌力（10分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">优，完全能对抗阻力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">良，部分对抗阻力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">中，能带动关节活动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">差，不能带动关节活动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>屈曲畸形（10分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">无畸形</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">小于5度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">5-10度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">大于10度</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>稳定性（10分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">轻度不稳0-5度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">中度不稳5-15度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">严重不稳大于15度</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>减分项目（可多选）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-1分</td>
+                                <td>
+                                    <div score="-1" class="check-item">单手杖</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-2分</td>
+                                <td>
+                                    <div score="-2" class="check-item">单拐杖</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-3分</td>
+                                <td>
+                                    <div score="-3" class="check-item">双拐杖</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-2分</td>
+                                <td>
+                                    <div score="-2" class="check-item">伸直滞缺5度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-3分</td>
+                                <td>
+                                    <div score="-3" class="check-item">伸直滞缺10度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-5分</td>
+                                <td>
+                                    <div score="-5" class="check-item">伸直滞缺15度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-1*几度</td>
+                                <td>
+                                    <div>每5度外翻
+                                        <input id="waifandu" />度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-1*几度</td>
+                                <td>
+                                    <div>每5度内翻
+                                        <input id="neifandu" />度</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Knee---Caprini血栓风险因素评估  -->
+    <div id="CapriniTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Knee---Caprini血栓风险因素评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 800px;">
+            <div class="modal-content">
+                <div class="scoreHeader">Knee---Caprini血栓风险因素评估</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>危险因素（可多选）</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>2分</td>
+                                <td>3分</td>
+                                <td>5分</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">年龄41-60岁</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">年龄61-74岁</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">年龄≥75岁</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">脑卒中( ＜1个月)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">小手术</div>
+                                </td>
+                              
+                                <td>
+                                    <div score="2" class="check-item">关节镜手术</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">VTE史</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">择期关节置换术</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">体质指数>25 kg/m²</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">大型开放手术( > 45 min)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">VTE家族史</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">髋、骨盆或下肢骨折</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">下肢肿胀</div>
+                                </td>
+                                
+                                <td>
+                                    <div score="2" class="check-item">腹腔镜手术( >45 min)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">凝血因子V Leiden突变</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">急性脊髓损伤( <1个月)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">静脉曲张</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">恶性肿瘤</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">凝血酶原G20210A突变</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">妊娠或产后</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">卧床( >72 h)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">狼疮抗凝物阳性</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">有不明原因或者习惯性流产史</div>
+                                </td>
+                                
+                                <td><div score="2" class="check-item">石膏固定</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">抗心磷指抗体阳性</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">口服避孕药或激素替代疗法</div>
+                                </td>
+                                
+                                <td><div score="2" class="check-item">中央静脉通路</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">血清同型半胱氨酸升高</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">脓毒症( ＜I个月)</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">肝素诱导的血小板减少症</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">严重肺病.包括肺炎( ＜1个月)</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">其他先天性或获得性血栓形成倾向</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">肺功能异常</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">急性心肌梗死</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">充血性心力衰竭( ＜1个月)</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">炎性肠病史</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">卧床患者</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('Knee-2.0')
+var create = new create();
+    create.createRender("Knee",function() {
+        //评分表
+        $("#create_31").after('<a id="HSSScore_right" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table score_right">评分工具计算</a></span>')
+        $("#create_34").after('<a id="HSSScore_left" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table score_left">评分工具计算</a></span>')
+        $("#create_57").after('<a id="CapriniScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table score_left">评分工具计算</a></span>')
+        var getResult = function () {
+            var a = Number($("#huodongdu").val()) || 0
+            var b = Number($("#waifandu").val()) || 0
+            var c = Number($("#neifandu").val()) || 0
+            return a - (b + c) / 5
+        }
+        var getText = function () {
+            var result = getResult();
+            var text = result >= 0 ? ("+" + result) : result;
+            return text.toString()
+        }
+        $("#HSSTable").on("blur", "#huodongdu", function () {
+            var num = Number($(this).val())
+            if (isNaN(num) || num < 0 || num > 18) {
+                $(this).val("")
+                $(this).after('<span class="err" style="color:red;">不符合规范！</span>')
+            } else {
+                $(this).siblings("span").remove()
+            }
+            $("#HSSTable .resultScore .num").text(($("#HSSTable .calculate").data("score") || 0) + getText())
+        })
+        $("#HSSTable").on("blur", "#waifandu,#neifandu", function () {
+            var num = Number($(this).val())
+            if (isNaN(num)) {
+                $(this).val("")
+            }
+            $("#HSSTable .resultScore .num").text(($("#HSSTable .calculate").data("score") || 0) + getText())
+        })
+
+        $("#HSSTable .resultScore .num").data("text", function (scope) {
+            return scope + getText();
+        })
+
+        var target = '[name="Knee-1-2-2-1"]';
+        var hssTable_score;//hss的侧边
+        $("#form-content").on("click", "#HSSScore,#HSSScore2,#HSSScore_left,#HSSScore_right", function (e) {
+            hssTable_score = $(this).attr('class');
+            $("#HSSTable .scoreTable").find(".check-item.active").removeClass("active")
+            $("#HSSTable .calculate").data("score", 0)
+            if (e.target.id == "HSSScore_right") {
+                target = '[name="Knee-1-2-2-1"]'
+            } else {
+                target = '[name="Knee-1-2-2-2"]'
+            }
+            $("#waifandu").val('')
+            $("#neifandu").val('')
+            $("#HSSTable").modal();
+        })
+        $("#HSSTable .calculate").click(function () {
+            $(target).val($(this).data("score") + getResult());
+            $(target).blur();
+            $(target).change();
+            $("#HSSTable").modal("hide");
+        })
+        //Caprini血栓风险
+        $("#form-content").on("click", "#CapriniScore", function () {
+            $("#CapriniTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#CapriniTable .calculate").click(function () {
+            $('#create_57').val($(this).data("score"));
+            $('#create_57').blur();
+            $('#create_57').change();
+            $("#CapriniTable").modal("hide");
+        })
+    })
+</script>

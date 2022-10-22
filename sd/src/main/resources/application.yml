@@ -1,0 +1,54 @@
+server:
+  application:
+    name: 山西雕龙单病种质量管理平台
+  port: 23302
+productName: 单病种质量管理平台
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_sd_jc
+      username: sa
+      password: sa@123
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_jc
+      username: sa
+      password: sa@123
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+  profiles:
+    active=dev: prod
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+basePackage: com.sxdl.sd
+logging:
+  level:
+    com.sxdl.product.dc.dao : debug
+HBI:
+  name: 山西雕龙演示
+  url: http://119.45.6.44:9018
+drpath: http://192.168.2.208:8088/report/sendDBZ
+drrzpath: http://192.168.2.208:8088/report/findByConditionDBZ
+back_path: D:\bf
+back_time: 10
+sd_special_id: 36
+dcip: http://140.143.190.251:23300
+drip: http://192.168.2.205:23308
+user: 1400001402003
+pwd: 50110905504
+# drlink 链接服务器名.数据库名.dbo.
+drlink: dl_drplus
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  is-print: false
+

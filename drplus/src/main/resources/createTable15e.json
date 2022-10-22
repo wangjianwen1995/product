@@ -1,0 +1,14 @@
+[
+  {"col":"PRIMAEYKEY varchar(250) NOT NULL,","name": "PRIMAEYKEY","zh": "主键" },
+  {"col":"CQSJ varchar(250) null,","name": "CQSJ","zh": "用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"},
+  {"col":"drplus_extract_detailed_id  int  NOT NULL,","name": "drplus_extract_detailed_id","zh": "抽取id,无需对映"},
+
+  {"col":"med_chrgitm varchar(50) null,","name": "med_chrgitm","zh": "医疗收费项目" },
+  {"col":"amt varchar(50) null,","name": "amt","zh": "金额" },
+  {"col":"claa_sumfee varchar(50) null,","name": "claa_sumfee","zh": "甲类费用合计" },
+  {"col":"clab_amt varchar(50) null,","name": "clab_amt","zh": "乙类金额" },
+  {"col":"fulamt_ownpay_amt varchar(50) null,","name": "fulamt_ownpay_amt","zh": "全自费金额" },
+  {"col":"oth_amt varchar(50) null,","name": "oth_amt","zh": "其他金额" }
+
+
+]

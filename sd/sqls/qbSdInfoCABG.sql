@@ -1,0 +1,1 @@
+truncate table sd_info_CABG

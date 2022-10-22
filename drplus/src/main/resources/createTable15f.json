@@ -1,0 +1,19 @@
+[
+  {"col":"PRIMAEYKEY varchar(250) NOT NULL,","name": "PRIMAEYKEY","zh": "主键" },
+  {"col":"CQSJ varchar(250) null,","name": "CQSJ","zh": "用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"},
+  {"col":"drplus_extract_detailed_id  int  NOT NULL,","name": "drplus_extract_detailed_id","zh": "抽取id,无需对映"},
+
+  {"col":"oprn_oprt_type varchar(100) null,","name": "oprn_oprt_type","zh": "手术操作类别" },
+  {"col":"oprn_oprt_name varchar(500) null,","name": "oprn_oprt_name","zh": "手术操作名称" },
+  {"col":"oprn_oprt_code varchar(100) null,","name": "oprn_oprt_code","zh": "手术操作代码" },
+  {"col":"oprn_oprt_date varchar(100) null,","name": "oprn_oprt_date","zh": "手术操作日期" },
+  {"col":"anst_way varchar(100) null,","name": "anst_way","zh": "麻醉方式" },
+  {"col":"oper_dr_name varchar(100) null,","name": "oper_dr_name","zh": "术者医师姓名" },
+  {"col":"oper_dr_code varchar(100) null,","name": "oper_dr_code","zh": "术者医师代码" },
+  {"col":"anst_dr_name varchar(100) null,","name": "anst_dr_name","zh": "麻醉医师姓名" },
+  {"col":"anst_dr_code varchar(100) null,","name": "anst_dr_code","zh": "麻醉医师代码" }
+
+
+
+
+]

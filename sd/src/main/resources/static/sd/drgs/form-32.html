@@ -1,0 +1,309 @@
+<!--
+ * @Description: 房颤 AF
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-03-01 11:13:03
+ * @FilePath: \single-disease\public\static\drgs\form-32.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- AF---房颤患者脑卒中风险评估 -->
+    <div id="aFTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="HAS-BLED评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">HAS-BLED评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>临床特点</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压（高血压定义为收缩压>160 mmHg(1 mmHg=0.133 kPa））</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">肝功能异常（肝功能异常定义为慢性肝病（如肝纤维化）或胆红素>2倍正常上限，谷丙转氨酶>3倍正常上限）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">肾功能异常（肾功能异常定义为慢性透析或肾移植或血清肌酐≥200 umol/L）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">卒中</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">出血（出血指既往出血史和/或出血倾向）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">INR值易波动（国际标准化比值(INR)值易波动指INR不稳定，在治疗窗内的时间之60%）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">老年（如年龄>65)(E)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">药物（药物为合并应用抗血小板药物或非甾体类抗炎药）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">嗜酒</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CHA2DS2-VASc评分 -->
+    <div id="CHA2DS2VAScTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="HAS-BLED 危险因素与评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CHA<sub>2</sub>DS<sub>2</sub>-VAS<sub>c</sub>评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>危险因素</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">慢性心力衰竭/左心室功能障碍(C)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压(H)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age1">年龄≥75(A)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">糖尿病(D)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">既往卒中/TIA/血栓栓塞史(S)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">血管疾病(V)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age2">年龄65-74岁(A)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">性别(女性)(Sc)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--CHADS2评分 -->
+    <div id="CHA2DS2Table" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="HAS-BLED 危险因素与评分">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CHADS<sub>2</sub class="score-table">评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>CHADS<sub>2</sub class="score-table">评分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">心衰</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄≥75</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">糖尿病</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">卒中或TIA</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('AF-2.0')
+var create = new create();
+    create.createRender("AF",function() {
+        $('#create_39').after('<a id="CHA2DS2Score" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_AF_235').after('<a id="CHA2DS2VAScScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#create_44').after('<a id="aFScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#CHA2DS2Score').click(function () {
+            $("#CHA2DS2Table").modal();
+        })
+        $('#CHA2DS2VAScScore').click(function () {
+            $("#CHA2DS2VAScTable").modal();
+        })
+        $('#aFScore').click(function () {
+            $("#aFTable").modal();
+        })
+        $("#CHA2DS2Table .calculate").click(function () {
+            $("#create_39").val($(this).data("score"));
+            $("#CHA2DS2Table").modal("hide");
+            $("#create_39").blur();
+            $("#create_39").change();
+        })
+        $("#CHA2DS2VAScTable .calculate").click(function () {
+            $("#create_AF_235").val($(this).data("score"));
+            $("#CHA2DS2VAScTable").modal("hide");
+            $("#create_AF_235").blur();
+            $("#create_AF_235").change();
+        })
+        $("#aFTable .calculate").click(function () {
+            $("#create_44").val($(this).data("score"));
+            $("#aFTable").modal("hide");
+            $("#create_44").blur();
+            $("#create_44").change();
+        })
+        //互斥
+        $(".check-age1").on('click', function () {
+            if ($(".check-age2").attr("class") == "check-item check-age2 active") {
+                $(".check-age2").removeClass("active")
+            }
+        })
+        $(".check-age2").on('click', function () {
+            if ($(".check-age1").attr("class") == "check-item check-age1 active") {
+                $(".check-age1").removeClass("active")
+            }
+        })
+        
+        // AF-1 是否为瓣膜性房颤 添加鼠标移入提示
+        $('#itemAF_366').on('mouseenter', '.form-1-2[key="y"]', function() {
+          var that = this;
+          var content = setTipsHTML('yes');
+          tips =layer.tips(content,that,{tips:[3,'#fff'],time:0,area: 'auto',maxWidth: 800});
+        });
+        $('#itemAF_366').on('mouseenter', '.form-1-2[key="n"]', function() {
+          var that = this;
+          var content = setTipsHTML('no');
+          tips =layer.tips(content,that,{tips:[3,'#fff'],time:0,area: 'auto',maxWidth: 800});
+        });
+        $('#itemAF_366').on('mouseleave', '.form-1-2', function() {
+          layer.close(tips);
+        });
+        function setTipsHTML(type) {
+          var html = '<div style="color: #000;">';
+          if(type === 'yes') {
+            html += '<p>瓣膜性房颤：合并心脏机械瓣置换术后或二尖瓣中、重度狭窄的房颤</p>';
+          } else {
+            html += '<p>非瓣膜性房颤：瓣膜性房颤以外的其他房颤</p>';
+          }
+          html += '</div>'
+          return html;
+        }
+    });
+</script>

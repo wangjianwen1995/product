@@ -1,0 +1,63 @@
+server:
+  application:
+    name: 山西雕龙智慧数据分析平台
+  port: 23307
+  servlet:
+    session:
+      timeout: 3600s
+productName: 智慧数据分析平台
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      #      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_hp
+      #      password: ckboar123!@#
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_da
+      password: Admin@123
+      username: sa
+
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc_base
+      password: ckboar123!@#
+      #      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_base
+      #      password: Admin@123
+      username: sa
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+#  mvc:
+#    static-path-pattern: /static/**
+#  resources:-asspath:static/**,file:static/**
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+logging:
+  level:
+    com.sxdl.hp.dao : debug
+HBI:
+  name: 山西雕龙演示
+  url: http://127.0.0.1:23306
+  isNew: 1
+  #jar包运行的
+  #publicKey: 3c8dd64ea0c6c5fe4513ebafd5f6940347118995f8b9f6c397b58a4a11a8e662
+  #jar0715
+  #publicKey: b4038bea6d8bebaffa20d0b5ca645ee4bfcfb1e3e597a7bc47552b39fe77d026
+  #呵呵呵呵的
+  #publicKey: ea0cb8d33655a11b656621a68690dbffafb805787c11af25745a06fb2d6023c9
+  #exe运行的
+  publicKey: 89d253b6338bd1d9a3796e3382fb3828aeaba2ea5f8deffef1aac78f73850d56
+basePackage: com.sxdl.analyse.controller
+drpath: http://140.143.190.251:8077
+back_path: D:\bf
+back_time: 10
+dcip:
+drip:
+

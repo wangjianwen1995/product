@@ -1,0 +1,50 @@
+server:
+  application:
+    name: 雕龙智能数据上报平台DR
+  port: 23301
+
+productName: 雕龙智能数据上报平台DR
+
+dcip: 127.0.0.1
+drip: 127.0.0.1
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dr
+      username: sa
+      password: sa
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc
+      username: sa
+      password: ckboar123!@#
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+basePackage: com.sxdl.report.controller
+
+HBI:
+  name: 山西雕龙演示
+  url: http://140.143.190.251:8077
+
+back_path: D:\bf
+back_time: 10
+
+personnelfiles: D:\my_files\
+
+productjson:
+  template: {1: DRG医保上报,2: 医保上报,3: 单病种上报,4: 职工医保web上报,5: DIP注册,6: DIP上报,7: DIP冲销}
+  listmaps: {1: {3: 单病种上报},2: {1: DRG医保上报, 4: 职工医保web上报, 5: DIP注册, 6: DIP上报, 7: DIP冲销},3: {2: 医保上报}}
+  productname: {1: 国家平台,2: 省平台,3: 市平台}
+

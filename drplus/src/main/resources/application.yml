@@ -1,0 +1,99 @@
+
+DrHospitalName: XXX医院
+
+server:
+  application:
+    name: 雕龙智能数据上报平台DR+
+  port: 23308
+
+productName: 雕龙智能数据上报平台DR+
+
+  ## 查询数据表中 数据为null的字段也回显 这里主要针对返回类型没有entity的 查询结果
+  #Mybatis:
+  #configuration:
+#call-setters-on-nulls:true
+
+dcip: 127.0.0.1
+drip: 127.0.0.1
+
+
+istest: 200
+
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;SelectMethod=cursor;databaseName=dl_drplus_DT5;
+      username: sa
+      password: sa
+    #测试环境下打开 API文档
+  profiles:
+    active: dev
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+
+
+  # quartz调度器
+  quartz:
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 10000
+            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+    #数据库方式
+    job-store-type: jdbc
+
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+basePackage: com.sxdl.cf.controller
+#basePackage: com.sxdl.drplus.controller
+swagger:
+  enable: true
+
+
+logging:
+  level:
+    com.sxdl.drplus.dao1 : debug
+
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: -1
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: false
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  is-share: true
+  token-style: uuid
+  is-log: false
+  is-print: false
+
+HBI:
+  name: 山西雕龙演示
+  url: http://140.143.190.251:8077
+
+back_path: D:\bf
+back_time: 10
+personnelfiles: D:\my_files\

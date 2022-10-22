@@ -1,0 +1,60 @@
+<!--
+ * @Description: 甲状腺癌（手术治疗） TC
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-01-10 09:10:42
+ * @FilePath: \single-disease\public\static\drgs\form-14.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<style>
+  #itemTC_270, #itemTC_271, #itemTC_255{
+    margin-top: 24px!important;
+  }
+</style>
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<!-- <script>document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");</script> -->
+<script>
+    console.log('TC-2.0')
+    var create = new create();
+    create.createRender("TC",function() {
+      // // 术后化疗/放疗 主要诊断ICD-10
+      // checkCommonICD('#create_TC_257', '#create_TC_258');
+      // // 术后化疗/放疗 治疗性操作 ICD-9-CMN-3
+      // checkCommonICD('#create_TC_260', '#create_TC_261');
+      // // 术后化疗/放疗 其他诊断ICD-10
+      // checkCommonICD('#create_TC_263', '#create_TC_264');
+      // TC2-2选否弹窗
+      // 关闭上报弹窗内容
+      var eleHtml = '<div id="electrocar" class="end-report-content">' +
+            '<img class="end-img" src="../img/report-warn.png"/>' +
+            '<span class="end-title">该病例不符合上报要求</span>' +
+            '<p class="end-content">请重新填报</p></div>';
+      $('.create_17').on('change', function() {
+        if($('.create_17[value="n"]')[0].checked) {
+          reportConfirm(eleHtml, function() {
+            $('.create_17[value="n"]')[0].checked = false;
+          })
+        }
+      });
+    });
+</script>

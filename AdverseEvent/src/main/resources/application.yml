@@ -1,0 +1,75 @@
+
+
+server:
+  application:
+    name: 医疗质量（安全）不良事件报告与处置管理系统V1.0
+  port: 23313
+
+productName: 医疗质量（安全）不良事件报告与处置管理系统V1.0
+
+  ## 查询数据表中 数据为null的字段也回显 这里主要针对返回类型没有entity的 查询结果
+  #Mybatis:
+  #configuration:
+#call-setters-on-nulls:true
+
+dcip: 127.0.0.1
+drip: 127.0.0.1
+
+istest: 200
+
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_ae
+      username: sa
+      password: sa
+    #测试环境下打开 API文档
+  profiles:
+    active: dev
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+
+
+
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+basePackage: com.sxdl.ae.controller
+#basePackage: com.sxdl.drplus.controller
+
+swagger:
+  enable: true
+
+logging:
+  level:
+    com.sxdl.ae.dao1 : debug
+
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: -1
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: false
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  is-share: true
+  token-style: uuid
+  is-log: false
+  is-print: false
+
+HBI:
+  name: 山西雕龙演示
+  url: http://140.143.190.251:8077
+
+back_path: D:\bf
+back_time: 10
+personnelfiles: D:\my_files\

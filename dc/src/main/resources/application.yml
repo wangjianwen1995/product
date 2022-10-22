@@ -1,0 +1,66 @@
+server:
+  application:
+    name: 山西雕龙数据中心平台
+  port: 23300
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/javascript,application/json,application/xml,text/html,text/xml,text/plain,text/css,image/*
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc_base
+#      password: Admin@123
+#      url: jdbc:sqlserver://192.168.5.233:1433;databaseName=dl_dc_base
+#      password: abc..123
+#      url: jdbc:sqlserver://192.168.0.174:1433;databaseName=dl_dc_base
+#      password: 123.com
+#      url: jdbc:sqlserver://111.111.118.20:1433;databaseName=dl_dc_base
+#      password: dl@123
+#      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc_base
+#      password: ckboar123!@#
+      url: jdbc:sqlserver://175.27.170.104 :1433;databaseName=dl_dc_base_qyzyy
+      password: DLKJdlkj2022
+      username: sa
+
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc
+#      password: Admin@123
+#      url: jdbc:sqlserver://192.168.5.233:1433;databaseName=dl_dc
+#      password: abc..123
+#      url: jdbc:sqlserver://192.168.0.174:1433;databaseName=dl_dc
+#      password: 123.com
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc
+      password: ckboar123!@#
+#      url: jdbc:sqlserver://111.111.118.20:1433;databaseName=dl_dc
+#      password: dl@123
+      username: sa
+
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+logging:
+  level:
+    com.sxdl.base.dao : debug
+dcip: 192.168.2.200:23300
+drip:
+sa-token:
+  token-name: sxdl
+  timeout: 36000
+  is-print: false
+back_time: 10

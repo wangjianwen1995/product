@@ -1,0 +1,745 @@
+<!--
+ * @Description: 主动脉腔内修复术 EAR
+ * @LastEditors: yuexiaoyan yuexiaoyan@ewell.cc
+ * @LastEditTime: 2022-07-04 18:45:56
+ * @FilePath: \single-disease\public\static\drgs\form-61.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css" />
+<link rel="stylesheet" href="../js/layui/css/layui.css" />
+
+<body>
+  <div id="form-content" class="container-fluid">
+    <form class="form-horizontal">
+      <div id="dragslot" class="container" style="width:100%;padding:0;">
+        <div id="contend" class="slot-list"></div>
+        <div class="submit-button"></div>
+      </div>
+    </form>
+  </div>
+  <div
+    id="GRACETable1"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby=" GRACE危险评分表"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">STEMI---GRACE危险评估</div>
+        <div class="scoreTable">
+          <div class="row">
+            <!--<div class="col-md-4">-->
+            <!--<table>-->
+            <!--<thead>-->
+            <!--<tr>-->
+            <!--<th style="width: 80px;"></th>-->
+            <!--<th>Killip分级</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr>-->
+            <!--<td>0分</td>-->
+            <!--<td>-->
+            <!--<div score="0" class="check-item">I</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>20分</td>-->
+            <!--<td>-->
+            <!--<div score="20" class="check-item">II</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>39分</td>-->
+            <!--<td>-->
+            <!--<div score="39" class="check-item">III</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>59分</td>-->
+            <!--<td>-->
+            <!--<div score="59" class="check-item">IV</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+            <!--</table>-->
+            <!--</div>-->
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80px;"></th>
+                    <th>收缩压mmHg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>24分</td>
+                    <td>
+                      <div score="24" class="check-item">≤80</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>22分</td>
+                    <td>
+                      <div score="22" class="check-item">80-99</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>18分</td>
+                    <td>
+                      <div score="18" class="check-item">100-119</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>14分</td>
+                    <td>
+                      <div score="14" class="check-item">120-139</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10分</td>
+                    <td>
+                      <div score="10" class="check-item">140-159</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4分</td>
+                    <td>
+                      <div score="4" class="check-item">160-199</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≥200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80px;"></th>
+                    <th>心率（次/分）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤50</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">50-69</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9分</td>
+                    <td>
+                      <div score="9" class="check-item">70-89</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>14分</td>
+                    <td>
+                      <div score="14" class="check-item">90-109</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>23分</td>
+                    <td>
+                      <div score="23" class="check-item">110-149</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>35分</td>
+                    <td>
+                      <div score="35" class="check-item">150-199</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>43分</td>
+                    <td>
+                      <div score="43" class="check-item">≥200</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80px;"></th>
+                    <th>年龄</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">≤30</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0分</td>
+                    <td>
+                      <div score="0" class="check-item">30-39</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>18分</td>
+                    <td>
+                      <div score="18" class="check-item">40-49</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>36分</td>
+                    <td>
+                      <div score="36" class="check-item">50-59</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>55分</td>
+                    <td>
+                      <div score="55" class="check-item">60-69</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>73分</td>
+                    <td>
+                      <div score="73" class="check-item">70-79</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>91分</td>
+                    <td>
+                      <div score="91" class="check-item">80-89</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>100分</td>
+                    <td>
+                      <div score="100" class="check-item">≥90</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80px;"></th>
+                    <th>Ck（mg/dL）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">0-0.39</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3分</td>
+                    <td>
+                      <div score="3" class="check-item">0.40-0.79</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5分</td>
+                    <td>
+                      <div score="5" class="check-item">0.80-1.19</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>7分</td>
+                    <td>
+                      <div score="7" class="check-item">1.20-1.59</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9分</td>
+                    <td>
+                      <div score="9" class="check-item">1.60-1.99</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>15分</td>
+                    <td>
+                      <div score="15" class="check-item">2.00-3.99</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>20分</td>
+                    <td>
+                      <div score="20" class="check-item">＞4.0</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 80px;"></th>
+                    <th>风险因素</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>24分</td>
+                    <td>
+                      <div score="24" class="check-item">充血性心力衰竭病史</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>14分</td>
+                    <td>
+                      <div score="14" class="check-item">住院期间未行PCI</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12分</td>
+                    <td>
+                      <div score="12" class="check-item">心肌梗死既往史</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>11分</td>
+                    <td>
+                      <div score="11" class="check-item">ST段压低</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>15分</td>
+                    <td>
+                      <div score="15" class="check-item">心肌损伤标志物升高</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  console.log('EAR-2.0.1');
+  var create = new create();
+  create.createRender('EAR', function() {
+    var PUBLIC = {
+      // currentCTImg: 'a', // 主动脉支架术后内漏CT诊断及分型选项 a,b,c,d 对应四个图片
+      imgList: [], // 主动脉支架术后内漏CT诊断及分型 四个图片
+      TEVARCreate_EAR_689: '', // TEVAR 手术患者的锚定区直径
+      TEVARcreate_EAR_690: '', // TEVAR 术中支架直径
+      EVARCreate_EAR_698: '', // EVAR 手术患者的锚定区直径
+      EVARcreate_EAR_699: '', // EVAR 术中支架直径
+      birthDayTimeStemp: '', // 出生日期
+      standardTimeStemp: '', // 入院日期
+    };
+    // 胸主动脉主要手术操作栏中提取ICD-9-CM-3四/六位亚目编码与名称
+    checkCommonICD('#create_EAR_436', '#create_EAR_437');
+    // 腹主动脉主要手术操作栏中提取ICD-9-CM-3四/六位亚目编码与名称
+    checkCommonICD('#create_EAR_439', '#create_EAR_440');
+
+    // EAR-4 TEVAR术中支架直径放大率
+    $('#create_EAR_689').on('change', function() {
+      PUBLIC.TEVARCreate_EAR_689 = Number($(this).val());
+      var flag = judgeNumberRange(Number($(this).val()));
+      if (!flag) {
+        $(this).val('');
+        $('#create_EAR_691').val('');
+        return;
+      }
+      var flag2 = judgeDiameter(PUBLIC.TEVARCreate_EAR_689, PUBLIC.TEVARCreate_EAR_690);
+      if (!flag2) {
+        $(this).val('');
+        $('#create_EAR_691').val('');
+        return;
+      }
+      var dividend = PUBLIC.TEVARCreate_EAR_690 - PUBLIC.TEVARCreate_EAR_689 || 0;
+      var divisor = PUBLIC.TEVARCreate_EAR_689;
+      var res = getRate(dividend, divisor);
+      $('#create_EAR_691').val(res);
+    });
+    $('#create_EAR_690').on('change', function() {
+      PUBLIC.TEVARCreate_EAR_690 = Number($(this).val());
+      console.log(Number($(this).val()));
+      var flag = judgeNumberRange(Number($(this).val()));
+      if (!flag) {
+        $(this).val('');
+        $('#create_EAR_691').val('');
+        return;
+      }
+      var flag2 = judgeDiameter(PUBLIC.TEVARCreate_EAR_689, PUBLIC.TEVARCreate_EAR_690);
+      if (!flag2) {
+        $(this).val('');
+        $('#create_EAR_691').val('');
+        return;
+      }
+      var dividend = PUBLIC.TEVARCreate_EAR_690 - PUBLIC.TEVARCreate_EAR_689 || 0;
+      var divisor = PUBLIC.TEVARCreate_EAR_689;
+      var res = getRate(dividend, divisor);
+      $('#create_EAR_691').val(res);
+    });
+
+    // EAR-4 EVAR术中支架直径放大率
+    $('#create_EAR_698').on('change', function() {
+      PUBLIC.TEVARCreate_EAR_698 = Number($(this).val());
+      var flag = judgeNumberRange(Number($(this).val()));
+      if (!flag) {
+        $(this).val('');
+        $('#create_EAR_700').val('');
+        return;
+      }
+      var flag2 = judgeDiameter(PUBLIC.TEVARCreate_EAR_698, PUBLIC.TEVARCreate_EAR_699);
+      if (!flag2) {
+        $(this).val('');
+        $('#create_EAR_700').val('');
+        return;
+      }
+      var dividend = PUBLIC.TEVARCreate_EAR_699 - PUBLIC.TEVARCreate_EAR_698 || 0;
+      var divisor = PUBLIC.TEVARCreate_EAR_698;
+      var res = getRate(dividend, divisor);
+      $('#create_EAR_700').val(res);
+    });
+    $('#create_EAR_699').on('change', function() {
+      PUBLIC.TEVARCreate_EAR_699 = Number($(this).val());
+      var flag = judgeNumberRange(Number($(this).val()));
+      if (!flag) {
+        $(this).val('');
+        $('#create_EAR_700').val('');
+        return;
+      }
+      var flag2 = judgeDiameter(PUBLIC.TEVARCreate_EAR_698, PUBLIC.TEVARCreate_EAR_699);
+      if (!flag2) {
+        $(this).val('');
+        $('#create_EAR_700').val('');
+        return;
+      }
+      var dividend = PUBLIC.TEVARCreate_EAR_699 - PUBLIC.TEVARCreate_EAR_698 || 0;
+      var divisor = PUBLIC.TEVARCreate_EAR_698;
+      var res = getRate(dividend, divisor);
+      $('#create_EAR_700').val(res);
+    });
+
+    // 禅道4362 主动脉CTA检查日期时间 规则 逻辑：检查日期时间在本次住院入院的前30天之后，且在本次住院EAR手术日期前 前两个日期没有选择时不可选择主动脉CTA检查日期时间
+    var beforeDate, afterDate;
+    // $('#create_CM_16').on('change', function() {    //提交之后打开数据已经回显，change事件没有触发
+    //   beforeDate = $(this).attr('data-value');
+    // });
+    // $('#create_CM_24').on('change', function() {
+    //   afterDate = $(this).attr('data-value');
+    // });
+    $('#create_EAR_455').on('click', function() {
+      beforeDate = $('#create_CM_16').attr('data-value') || $('#create_CM_16').val();
+      afterDate = $('#create_CM_24').attr('data-value') || $('#create_CM_24').val();
+      if (!beforeDate || !afterDate) {
+        layer.open({
+          offset: '150px',
+          title: '提示',
+          content: '请先填写入院日期时间和手术开始日期时间',
+        });
+        return;
+      }
+      WdatePicker({
+        el: $dp.$(this),
+        dateFmt: 'yyyy-MM-dd HH:mm',
+        qsEnabled: false,
+        enableInputMask: false,
+        errDealMode: -1,
+        skin: 'twoer',
+        minDate: "#F{$dp.$DV('" + beforeDate + "', {d: -30})}",
+        maxDate: afterDate,
+        onpicking: function(obj) {
+          $(obj.el).change();
+          $(obj.el).blur();
+        },
+      });
+    });
+
+    // 添加评分表
+    // EAR-8 是否有手术后急性心机梗死: 是-末次GRACE危险评估
+    $('#create_EAR_796').after(
+      '<a id="GRACEScore1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+
+    $('#GRACEScore1').on('click', function() {
+      $('#GRACETable1').modal();
+    });
+    $('#GRACETable1 .calculate').click(function() {
+      $('#create_EAR_796').val($(this).data('score'));
+      $('#GRACETable1').modal('hide');
+      $('#create_EAR_796').blur();
+    });
+
+    var mainOperation = [];
+    // 主要手术操作ICD-9-CM-3 四位亚目编码与名称选择
+    $('#itemEAR_233').on('click', 'span.form-2-2', function() {
+      var key = $(this).attr('key');
+      if (mainOperation.indexOf(key) === -1) {
+        mainOperation.push(key);
+      } else {
+        remove(mainOperation, key);
+      }
+      if (mainOperation.length === 1) {
+        $('#create_EAR_238').val(mainOperation[0]);
+      } else if (!mainOperation.length) {
+        $('#create_EAR_238').val('def');
+      } else {
+        $('#create_EAR_238').val('c');
+      }
+      $('#create_EAR_238').change();
+      $('#create_EAR_238').blur();
+    });
+
+    // EAR-5 术后首次主动脉CTA复查是否存在内漏-是 主动脉支架术后内漏CT诊断及分型 查看详细图片
+    // EAR-14 内漏CT诊断及分型 查看详细图片
+    var img1 = '<img class="ctdetail-img" data-value="a" src="../img/EAR-1.png" alt="" />';
+    var img2 = '<img class="ctdetail-img" data-value="b" src="../img/EAR-2.png" alt="" />';
+    var img3 = '<img class="ctdetail-img" data-value="c" src="../img/EAR-3.png" alt="" />';
+    var img4 = '<img class="ctdetail-img" data-value="d" src="../img/EAR-4.png" alt="" />';
+    var img5 = '<img class="ctdetail-img" data-value="e" src="../img/EAR-1.png" alt="" />';
+    PUBLIC.imgList = [img1, img2, img3, img4, img5];
+    $('#create_EAR_714').on('change', function() {
+      var value = $(this).val();
+      showCTDetailImg('#itemEAR_713', value);
+    });
+    $('#create_EAR_381').on('change', function() {
+      var value = $(this).val();
+      showCTDetailImg('#itemEAR_380', value);
+    });
+
+    // 展示CT诊断分型图片 公共方法
+    function showCTDetailImg(fatherID, value) {
+      $(fatherID + ' .ctdetail-img').remove();
+      var hasDetail = ['a', 'e', 'b', 'c', 'd'];
+      if (hasDetail.indexOf(value) !== -1) {
+        PUBLIC.imgList.forEach(function(val) {
+          var currentVal = $(val).attr('data-value') || $(val).val();
+          if (currentVal === value) {
+            $(fatherID).append(val);
+          }
+        });
+      } else {
+        $(fatherID + ' .ctdetail-img').remove();
+      }
+    }
+
+    function remove(arr, val) {
+      var index = arr.indexOf(val);
+      if (index > -1) {
+        arr.splice(index, 1);
+      }
+    }
+
+    // 获取支架直径放大率
+    function getRate(dividend, divisor) {
+      if (divisor === 0) {
+        return 0;
+      }
+      return ((dividend / divisor) * 100).toFixed(2);
+    }
+    // 判断取值范围
+    function judgeNumberRange(val) {
+      var flag = true;
+      if (val && (val > 100 || val < 1)) {
+        layer.open({
+          offset: '150px',
+          title: '提示',
+          content: '取值范围为1-100',
+        });
+        flag = false;
+      }
+      return flag;
+    }
+    // 判断直径2不得小于直径1
+    function judgeDiameter(val1, val2) {
+      var flag = true;
+      if (val2 && val1 && Number(val2) < Number(val1)) {
+        layer.open({
+          offset: '150px',
+          title: '提示',
+          content: '术中支架直径不得小于手术患者的锚定区直径',
+        });
+        flag = false;
+      }
+      return flag;
+    }
+
+    //根据出生日期和入院日期判断患者入院时是否大于18岁，大于18岁患者身份证号必填，否则不必填：
+    // 身份证号判断
+    $('#create_CM_6').on('change', function() {
+      if ($(this).val() !== '') {
+        $(this)
+          .parent()
+          .children('.sp-error')
+          .remove();
+      }
+    });
+    // 出生日期
+    $('#create_CM_13').on('change', function() {
+      PUBLIC.birthDayTimeStemp = new Date($(this).attr('data-value') || $(this).val()).getTime();
+      // getAge方法来自create.js
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 入院日期时间
+    $('#create_CM_16').on('change', function() {
+      PUBLIC.standardTimeStemp = new Date($(this).attr('data-value') || $(this).val()).getTime();
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+
+    // 出院日期时间
+    $('#create_CM_17').on('change', function() {
+      var age = getAge(PUBLIC.birthDayTimeStemp, PUBLIC.standardTimeStemp);
+      setIDEmptyError(age);
+    });
+    // 判断年龄是否大于18
+    function setIDEmptyError(age) {
+      var startTime = '2021-01-01 00:00'; // 出院日期从2021年1月1日开始，大于18周岁的就需要填身份证了
+      var endTime = $('#create_CM_17').val(); //出院日期
+      console.log('出院日期');
+      console.log(endTime);
+      var start = new Date(startTime.replace('-', '/').replace('-', '/'));
+      var end = new Date(endTime.replace('-', '/').replace('-', '/'));
+      console.log(end);
+      var idCard = $('#itemCM_6').css('display');
+      if (age > 18 && end > start) {
+        if (
+          $('#create_CM_6').val() === '' &&
+          !$('#create_CM_6')
+            .parent()
+            .children('.sp-error').length
+        ) {
+          $('#create_CM_6')
+            .parent()
+            .append('<span class="sp-error"><font size=-1 color=red>该项为必填项</font></span>');
+        }
+      } else {
+        $('#create_CM_6')
+          .parent()
+          .children('.sp-error')
+          .remove();
+      }
+    }
+    // 模板已变更，上一期做的需求隐藏掉
+    // var mainOperation = []; //主要手术操作
+    // //EAR-0.1.6   根据EAR-0.1.3自动判定：
+    // // （1）如住院病案首页的主要手术操作栏中只含有TEAVR手术对应的ICD编码，则选择a；
+    // // （2）如只含有EVAR手术对应的ICD编码，则选择b；
+    // // （3）如同时含有TEVAR和EVAR对应的ICD编码，则选择c。
+    // $('#selectMup_CM_10').on('click', 'span', function() {
+    //   // console.log($('#create_CM_10').val());
+    //   var teavr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+    //   var eavr = ['j', 'k', 'l', 'm', 'n', 'o', 'p'];
+    //   var all = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
+    //   var val = $(this)
+    //     .prev()
+    //     .val();
+    //   var index = $.inArray(val, mainOperation);
+    //   if (index >= 0) {
+    //     mainOperation.splice(index, 1);
+    //   } else {
+    //     mainOperation.push(val);
+    //   }
+    //   // console.log(mainOperation);
+    //   function isteavr(arr1, arr2) {
+    //     return arr1.every(item1 => {
+    //       return arr2.some(item2 => {
+    //         return item2 == item1;
+    //       });
+    //     });
+    //   }
+    //   if (mainOperation.length > 0) {
+    //     var isTeavr = isteavr(mainOperation, teavr); //只含有TEAVR手术，则选择a
+    //     var isEavr = isteavr(mainOperation, eavr); //只含有EVAR手术，则选择b
+    //     var isAll = isteavr(mainOperation, all); //同时含有TEVAR和EVAR，则选择c
+    //     if (isTeavr) {
+    //       $('#create_EAR_238').val('a');
+    //       return;
+    //     } else if (isEavr) {
+    //       $('#create_EAR_238').val('b');
+    //       return;
+    //     } else if (isAll) {
+    //       $('#create_EAR_238').val('c');
+    //       return;
+    //     } else {
+    //       $('#create_EAR_238').val('def');
+    //     }
+    //   } else {
+    //     $('#create_EAR_238').val('def');
+    //   }
+    // });
+
+    // //EAR-3.1.1   备注说明：拔管后再次机械通气时间不计算在内
+    // $('#itemEAR_321').on('mouseenter', '.input_remarkEAR_321', function() {
+    //   var that = this;
+    //   var content = setTipsHTML();
+    //   tips = layer.tips(content, that, { tips: [3, '#fff'], time: 0, area: 'auto', maxWidth: 800 });
+    // });
+    // $('#itemEAR_321').on('mouseleave', '.input_remarkEAR_321', function() {
+    //   layer.close(tips);
+    // });
+    // function setTipsHTML() {
+    //   var html = '<div style="color: #000;">';
+    //   html += '<p>拔管后再次机械通气时间不计算在内</p>';
+    //   html += '</div>';
+    //   return html;
+    // }
+
+    // //EAR-3.3.1   备注说明：不包括术前预期的计划性主动脉再次手术干预
+    // $('#itemEAR_331').on('mouseenter', '.form-1-2[key="y"]', function() {
+    //   var that = this;
+    //   var content = setTipsTEXT('yes');
+    //   tips = layer.tips(content, that, { tips: [3, '#fff'], time: 0, area: 'auto', maxWidth: 800 });
+    // });
+    // $('#itemEAR_331').on('mouseleave', '.form-1-2', function() {
+    //   layer.close(tips);
+    // });
+    // function setTipsTEXT(type) {
+    //   var html = '<div style="color: #000;">';
+    //   html += '<p>不包括术前预期的计划性主动脉再次手术干预</p>';
+    //   html += '</div>';
+    //   return html;
+    // }
+  });
+</script>

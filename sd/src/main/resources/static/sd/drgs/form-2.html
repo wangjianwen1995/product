@@ -1,0 +1,118 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- CHA2DS2-VASc 评分表 -->
+    <div id="CHA2DS2-VAScTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">房颤患者风险评估（CHA<sub>2</sub>DS<sub>2</sub>-VAS<sub>c</sub>评分）值（可多选）</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">+1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">年龄65-74岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age4">年龄≥75岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">充血性心衰C</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">高血压H</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">糖尿病D</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+2分</td>
+                                <td>
+                                    <div score="2" class="check-item">卒中或STK病史S</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">外周动脉疾病或主动脉斑块Va</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">女性S</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>                 
+    console.log('HF-2.0')
+var create = new create();
+    create.createRender("HF",function() {
+        $('#create_225').after('<a id="CHA2DS2-VAScScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>')
+        $('#CHA2DS2-VAScScore').click(function () {
+            $("#CHA2DS2-VAScTable").modal()
+        })
+        $("#CHA2DS2-VAScTable .calculate").click(function () {
+            $("#create_225").val($(this).data("score"));
+            $("#CHA2DS2-VAScTable").modal("hide");
+            $("#create_225").blur();
+            $("#create_225").change();
+
+        })
+        //互斥
+        $(".check-age3").on('click', function () {
+            if ($(".check-age4").attr("class") == "check-item check-age4 active") {
+                $(".check-age4").removeClass("active")
+            }
+        })
+        $(".check-age4").on('click', function () {
+            if ($(".check-age3").attr("class") == "check-item check-age3 active") {
+                $(".check-age3").removeClass("active")
+            }
+        })
+    });
+</script>

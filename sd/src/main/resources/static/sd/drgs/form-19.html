@@ -1,0 +1,270 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- 哮喘患者病情严重程度的分级 -->
+    <div id="CACTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="哮喘患者病情严重程度的分级">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">哮喘患者病情严重程度的分级</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 140px;">分级</th>
+                                <th>临床特点</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-name="a">间歇状态（第 1 级）</td>
+                                <td>
+                                    <div class="check-item">
+                                        <p>症状<每周l次</p>
+                                        <p>短暂出现</p>
+                                        <p>夜间哮喘症状≤每月2次</p>
+                                        <p>FEV1占预计值%≥80%或PEF≥80%个人最佳值,PEF变异率为20%~30%</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-name="b">轻度持续（第 2 级）</td>
+                                <td>
+                                    <div class="check-item">
+                                        <p>症状≥每周1次,但<每日1次</p>
+                                        <p>可能影响活动和睡眠</p>
+                                        <p>夜间哮喘症状>每月2次,但<每周1次</p>
+                                        <p>FEV1占预计值%≥80%或PEF≥80%个人最佳值,PEF变异率为20%～30%</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-name="c">中度持续（第 3 级）</td>
+                                <td>
+                                    <div class="check-item">
+                                        <p>每日有症状</p>
+                                        <p>影响活动和睡眠</p>
+                                        <p>夜间哮喘症状≥每周1次</p>
+                                        <p>FEV，占预计值%为60%～79%或PEF为60%～79%个人最佳值，PEF变异率>30%</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-name="d">重度持续（第 4 级）</td>
+                                <td>
+                                    <div class="check-item">
+                                        <p>每日有症状</p>
+                                        <p>频繁出现</p>
+                                        <p>经常出现夜间哮喘症状</p>
+                                        <p>体力活动受限</p>
+                                        <p>FEV，占预计值%<60%或PEF<60%个人最佳值，PEF变异率>30%</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 哮喘急性发作时病情严重程度的分级评估表 -->
+    <div id="ACUTETable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="哮喘患者病情严重程度的分级">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">哮喘急性发作时病情严重程度的分级评估表</div>
+                <div class="scoreTable text-left acute">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-name="def" style="width: 140px;">临床特点</th>
+                                <th data-name="a">轻度</th>
+                                <th data-name="b">中度</th>
+                                <th data-name="c">重度</th>
+                                <th data-name="d">危重</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>气短</td>
+                                <td>步行、上楼时</td>
+                                <td>稍事活动</td>
+                                <td>休息时</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>体位</td>
+                                <td>可平卧</td>
+                                <td>喜坐位</td>
+                                <td>端坐呼吸</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>讲话方式</td>
+                                <td>连续成句</td>
+                                <td>单句</td>
+                                <td>单词</td>
+                                <td>不能讲话</td>
+                            </tr>
+                            <tr>
+                                <td>精神状态</td>
+                                <td>可有焦虑,尚安静</td>
+                                <td>时有焦虑或烦躁</td>
+                                <td>常有焦虑、烦躁</td>
+                                <td>嗜睡或意识模糊</td>
+                            </tr>
+                            <tr>
+                                <td>出汗</td>
+                                <td>无</td>
+                                <td>有</td>
+                                <td>大汗淋漓</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>呼吸频率</td>
+                                <td>轻度增加</td>
+                                <td>增加</td>
+                                <td>常>30次/min</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>辅助呼吸肌活动及三凹征</td>
+                                <td>常无</td>
+                                <td>可有</td>
+                                <td>常有</td>
+                                <td>胸腹矛盾呼吸</td>
+                            </tr>
+                            <tr>
+                                <td>哮鸣音</td>
+                                <td>散在,呼吸末期</td>
+                                <td>响亮、弥散</td>
+                                <td>响亮、弥散</td>
+                                <td>减弱、乃至无</td>
+                            </tr>
+                            <tr>
+                                <td>脉率(次/min)</td>
+                                <td><100</td>
+                                <td>100~120</td>
+                                <td>>120</td>
+                                <td>脉率变慢或不规则</td>
+                            </tr>
+                            <tr>
+                                <td>奇脉</td>
+                                <td>无<10 mmHg</td>
+                                <td>可有,10~25 mmHg</td>
+                                <td>常有.10~25 mmHg(成人)</td>
+                                <td>无,提示呼吸肌疲劳</td>
+                            </tr>
+                            <tr>
+                                <td>最初支气管舒张剂治疗后PEF占预计值或个人最佳值%</td>
+                                <td>>80%</td>
+                                <td>60%~80%</td>
+                                <td><60%或100Lmin或作用时间<2h</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>PaO2(吸空气，mmHg)</td>
+                                <td>正常</td>
+                                <td>≥60</td>
+                                <td><60</td>
+                                <td><60</td>
+                            </tr>
+                            <tr>
+                                <td>PaCO2(mmHg)</td>
+                                <td><45</td>
+                                <td>≤45</td>
+                                <td>>45</td>
+                                <td>>45</td>
+                            </tr>
+                            <tr>
+                                <td>SaO2(吸空气,%)</td>
+                                <td>>95</td>
+                                <td>91~95</td>
+                                <td>≤90</td>
+                                <td>≤90</td>
+                            </tr>
+                            <tr>
+                                <td>pH值</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>降低</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('CAC-2.0')
+var create = new create();
+    create.createRender("CAC",function() {
+        $("#create_3").after('<a id="CACScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>');
+        $("#create_29").after('<a id="ACUTEScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>');
+        $("#CACScore").on("click", function () {
+            var gradeVal = $("#create_3").val();
+            $("#CACTable").modal().find(".check-item").removeClass("active");
+            if(gradeVal !== 'def') {
+                $("#CACTable").modal().find('td[data-name=' + gradeVal + ']').next('td').find(".check-item").addClass('active');
+            }
+        })
+        $("#CACTable .calculate").click(function () {
+            var selectVal = $(".scoreTable .active").parent('td').prev('td').attr("data-name");
+            $('#create_3').val(selectVal)
+            $("#CACTable").modal("hide");
+            $('#create_3').blur();
+            $('#create_3').change();
+        })
+        $("#ACUTEScore").on("click", function () {
+            var gradeVal = $("#create_29").val();
+            $("#ACUTETable").modal().find(".active").removeClass("active");
+            if(gradeVal !== 'def') {
+                $("#ACUTETable").modal().find('th[data-name=' + gradeVal + ']').addClass('active');
+            }
+            $(".acute table tr").closest("table").find("tr,td").css({"backgroundColor": "","color":"#111"});
+            // 存在元素在渲染
+            if($(".acute .active").index() !== -1) {
+                $(".acute table tr").closest("table").find("tr").find("td:eq(" + $(".acute .active").index() + ")").css({"backgroundColor": "#00a0e9","color": "#fff"})
+            }
+        })
+        $("#ACUTETable .calculate").click(function () {
+            var selectVal = $(".scoreTable .active").attr('data-name');
+            $('#create_29').val(selectVal)
+            $("#ACUTETable").modal("hide");
+            $('#create_29').blur();
+            $('#create_29').change();
+        })
+        $(".acute td:not(:first-child)").click(function () {
+          $(this).closest("table").find("tr,td").css({"backgroundColor": "","color":"#111"});
+          $(this).closest("table").find("tr,th").removeClass('active')
+          var table = $(this).closest("tr").closest("table");
+          table.find("tr").find("td:eq(" + $(this).index() + ")").css({"backgroundColor": "#00a0e9","color": "#fff"});
+          table.find("tr").find("th:eq(" + $(this).index() + ")").addClass('active')
+        });
+    });
+</script>

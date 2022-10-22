@@ -1,0 +1,49 @@
+server:
+  application:
+    name: 山西雕龙精细化管理系统
+  port: 23303
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_fm
+#      url: jdbc:sqlserver://192.168.2.8:14333;databaseName=dl_fm
+      username: sa
+      password: Admin@123
+#      username: saa
+#      password: sa
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=TGHBI
+      username: sa
+      password: ckboar123!@#
+#      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=hbi
+#      username: sa
+#      password: Admin@123
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+pagehelper:
+  auto-dialect: true
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+logging:
+  level:
+    com.sxdl.product.dc.dao : debug
+HBI:
+#  name: 我的本地
+#  url: http://127.0.0.1:8765
+#  name: 山西雕龙演示
+#  url: http://140.143.190.251:8077
+  name: 临汾市人民医院
+  url: http://10.255.136.81:8076
+productName: 山西雕龙精细化管理系统
+basePackage: com.sxdl.fm.controller
+back_path: D:\bf
+back_time: 10
+dcip:
+drip:

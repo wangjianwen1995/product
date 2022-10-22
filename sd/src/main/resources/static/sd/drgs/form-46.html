@@ -1,0 +1,221 @@
+<!--
+ * @Description: 糖尿病肾病
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-05-20 15:28:43
+ * @FilePath: \single-disease\public\static\drgs\form-46.html
+-->
+
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('DKD-2.0')
+    var create = new create();
+    create.createRender("DKD", function () {
+        // 有糖尿病肾病间质评分  联动控制
+        var checkboxEle = $(".create_DKD_86")
+        for (var i = 0; i < checkboxEle.length; i++) {
+            if ($(checkboxEle[i]).val() < 'e' && $(checkboxEle[i]).val() != 'UTD') {
+                $(checkboxEle[i]).addClass("checkboxEle1")
+            } else if ($(checkboxEle[i]).val() != 'UTD' && $(checkboxEle[i]).val() > 'd') {
+                $(checkboxEle[i]).addClass("checkboxEle2")
+            }
+            $(checkboxEle[i]).on('change', function () {
+                if ($(this).get(0).checked) {
+                    if ($(this).val() < 'e' && $(this).val() != 'UTD') {
+                        $(this).siblings(".checkboxEle1").attr("disabled", true)
+                    } else if ($(this).val() != 'UTD' && $(this).val() > 'd') {
+                        $(this).siblings(".checkboxEle2").attr("disabled", true)
+                    } else if ($(this).val() == 'UTD') {
+                        $(this).siblings().attr("disabled", true)
+                        for (var j = 0; j < checkboxEle.length; j++) {
+                            if ($(checkboxEle[j]).val() != 'UTD') {
+                                $(checkboxEle[j]).get(0).checked = false
+                            }
+                        }
+                    }
+                } else {
+                    if ($(this).val() < 'e' && $(this).val() != 'UTD') {
+                        $(this).siblings(".checkboxEle1").attr("disabled", false)
+                    } else if ($(this).val() != 'UTD' && $(this).val() > 'd') {
+                        $(this).siblings(".checkboxEle2").attr("disabled", false)
+                    } else if ($(this).val() == 'UTD') {
+                        $(this).siblings().attr("disabled", false)
+                    }
+                }
+            })
+        }
+        // 有糖尿病肾病血管病变  联动控制
+        var checkboxEle_1 = $(".create_DKD_88")
+        for (var i = 0; i < checkboxEle_1.length; i++) {
+            if ($(checkboxEle_1[i]).val() < 'd' && $(checkboxEle_1[i]).val() != 'UTD') {
+                $(checkboxEle_1[i]).addClass("checkboxEle_11")
+            } else if ($(checkboxEle_1[i]).val() != 'UTD' && $(checkboxEle_1[i]).val() >= 'd' && $(checkboxEle_1[i]).val() <= 'e') {
+                $(checkboxEle_1[i]).addClass("checkboxEle_12")
+            } else if ($(checkboxEle_1[i]).val() != 'UTD' && $(checkboxEle_1[i]).val() > 'e') {
+                $(checkboxEle_1[i]).addClass("checkboxEle_13")
+            }
+            $(checkboxEle_1[i]).on('change', function () {
+                if ($(this).get(0).checked) {
+                    console.log($(this).val(), "$(this).val()")
+                    if ($(this).val() < 'd' && $(this).val() != 'UTD') {
+                        $(this).siblings(".checkboxEle_11").attr("disabled", true)
+                    } else if ($(this).val() != 'UTD' && $(this).val() >= 'd' && $(this).val() <= 'e') {
+                        $(this).siblings(".checkboxEle_12").attr("disabled", true)
+                    } else if ($(this).val() != 'UTD' && $(this).val() > 'e') {
+                        $(this).siblings(".checkboxEle_13").attr("disabled", true)
+                    } else if ($(this).val() == 'UTD') {
+                        $(this).siblings().attr("disabled", true)
+                        for (var j = 0; j < checkboxEle_1.length; j++) {
+                            if ($(checkboxEle_1[j]).val() != 'UTD') {
+                                $(checkboxEle_1[j]).get(0).checked = false
+                            }
+                        }
+                    }
+                } else {
+                    if ($(this).val() < 'd' && $(this).val() != 'UTD') {
+                        $(this).siblings(".checkboxEle_11").attr("disabled", false)
+                    } else if ($(this).val() != 'UTD' && $(this).val() >= 'd' && $(this).val() <= 'e') {
+                        $(this).siblings(".checkboxEle_12").attr("disabled", false)
+                    } else if ($(this).val() != 'UTD' && $(this).val() > 'e') {
+                        $(this).siblings(".checkboxEle_13").attr("disabled", false)
+                    } else if ($(this).val() == 'UTD') {
+                        $(this).siblings().attr("disabled", false)
+                    }
+                }
+            })
+        }
+
+        // 入院首次实验室检测：
+        var checkboxEle_0 = $(".create_DKD_4")
+        var cChange, bChange, aChange = false;
+        var cVal, bVal, aVal;
+        for (var i = 0; i < checkboxEle_0.length; i++) {
+            $(checkboxEle_0[i]).on('change', function () {
+                for (var j = 0; j < checkboxEle_0.length; j++) {
+                    if ($(checkboxEle_0[j]).get(0).checked && $(checkboxEle_0[j]).val() == 'a') {
+                        $("#create_DKD_9").val('d')
+                        aChange = true
+                    } else if (!$(checkboxEle_0[j]).get(0).checked && $(checkboxEle_0[j]).val() == 'a') {
+                        aChange = false
+                    }
+                    if ($(checkboxEle_0[j]).get(0).checked && $(checkboxEle_0[j]).val() == 'c') {
+                        cChange = true
+                        cVal = $("#create_DKD_7").get(0).value
+                    } else if (!$(checkboxEle_0[j]).get(0).checked && $(checkboxEle_0[j]).val() == 'c') {
+                        cChange = false
+                    }
+                    if ($(checkboxEle_0[j]).get(0).checked && $(checkboxEle_0[j]).val() == 'b') {
+                        bChange = true
+                        bVal = $("#create_DKD_6").get(0).value
+                    } else if (!$(checkboxEle_0[j]).get(0).checked && $(checkboxEle_0[j]).val() == 'b') {
+                        bChange = false
+                    }
+                }
+                console.log(aChange, cChange, bChange)
+
+                if (cChange && bChange && aChange) {
+                    $("#create_DKD_9").val('e')
+                } else {
+                    if (cChange && bChange && !aChange) {
+                        cVal = $("#create_DKD_7").get(0).value
+                        bVal = $("#create_DKD_6").get(0).value
+                        if (cVal < 150 && bVal < 3) {
+                            $("#create_DKD_9").val('a')
+                        } else if (cVal <= 500 && cVal >= 150 && bVal >= 3 && bVal <= 30) {
+                            $("#create_DKD_9").val('b')
+                        } else if (cVal > 150 && bVal > 30) {
+                            $("#create_DKD_9").val('c')
+                        } else {
+                            $("#create_DKD_9").val('e')
+                        }
+                    } else {
+                        if (aChange && !cChange && !bChange) {
+                            $("#create_DKD_9").val('d')
+                        } else {
+                            $("#create_DKD_9").val('e')
+                        }
+                    }
+                }
+            })
+        }
+
+        $("#create_DKD_7").on('blur', function () {
+            cVal = $("#create_DKD_7").get(0).value
+            bVal = $("#create_DKD_6").get(0).value
+            // console.log(aChange, cChange, bChange)
+            if (cChange && bChange && aChange) {
+                $("#create_DKD_9").val('e')
+            } else {
+                if (cChange && bChange && !aChange) {
+                    if (cVal < 150 && bVal < 3) {
+                        $("#create_DKD_9").val('a')
+                    } else if (cVal <= 500 && cVal >= 150 && bVal >= 3 && bVal <= 30) {
+                        $("#create_DKD_9").val('b')
+                    } else if (cVal > 150 && bVal > 30) {
+                        $("#create_DKD_9").val('c')
+                    } else {
+                        $("#create_DKD_9").val('e')
+                    }
+                } else {
+                    if (aChange && !cChange && !bChange) {
+                        $("#create_DKD_9").val('d')
+                    } else {
+                        $("#create_DKD_9").val('e')
+                    }
+                }
+            }
+        })
+        $("#create_DKD_6").on('blur', function () {
+            cVal = $("#create_DKD_7").get(0).value
+            bVal = $("#create_DKD_6").get(0).value
+            console.log(aChange, cChange, bChange)
+
+            if (cChange && bChange && aChange) {
+                $("#create_DKD_9").val('e')
+            } else {
+                if (cChange && bChange && !aChange) {
+                    if (cVal < 150 && bVal < 3) {
+                        $("#create_DKD_9").val('a')
+                    } else if (cVal <= 500 && cVal >= 150 && bVal >= 3 && bVal <= 30) {
+                        $("#create_DKD_9").val('b')
+                    } else if (cVal > 150 && bVal > 30) {
+                        $("#create_DKD_9").val('c')
+                    } else {
+                        $("#create_DKD_9").val('e')
+                    }
+                } else {
+                    if (aChange && !cChange && !bChange) {
+                        $("#create_DKD_9").val('d')
+                    } else {
+                        $("#create_DKD_9").val('e')
+                    }
+                }
+            }
+        })
+
+
+
+    });
+</script>

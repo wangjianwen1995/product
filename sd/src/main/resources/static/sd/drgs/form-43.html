@@ -1,0 +1,237 @@
+<!--
+ * @Description: 结肠癌  CoC
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-09-28 10:42:54
+ * @FilePath: \single-disease\public\static\drgs\form-43.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('CoC-2.0')
+    var create = new create();
+    create.createRender("CoC", function () {
+        // 肿瘤T分期：
+        var Ct = $(".create_CoC_28")
+        var ctStr = []
+        var NeleStr = []
+
+        var MeleStr = []
+
+        for (var k = 0; k < Ct.length; k++) {
+            $(Ct[k]).on('change', function () {
+                if ($(this).get(0).checked) {
+                    var str = $(this).next().text().split("(")[1].split(")")[0]
+                    ctStr.push(str)
+                } else if (!$(this).get(0).checked) {
+                    var str = $(this).next().text().split("(")[1].split(")")[0]
+                    if (ctStr.indexOf(str) != -1) {
+                        ctStr.splice(ctStr.indexOf(str), 1)
+                    }
+                }
+                var lastVal = ctStr.join("") + "，" + NeleStr.join() + "，" + MeleStr.join() + "，" + EStr
+                if ($("#create_CoC_41").parent().css("display") != 'none') {
+                    $("#create_CoC_41").val(lastVal)
+                } else if ($("#create_CoC_42").parent().css("display") != 'none') {
+                    $("#create_CoC_42").val(lastVal)
+                }
+
+            })
+        }
+
+        // 淋巴结情况（N分期）：N
+        var Nele = $(".create_CoC_30")
+        for (var n = 0; n < Nele.length; n++) {
+            $(Nele[n]).on('change', function () {
+                if ($(this).get(0).checked) {
+                    if ($(this).val() !== 'UTD') {
+                        var str = "N" + $(this).next().text().split("(")[1].split(")")[0]
+                        if (NeleStr.indexOf(str) == -1) {
+                            NeleStr.push(str)
+                        }
+                    } else {
+                        $("#create_CoC_262").val('c')
+                    }
+                } else {
+                    if ($(this).val() !== 'UTD') {
+                        var str = "N" + $(this).next().text().split("(")[1].split(")")[0]
+                        if (NeleStr.indexOf(str) != -1) {
+                            NeleStr.splice(NeleStr.indexOf(str), 1)
+                        }
+                    } else {
+                        $("#create_CoC_262").val('def')
+                    }
+                }
+                if (NeleStr.indexOf("N+") != -1 && NeleStr.indexOf("N-") != -1) {
+                    $("#create_CoC_262").val('c')
+                } else {
+                    $("#create_CoC_262").val('def')
+                    if (MeleStr.indexOf("M+") != -1 && MeleStr.indexOf("M-") != -1) {
+                        $("#create_CoC_262").val('c')
+                    } else {
+                        $("#create_CoC_262").val('def')
+                    }
+
+                }
+                var lastVal = ctStr.join() + " " + NeleStr.join() + " " + MeleStr.join() + " " + EStr
+                if ($("#create_CoC_41").parent().css("display") != 'none') {
+                    $("#create_CoC_41").val(lastVal)
+                } else if ($("#create_CoC_42").parent().css("display") != 'none') {
+                    $("#create_CoC_42").val(lastVal)
+                }
+            })
+        }
+
+        // 远处转移（M分期）：M
+
+        var Mele = $(".create_CoC_38")
+        for (var m = 0; m < Mele.length; m++) {
+            $(Mele[m]).on('change', function () {
+                if ($(this).get(0).checked) {
+                    if ($(this).val() !== 'UTD') {
+                        var str = "M" + $(this).next().text().split("(")[1].split(")")[0]
+                        if (MeleStr.indexOf(str) == -1) {
+                            MeleStr.push(str)
+                        }
+                    } else {
+                        $("#create_CoC_262").val('c')
+                    }
+                } else {
+                    if ($(this).val() !== 'UTD') {
+                        var str = "M" + $(this).next().text().split("(")[1].split(")")[0]
+                        if (MeleStr.indexOf(str) != -1) {
+                            MeleStr.splice(MeleStr.indexOf(str), 1)
+                        }
+                    } else {
+                        $("#create_CoC_262").val('def')
+                    }
+                }
+
+                if (MeleStr.indexOf("M+") != -1 && MeleStr.indexOf("M-") != -1) {
+                    $("#create_CoC_262").val('c')
+                } else {
+                    $("#create_CoC_262").val('def')
+                    if (NeleStr.indexOf("N+") != -1 && NeleStr.indexOf("N-") != -1) {
+                        $("#create_CoC_262").val('c')
+                    } else {
+                        $("#create_CoC_262").val('def')
+                    }
+                }
+                var lastVal = ctStr.join("") + "，" + NeleStr.join() + "，" + MeleStr.join() + "，" + EStr
+                if ($("#create_CoC_41").parent().css("display") != 'none') {
+                    $("#create_CoC_41").val(lastVal)
+                } else if ($("#create_CoC_42").parent().css("display") != 'none') {
+                    $("#create_CoC_42").val(lastVal)
+                }
+            })
+        }
+
+
+        // 结肠壁外血管侵犯（EMVI）
+        var Eele = $(".create_CoC_37")
+        var EStr = ''
+        for (var m = 0; m < Eele.length; m++) {
+            $(Eele[m]).on('change', function () {
+                if ($(this).get(0).checked) {
+                    var str = "EMVI" + $(this).next().text().split("(")[1].split(")")[0]
+                    EStr = str
+                }
+                var lastVal = ctStr.join("") + "，" + NeleStr.join() + "，" + MeleStr.join() + "，" + EStr
+                if ($("#create_CoC_41").parent().css("display") != 'none') {
+                    $("#create_CoC_41").val(lastVal)
+                } else if ($("#create_CoC_42").parent().css("display") != 'none') {
+                    $("#create_CoC_42").val(lastVal)
+                }
+            })
+        }
+
+        $("#create_CoC_262").on("change", function () {
+            var lastVal = ctStr.join("") + "，" + NeleStr.join() + "，" + MeleStr.join() + "，" + EStr
+            if ($(this).get(0).value == 'a') {
+                $("#create_CoC_41").val(lastVal)
+            } else if ($(this).get(0).value == 'b') {
+                $("#create_CoC_42").val(lastVal)
+            }
+        })
+
+
+        // 是否接受术前新辅助治疗： 联动赋值
+        var str149 = ''
+        var str150 = ''
+        var str152 = ''
+        var linkEle = $(".create_CoC_148")
+        $("#create_CoC_149").on("change", function () {
+            if ($(this).val() != 'def') {
+                str149 = $(".create_CoC_149").find('option:selected').text().split('：')[0];
+                for (var i = 0; i < linkEle.length; i++) {
+                    if ($(linkEle[i]).get(0).checked && $(linkEle[i]).val() == 'y') {
+                        $("#create_CoC_155").val(str149 + ',' + str150 + ',' + str152)
+                    } else {
+                        $("#create_CoC_154").val(str149 + ',' + str150 + ',' + str152)
+                    }
+                }
+            }else{
+                str149 = ''
+            }
+        })
+        $("#create_CoC_150").on("change", function () {
+            if ($(this).val() != 'def') {
+                str150 = $(".create_CoC_150").find('option:selected').text().split('：')[0];
+                for (var i = 0; i < linkEle.length; i++) {
+                    if ($(linkEle[i]).get(0).checked && $(linkEle[i]).val() == 'y') {
+                        $("#create_CoC_155").val(str149 + ',' + str150 + ',' + str152)
+                    } else {
+                        $("#create_CoC_154").val(str149 + ',' + str150 + ',' + str152)
+                    }
+                }
+            }else{
+                str150 = ''
+            }
+        })
+        $("#create_CoC_152").on("change", function () {
+            if ($(this).val() != 'def') {
+                str152 = $(".create_CoC_152").find('option:selected').text().split(' ')[0];
+                for (var i = 0; i < linkEle.length; i++) {
+                    if ($(linkEle[i]).get(0).checked && $(linkEle[i]).val() == 'y') {
+                        $("#create_CoC_155").val(str149 + ',' + str150 + ',' + str152)
+                    } else {
+                        $("#create_CoC_154").val(str149 + ',' + str150 + ',' + str152)
+                    }
+                }
+            }else{
+                str152 = ''
+            }
+        })
+
+        for (var i = 0; i < linkEle.length; i++) {
+            $(linkEle[i]).on('change', function () {
+                if ($(this).get(0).checked && $(this).val() == 'y') {
+                    $("#create_CoC_155").val(str149 + ',' + str150 + ',' + str152)
+                } else {
+                    $("#create_CoC_154").val(str149 + ',' + str150 + ',' + str152)
+                }
+            })
+        }
+    });
+</script>

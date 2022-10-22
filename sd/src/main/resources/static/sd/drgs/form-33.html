@@ -1,0 +1,457 @@
+<!--
+ * @Description: 胃癌（手术治疗） GC
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-01-10 09:11:27
+ * @FilePath: \single-disease\public\static\drgs\form-33.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<style>
+  #itemGC_349, #itemGC_350, #itemGC_325{
+    margin-top: 24px!important;
+  }
+</style>
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- NRS-2002营养评估（单选） -->
+    <div id="GCTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby="NRS-2002营养评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">NRS-2002营养评估</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>疾病评分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">髋骨骨折、慢性疾病急性发作或有并发症、血液透析、肝硬化、一般恶性肿瘤患者、糖尿病;</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">腹部大手术、脑卒中、重度肺炎、血液恶性肿瘤;</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">颅脑损伤、骨髓移植;</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>营养状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">BMI<18.5</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">因严重的胸腹水、水肿得不到准确的BMI值时，无严重肝肾功能异常者，用白蛋白替代的</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">体重下降>5%:1个月内或3个月内</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">体重下降>5%:2个月内</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">一周内进食量较从前减少:25%-50%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">一周内进食量较从前减少:51%-75%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">一周内进食量较从前减少:76%-100%</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>年龄评分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">年龄 ≤ 70岁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄 > 70岁</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PG-SGA评估（单选） -->
+    <div id="PGTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="哮喘患者病情严重程度的分级">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">PG-SGA整体评估分级</div>
+                <div class="scoreTable text-left acute">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-name="def" style="width: 100px;"></th>
+                                <th data-name="a">A级 营养良好</th>
+                                <th data-name="b">B级 中度或可疑营养不良</th>
+                                <th data-name="c">C级 严重营养不良</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>体重</td>
+                                <td>无丢失或近期增加</td>
+                                <td>1个月内丢失5%（或6月10%）或不稳定或不增加</td>
+                                <td>一月内＞5%（或6月＞10%）或不稳定或不增加</td>
+                            </tr>
+                            <tr>
+                                <td>营养摄入</td>
+                                <td>摄入充分</td>
+                                <td>确切的摄入减少</td>
+                                <td>严重摄入不足</td>
+                            </tr>
+                            <tr>
+                                <td>营养相关的症状</td>
+                                <td>无不足或近期明显改善</td>
+                                <td>存在营养相关的症状Box 3</td>
+                                <td>存在营养相关的症状Box 3</td>
+                            </tr>
+                            <tr>
+                                <td>功能</td>
+                                <td>无不足或近期明显改善</td>
+                                <td>中度功能减退或近期加重Box 4</td>
+                                <td>严重功能减退或近期明显加重Box 4</td>
+                            </tr>
+                            <tr>
+                                <td>体格检查</td>
+                                <td>无消耗或慢性消耗但近期有临床改善</td>
+                                <td>轻~中度皮下脂肪和肌肉消耗</td>
+                                <td>明显营养不良体征，如严重的皮下组织消耗、水肿</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- NUTRIC 营养评估（单选） -->
+    <div id="NUTRICTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby="NUTRIC营养评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">NUTRIC营养评估</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>年龄</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item"><50</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">50-75</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">≥75</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item"><15</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>APACHEⅡ评分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">15-20<18.5</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">20-28</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">≥28</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>SOFA 评分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item"><6</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">6-10</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">≥10</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>伴随疾病</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">0-1</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">2+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>入院至入ICU 时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">0-1</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">1+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>IL-6</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">0-400</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">400+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<!-- <script>document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");</script> -->
+
+<script>
+    console.log('GC-2.0')
+    var create = new create();
+    create.createRender("GC",function() {
+      // // 术后化疗/放疗 主要诊断ICD-10
+      // checkCommonICD('#create_GC_333', '#create_GC_334');
+      // // 术后化疗/放疗 治疗性操作 ICD-9-CMN-3
+      // checkCommonICD('#create_GC_335', '#create_GC_336');
+      // // 术后化疗/放疗 其他诊断ICD-10
+      // checkCommonICD('#create_GC_343', '#create_GC_344');
+        //评分表（单选）
+        $("#create_173").after('<a id="GCScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>');
+        $("#create_GC_272").after('<a id="PGScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>');
+        $("#create_GC_273").after('<a id="NUTRICScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>');       
+        $("#GCScore").on("click", function () {
+            $("#GCTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#GCTable .calculate").click(function () {
+            $('#create_173').val($(this).data("score"))
+            $("#GCTable").modal("hide");
+            $('#create_173').blur();
+            $('#create_173').change();
+        })
+        $("#NUTRICScore").on("click", function () {
+            $("#NUTRICTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#NUTRICTable .calculate").click(function () {
+            $('#create_GC_273').val($(this).data("score"))
+            $("#NUTRICTable").modal("hide");
+            $('#create_GC_273').blur();
+            $('#create_GC_273').change();
+        })
+        //列选择评分表
+        $("#PGScore").on("click", function () {
+            var gradeVal = $("#create_GC_272").val();
+            $("#PGTable").modal().find(".active").removeClass("active");
+            if(gradeVal !== 'def') {
+                $("#PGTable").modal().find('th[data-name=' + gradeVal + ']').addClass('active');
+            }
+            $(".acute table tr").closest("table").find("tr,td").css({"backgroundColor": "","color":"#111"});
+            // 存在元素在渲染
+            if($(".acute .active").index() !== -1) {
+                $(".acute table tr").closest("table").find("tr").find("td:eq(" + $(".acute .active").index() + ")").css({"backgroundColor": "#00a0e9","color": "#fff"})
+            }
+        })
+        $("#PGTable .calculate").click(function () {
+            var selectVal = $("#PGTable .scoreTable .active").attr('data-name');
+            $('#create_GC_272').val(selectVal)
+            $("#PGTable").modal("hide");
+            $('#create_GC_272').blur();
+            $('#create_GC_272').change();
+        })
+        $(".acute td:not(:first-child)").click(function () {
+          $(this).closest("table").find("tr,td").css({"backgroundColor": "","color":"#111"});
+          $(this).closest("table").find("tr,th").removeClass('active')
+          var table = $(this).closest("tr").closest("table");
+          table.find("tr").find("td:eq(" + $(this).index() + ")").css({"backgroundColor": "#00a0e9","color": "#fff"});
+          table.find("tr").find("th:eq(" + $(this).index() + ")").addClass('active')
+        });
+        // 关闭上报弹窗内容
+        var eleHtml = '<div id="electrocar" class="end-report-content">' +
+            '<img class="end-img" src="../img/report-warn.png"/>' +
+            '<span class="end-title">该病例不符合上报要求</span>' +
+            '<p class="end-content">请重新填报</p></div>';
+        // GC-3选否 弹窗
+        $('.create_GC_2386').on('change', function() {
+          if($('.create_GC_2386[value="n"]')[0].checked) {
+            reportConfirm(eleHtml, function() {
+              $('.create_GC_2386[value="n"]')[0].checked = false;
+            })
+          }
+        });
+    });
+</script>

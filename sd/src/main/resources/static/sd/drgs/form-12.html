@@ -1,0 +1,992 @@
+<!--
+ * @Description: 剖宫产 CS
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-05-20 15:23:44
+ * @FilePath: \single-disease\public\static\drgs\form-12.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- CS---Apgar血栓风险因素评估  -->
+    <div id="ApgarTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" Knee---膝关节HSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CS---Apgar评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>皮肤颜色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">青紫或苍白</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">身体红，四肢青紫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">全身红</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心率（次/分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">＜100</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item"> >100</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>弹足底或插鼻反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有些动作，如皱眉</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">哭，喷嚏</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肌张力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">松弛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">四肢略屈曲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">四肢活动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>呼吸</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">慢，不规则</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">正常，哭声响</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ApgarTable2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" Knee---膝关节HSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CS---Apgar评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>皮肤颜色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">青紫或苍白</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">身体红，四肢青紫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">全身红</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心率（次/分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">＜100</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item"> >100</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>弹足底或插鼻反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有些动作，如皱眉</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">哭，喷嚏</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肌张力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">松弛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">四肢略屈曲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">四肢活动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>呼吸</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">慢，不规则</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">正常，哭声响</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ApgarTable3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" Knee---膝关节HSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CS---Apgar评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>皮肤颜色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">青紫或苍白</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">身体红，四肢青紫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">全身红</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心率（次/分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">＜100</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item"> >100</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>弹足底或插鼻反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有些动作，如皱眉</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">哭，喷嚏</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肌张力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">松弛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">四肢略屈曲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">四肢活动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>呼吸</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">慢，不规则</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">正常，哭声响</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ApgarTable4" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" Knee---膝关节HSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CS---Apgar评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>皮肤颜色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">青紫或苍白</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">身体红，四肢青紫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">全身红</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心率（次/分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">＜100</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item"> >100</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>弹足底或插鼻反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有些动作，如皱眉</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">哭，喷嚏</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肌张力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">松弛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">四肢略屈曲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">四肢活动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>呼吸</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">慢，不规则</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">正常，哭声响</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ApgarTable5" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" Knee---膝关节HSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">CS---Apgar评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>皮肤颜色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">青紫或苍白</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">身体红，四肢青紫</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">全身红</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>心率（次/分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">＜100</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item"> >100</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>弹足底或插鼻反应</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无反应</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有些动作，如皱眉</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">哭，喷嚏</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>肌张力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">松弛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">四肢略屈曲</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">四肢活动</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>呼吸</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">慢，不规则</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">正常，哭声响</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span>
+                </div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('CS-2.0')
+    var create = new create();
+    create.createRender("CS", function () {
+        //评分表
+        $("#item91").append('<a id="ApgarScore" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#itemCS_132").append('<a id="ApgarScore1" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#itemCS_133").append('<a id="ApgarScore2" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#itemCS_1934").append('<a id="ApgarScore3" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#itemCS_1935").append('<a id="ApgarScore4" href="javascript:" style="font-size:12px;margin-left:12px" class="score-table">评分工具计算</a>');
+        $("#ApgarScore").on("click", function () {
+            $("#ApgarTable").modal();
+        })
+        $("#ApgarScore1").on("click", function () {
+            $("#ApgarTable2").modal();
+        })
+        $("#ApgarScore2").on("click", function () {
+            $("#ApgarTable3").modal();
+        })
+        $("#ApgarScore3").on("click", function () {
+            $("#ApgarTable4").modal();
+        })
+        $("#ApgarScore4").on("click", function () {
+            $("#ApgarTable5").modal();
+        })
+        $("#ApgarTable .calculate").click(function () {
+            $("#ApgarTable").modal("hide");
+            $("#create_91").val($(this).data("score"));
+            $("#create_91").blur();
+            $("#create_91").change();
+        })
+        $("#ApgarTable2 .calculate").click(function () {
+            $("#ApgarTable2").modal("hide");
+            $("#create_CS_132").val($(this).data("score"));
+            $("#create_CS_132").blur();
+            $("#create_CS_132").change();
+        })
+        $("#ApgarTable3 .calculate").click(function () {
+            $("#ApgarTable3").modal("hide");
+            $("#create_CS_133").val($(this).data("score"));
+            $("#create_CS_133").blur();
+            $("#create_CS_133").change();
+        })
+        $("#ApgarTable4 .calculate").click(function () {
+            $("#ApgarTable4").modal("hide");
+            $("#create_CS_1934").val($(this).data("score"));
+            $("#create_CS_1934").blur();
+            $("#create_CS_1934").change();
+        })
+        $("#ApgarTable5 .calculate").click(function () {
+            $("#ApgarTable5").modal("hide");
+            $("#create_CS_1935").val($(this).data("score"));
+            $("#create_CS_1935").blur();
+            $("#create_CS_1935").change();
+        })
+        // 联动
+        $('.create_25').addClass("linChan")
+        $('.create_26').addClass("yunZhou")
+        $(".create_27").addClass("taiWei")
+        $(".create_28").addClass("taiShu")
+        $(".create_29").addClass('robsonSelect')
+        // 有无剖宮产史
+        var paoChan = ''
+        $('.create_24').on('change', function () {
+            paoChan = $(this).val()
+        })
+
+        $("#create_22").on('change', function () {
+            // 隐藏剖产时去掉选择
+            if ($('#item167').attr('style').endsWith('display: none;')) {
+                $(".create_24").removeAttr('checked');
+            }
+            for (var i = 0; i < $(this).find('.slot-item').find('.create_23').length; i++) {
+                var chan = $(this).find('.slot-item').find('.create_23')[i].checked
+                if (chan) {
+                    // 经产
+                    var chanCi = 1
+                } else {
+                    // 初产
+                    chanCi = 0
+                }
+            }
+
+            //临产方式  a-自然临产,b-引产,c-临产前剖宫产
+            var linChan = $(this).find('.slot-item').find('.linChan').val()
+            //孕周   a-早产,b-足月
+            var yunZhou = $(this).find('.slot-item').find('.yunZhou').val()
+            //胎位  a-头位,b-臀位,c-横位
+            var taiWei = $(this).find('.slot-item').find('.taiWei').val()
+            //胎儿数量 a-单胎,b-多胎
+            var taiShu = $(this).find('.slot-item').find('.taiShu').val()
+
+            // chanCi = 1 经产
+            // chanCi = 0 初产
+
+            //  有无剖宮产史 paoChan  a-只有一次剖宫产史  b-有2次及以上剖宫产史  c-无剖宫产史
+
+
+            if (chanCi == '0' && taiShu == 'a' && yunZhou == 'b' && linChan == 'a') {
+                $(this).find('.slot-item').find('.robsonSelect').val("a").attr('disabled', 'true')
+            } else if (chanCi == '0' && taiShu == 'a' && yunZhou == 'b' && linChan == 'b') {
+                $(this).find('.slot-item').find('.robsonSelect').val("b").attr('disabled', 'true')
+            } else if (chanCi == '0' && taiShu == 'a' && yunZhou == 'b' && linChan == 'c') {
+                $(this).find('.slot-item').find('.robsonSelect').val("c").attr('disabled', 'true')
+            } else if (chanCi == '1' && taiShu == 'a' && yunZhou == 'b' && linChan == 'a' && paoChan == 'c') {
+                $(this).find('.slot-item').find('.robsonSelect').val("d").attr('disabled', 'true')
+            } else if (chanCi == '1' && taiShu == 'a' && yunZhou == 'b' && linChan == 'b' && paoChan == 'c') {
+                $(this).find('.slot-item').find('.robsonSelect').val("e").attr('disabled', 'true')
+            } else if (chanCi == '1' && taiShu == 'a' && yunZhou == 'b' && linChan == 'c' && paoChan == 'c') {
+                $(this).find('.slot-item').find('.robsonSelect').val("f").attr('disabled', 'true')
+            } else if (chanCi == '1' && taiShu == 'a' && yunZhou == 'b' && paoChan == 'a' && taiWei == 'a') {
+                $(this).find('.slot-item').find('.robsonSelect').val("g").attr('disabled', 'true')
+            } else if (chanCi == '1' && taiShu == 'a' && yunZhou == 'b' && paoChan == 'b' && taiWei == 'a') {
+                $(this).find('.slot-item').find('.robsonSelect').val("h").attr('disabled', 'true')
+            } else if (chanCi == '0' && taiShu == 'a' && taiWei == 'b') {
+                $(this).find('.slot-item').find('.robsonSelect').val("i").attr('disabled', 'true')
+            } else if (chanCi == '1' && taiShu == 'a' && taiWei == 'b' && paoChan != 'c') {
+                $(this).find('.slot-item').find('.robsonSelect').val("j").attr('disabled', 'true')
+            } else if ((chanCi == '1' || chanCi == '0') && taiShu == 'b') {
+                $(this).find('.slot-item').find('.robsonSelect').val("k").attr('disabled', 'true')
+            } else if ((chanCi == '1' || chanCi == '0') && taiShu == 'a' && taiWei == 'c') {
+                $(this).find('.slot-item').find('.robsonSelect').val("l").attr('disabled', 'true')
+            } else if ((chanCi == '1' || chanCi == '0') && taiShu == 'a' && taiWei == 'a' && yunZhou == 'a') {
+                $(this).find('.slot-item').find('.robsonSelect').val("m").attr('disabled', 'true')
+            } else {
+                $(this).find('.slot-item').find('.robsonSelect').val("n").attr('disabled', 'true')
+            }
+        });
+        var menstruationHtml = '<div id="unsure" class="end-report-content">' +
+            '<img class="end-img" src="../img/report-warn.png"/>' +
+            '<span class="end-title">该病例不符合上报要求</span>' +
+            '<p class="end-content">末次月经日期无法确定，终止上报。</p></div>'
+        $('.create_13').next('span').click(function () {
+            if ($('.create_13').prop('checked') === true) {
+                reportConfirm(menstruationHtml, menstruationClose);
+            }
+        })
+        function menstruationClose() {
+            $('.create_13').get(0).checked = false;
+            $('#item12').show();
+        }
+
+        // 控制是否选择特殊感染评估
+        $('.create_38').on('change', function () {
+            var a = $('.create_38').val()
+            var eleHtml = '<div id="electrocar" class="end-report-content">' +
+                '<img class="end-img" src="../img/report-warn.png"/>' +
+                '<span class="end-title">该病例不符合上报要求，请前往HBV 感染分娩母婴阻断进行上报</span>' +
+                '<p class="end-content">请重新填报</p></div>';
+            if (a != 'def') {
+                layer.open({
+                    type: 1 //Page层类型
+                    , area: ['424px', '192px']
+                    , offset: '150px'
+                    , move: false
+                    , title: false
+                    , shade: 0.6 //遮罩透明度
+                    , skin: "end-report"
+                    , id: 'layerId'
+                    , closeBtn: 0
+                    , maxmin: false //允许全屏最小化
+                    , btn: ['取消', '确定']
+                    , btnAlign: 'r'
+                    , content: eleHtml
+                    , yes: function (index) {
+                        close()
+                        layer.close(index);
+                    }
+                    , btn2: function (index) {
+                        window.history.go(-1)
+                        layer.close(index);
+                    },
+                    end: function () {
+                        close()
+                    }
+                });
+            }
+
+        })
+    });
+</script>

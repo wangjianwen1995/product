@@ -1,0 +1,51 @@
+server:
+  application:
+    name: 三级医院等级评审
+  port: 23307
+productName: 三级医院等级评审(2020)
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=HMI_SYS
+      username: sa
+      password: sa
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_dc
+      username: sa
+      password: sa
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+#  mvc:
+#    static-path-pattern: /static/**
+#  resources:-asspath:static/**,file:static/**
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+logging:
+  level:
+    com.sxdl.hp.dao : debug
+HBI:
+  name: 雕龙科技
+  url: http://192.168.2.203:23306
+  isNew: 1
+  publicKey: b23ff60d43726aaacc2a054992aedaa3c57f320b32231379cd6c17602d1c7ec5
+basePackage: com.sxdl.hmi.controller
+drpath: http://140.143.190.251:8077
+
+back_path: D:\bf
+back_time: 10
+dcip: http://140.143.190.251:23300
+drip: http://192.168.2.200:23002
+
+## dcLink:DC项目的数据库名字，如果与HP不在同一个服务器上，则需要加上连接服务器名字 eg:dcservice.dl_dc
+dcLink: dl_dc

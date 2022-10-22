@@ -1,0 +1,1130 @@
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!--评分-->
+    <!-- Hip---HarrisTable  -->
+    <div id="HarrisTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Hip---髋关节功能Harris评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">Hip---髋关节功能Harris评分表</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>关于主诉疼痛</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>44分</td>
+                                <td>
+                                    <div score="44" class="check-item">无痛或可以忽略</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>40分</td>
+                                <td>
+                                    <div score="40" class="check-item">时有隐痛，不影响活动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30分</td>
+                                <td>
+                                    <div score="30" class="check-item">轻度疼痛，日常生活不受影响，过量活动可有中度疼痛可服NSAID类止痛药</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20分</td>
+                                <td>
+                                    <div score="20" class="check-item">中度疼痛，可忍受，但常因此废弃一些活动，日常活动稍受限，但能正常工作，常服NSAID止痛药</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">剧痛，活动严重受限</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">病废，卧床仍剧痛，因疼痛被迫长期卧床</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>步态</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>步态跛行</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11分</td>
+                                <td>
+                                    <div score="11" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">轻度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">中度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">重度</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>行走距离</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11分</td>
+                                <td>
+                                    <div score="11" class="check-item">无限制</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8分</td>
+                                <td>
+                                    <div score="8" class="check-item">600米</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">200-300米</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">限于室内</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">卧床或坐椅</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>助行装置</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11分</td>
+                                <td>
+                                    <div score="11" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7分</td>
+                                <td>
+                                    <div score="7" class="check-item">长距离行走需单手杖</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">大多时间需单手杖</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">需单拐</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">需双手杖</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">需双拐或无法行走</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>日常生活</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>上下楼梯</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">一步一阶不需扶手</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">一步一阶需扶栏杆</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">上下楼需人辅助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无法上下楼</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>穿鞋袜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item">轻松</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">困难</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">不能穿鞋袜</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>坐</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item">能舒适的坐任何椅子1小时</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">能舒适的坐高椅子半小时</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">在任何椅子上坐都不舒服</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>乘车</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">能</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">不能</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>体征表现</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">固定屈曲挛缩小于30度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">固定内收畸形小于10度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">伸直位固定内旋畸形小于10度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">两侧肢体长度相差3.2cm以内</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th colspan="3">查体结果（得分结果=A、B、C、D之和除以20）</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">A、屈曲</td>
+                                <td style="width: 200px;">
+                                    <div>
+                                        <select class="pfA">
+                                            <option value="0">0-45度以内</option>
+                                            <option value="1">45-90度以内</option>
+                                            <option value="2">90-110度以内</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="pfA-0">
+                                        <input class="inputText" lv="1.0" /> *1.0=&nbsp;
+                                        <input class="outputText" disabled/>(A)
+                                    </div>
+                                    <div class="pfA-1" style="display: none">
+                                        <input class="inputText" lv="0.6" /> *0.6=
+                                        <input class="outputText" disabled/>(A)
+                                    </div>
+                                    <div class="pfA-2" style="display: none">
+                                        <input class="inputText" lv="0.3" /> *0.3=
+                                        <input class="outputText" disabled/>(A)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B、外展</td>
+                                <td>
+                                    <div>
+                                        <select class="pfB">
+                                            <option value="0">0-15度以内</option>
+                                            <option value="1">15-20度以内</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="pfB-0">
+                                        <input class="inputText" lv="0.8" /> *0.8=
+                                        <input class="outputText" disabled/>(B)
+                                    </div>
+                                    <div class="pfB-1" style="display: none">
+                                        <input class="inputText" lv="0.3" /> *0.3=
+                                        <input class="outputText" disabled/>(B)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>C、外旋</td>
+                                <td>
+                                    <div>0-15度以内</div>
+                                </td>
+                                <td>
+                                    <div class="pfC-0">
+                                        <input class="inputText" lv="0.4" /> *0.4=
+                                        <input class="outputText" disabled/>(C)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>D、内收</td>
+                                <td>
+                                    <div>0-15度以内</div>
+                                </td>
+                                <td>
+                                    <div class="pfD-0">
+                                        <input class="inputText" lv="0.2" /> *0.2=
+                                        <input class="outputText" disabled/>(D)
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>特征表现（Trendelen试验）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div score="0" class="check-item text-left">阳性</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="0" class="check-item text-left">阴性</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hip---Caprini血栓风险因素评估  -->
+    <div id="CapriniTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Hip---Caprini血栓风险因素评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 800px;">
+            <div class="modal-content">
+                <div class="scoreHeader">Caprini血栓风险因素评估</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>危险因素（可多选）</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>2分</td>
+                                <td>3分</td>
+                                <td>5分</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">年龄41-60岁</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">年龄61-74岁</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">年龄≥75岁</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">脑卒中( ＜1个月)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">小手术</div>
+                                </td>
+                              
+                                <td>
+                                    <div score="2" class="check-item">关节镜手术</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">VTE史</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">择期关节置换术</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">体质指数>25 kg/m²</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">大型开放手术( > 45 min)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">VTE家族史</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">髋、骨盆或下肢骨折</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">下肢肿胀</div>
+                                </td>
+                                
+                                <td>
+                                    <div score="2" class="check-item">腹腔镜手术( >45 min)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">凝血因子V Leiden突变</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">急性脊髓损伤( <1个月)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">静脉曲张</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">恶性肿瘤</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">凝血酶原G20210A突变</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">妊娠或产后</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">卧床( >72 h)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">狼疮抗凝物阳性</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">有不明原因或者习惯性流产史</div>
+                                </td>
+                                
+                                <td><div score="2" class="check-item">石膏固定</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">抗心磷指抗体阳性</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">口服避孕药或激素替代疗法</div>
+                                </td>
+                                
+                                <td><div score="2" class="check-item">中央静脉通路</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">血清同型半胱氨酸升高</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">脓毒症( ＜I个月)</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">肝素诱导的血小板减少症</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">严重肺病.包括肺炎( ＜1个月)</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">其他先天性或获得性血栓形成倾向</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">肺功能异常</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">急性心肌梗死</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">充血性心力衰竭( ＜1个月)</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">炎性肠病史</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">卧床患者</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('Hip-2.0')
+var create = new create();
+    create.createRender("Hip",function() {
+        //评分表
+        $("#create_31").after('<a id="HSSScore_right" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table score_right">评分工具计算</a></span>')
+        $("#create_34").after('<a id="HSSScore_left" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table score_right">评分工具计算</a></span>')
+        $("#create_57").after('<a id="CapriniScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table score_right">评分工具计算</a></span>')
+        Number.prototype.toFixed = function (s) {
+            var changenum = (parseInt(this * Math.pow(10, s) + 0.5) / Math.pow(10, s)).toString();
+            var index = changenum.indexOf(".");
+            if (index < 0 && s > 0) {
+                changenum = changenum + ".";
+                for (i = 0; i < s; i++) {
+                    changenum = changenum + "0";
+                }
+
+            } else {
+                index = changenum.length - index;
+                for (i = 0; i < (s - index) + 1; i++) {
+                    changenum = changenum + "0";
+                }
+
+            }
+            return changenum;
+        }
+        var getResult = function () {
+            var A = $("#HarrisTable").find(".pfA-" + $(".pfA").val()).find(".outputText").val();
+            var B = $("#HarrisTable").find(".pfB-" + $(".pfB").val()).find(".outputText").val();
+            var C = $("#HarrisTable").find(".pfC-0").find(".outputText").val();
+            var D = $("#HarrisTable").find(".pfD-0").find(".outputText").val();
+            var total = (Number(A) + Number(B) + Number(C) + Number(D)) / 20
+            return total || 0
+        }
+        $("#HarrisTable").on("change", ".pfA,.pfB", function () {
+            $(this).closest("td").next().find("div").eq(Number($(this).val())).show().siblings().hide()
+        })
+        $("#HarrisTable").on("blur", ".inputText", function () {
+            $(this).siblings(".outputText").val(((Number($(this).val()) * Number($(this).attr("lv"))).toFixed(2)))
+            $("#HarrisTable .resultScore .num").text($("#HarrisTable .calculate").data("score") || 0 + "+" + getResult().toFixed(2))
+        })
+        $("#HarrisTable .resultScore .num").data("text", function (scope) {
+            return scope + "+" + getResult().toFixed(2)
+        })
+        var target = '#create_31';
+        var hssTable_score;//hss的侧边
+        $("#form-content").on("click", "#HSSScore,#HSSScore2,#HSSScore_left,#HSSScore_right", function (e) {
+            hssTable_score = $(this).attr('class');
+            $(".inputText").val('')
+            $(".outputText").val('')
+            $("#HarrisTable .scoreTable").find(".check-item.active").removeClass("active")
+            $("#HarrisTable .calculate").data("score", 0)
+            if (e.target.id == "HSSScore_right") {
+                target = '#create_31'
+            } else {
+                target = '#create_34'
+            }
+            $("#HarrisTable").modal();
+        })
+        $("#HarrisTable .calculate").click(function () {
+            $(target).val($(this).data("score") + getResult());
+            $(target).blur();
+            $(target).change();
+            $("#HarrisTable").modal("hide");
+        })
+
+        //Caprini血栓风险
+        $("#form-content").on("click", "#CapriniScore", function () {
+            $("#CapriniTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#CapriniTable .calculate").click(function () {
+            $('#create_57').val($(this).data("score") || 0);
+            $('#create_57').blur();
+            $('#create_57').change();
+            $("#CapriniTable").modal("hide");
+        })
+        $('#form-content').on('change', '[name="Hip[Hip-3-2-1][Hip-3-2-2]"]', function () {
+            if ($(this).val() == '-1') {
+                $('.preTreatment').show()
+            } else {
+                $('.preTreatment').hide().find('select').val('-1')
+            }
+        })
+        $('#form-content').on('change', '[name="Hip[Hip-3-2-1][Hip-3-2-3]"]', function () {
+            if ($(this).val() == '-1') {
+                $('.mechanicalPro').show()
+            } else {
+                $('.mechanicalPro').hide().find('select').val('-1')
+            }
+        })
+        //机械预防措施,预防性地给予药物治疗任意选一项
+        function antOperationOrMedication(cliElem, othElem, flag) {
+            var otherElem = $(othElem);
+            if (!flag) {
+                if ($('[name="Hip-3-1-3"]').val() == 'b') {
+                    if (otherElem.val() != '-1' && $(cliElem).val() == '-1') {
+                        $(cliElem).removeAttr('required');
+                        $(cliElem).val('');
+                    } else if (otherElem.val() == '-1' && $(cliElem).val() != '-1') {
+                        otherElem.removeAttr('required');
+                    } else {
+                        $(cliElem).attr('required', 'required');
+                        otherElem.attr('required', 'required');
+                    }
+                } else {
+                    $(cliElem).attr('required', 'required');
+                    otherElem.attr('required', 'required');
+                }
+            } else {
+                if (otherElem.val() != '-1' && $(cliElem).val() == '-1') {
+                    $(cliElem).removeAttr('required');
+                    $(cliElem).val('');
+                } else if (otherElem.val() == '-1' && $(cliElem).val() != '-1') {
+                    otherElem.removeAttr('required');
+                } else {
+                    $(cliElem).attr('required', 'required');
+                    otherElem.attr('required', 'required');
+                }
+            }
+        }
+        //物理预防措施应用禁忌与实施药物应用禁忌
+        function mechanicalOrPreTreatment(clicElem, othElem, changeElem, changeElem1) {
+            var otherElem = $(othElem);
+            if ($(clicElem).val() != undefined && otherElem.val() != undefined) {
+                if ($(clicElem).val() != '-1' && otherElem.val() != '-1') {
+                    $(changeElem).hide().find('select').val('-1');
+                    $(changeElem1).attr('required', 'required');
+                    $('.threeAntOpe').hide();
+                } else if ($(clicElem).val() != '-1' && otherElem.val() == '-1') {
+                    otherElem.removeAttr('required');
+                    $('.threeAntOpe').show();
+                    $(changeElem).hide().find('select').val('-1');
+                    $(changeElem1).attr('required', 'required');
+                } else if ($(clicElem).val() == '-1' && otherElem.val() != '-1') {
+                    $(clicElem).removeAttr('required');
+                    $('.threeAntOpe').show();
+                    $(changeElem).show();
+                } else if ($(clicElem).val() == '-1' && otherElem.val() == '-1') {
+                    $('.threeAntOpe').show();
+                    otherElem.attr('required', 'required');
+                    $(clicElem).attr('required', 'required');
+                    $(changeElem).show();
+                }
+            }
+        }
+        $(function () {
+            //实施预防术后深静脉血栓联动交互
+            $('.masterSwitch input[type="radio"]').click(function () {
+                var selector = $('.bottom');
+                if ($(this).val() == 'y') {
+                    selector.show()
+                } else {
+                    selector.hide();
+                    selector.find('select').val('-1');
+                    selector.find('input[type="radio"]').prop('checked', false);
+                    selector.find('input[type="checkbox"]').prop('checked', false);
+                    selector.find('input[type="text"]').val('');
+                    selector.find('input[type="float"]').val('');
+                    selector.find('.selected-radio').remove();
+                    $('.mechanicalPro').show();
+                    $('.preTreatment').show();
+                }
+            })
+
+            //DVT发生风险分层联动
+            $('.form-5').on('change', '.dvt', function () {
+                $('.base').find('input').removeAttr('checked');
+                $('.preTreatment').find('select').val('-1');
+                $('.mechanicalPro').find('select').val('-1');
+            })
+
+            //实施预防术后深静脉血栓的禁忌
+            $('.form-5').on('change', '[name="Hip[Hip-3-2-1][Hip-3-2-1]"]', function () {
+                if ($(this).val() == 'n') {
+                    $('.mechanicalPro').show();
+                    $('.preTreatment').show();
+                }
+            })
+
+            //Hip3----术中追加抗菌药物
+            $('.form-5').on('change', '[name="Hip[Hip-2-5-1][Hip-2-5-1-1]"]', function () {
+                $('[name="Hip[Hip-2-5-1][Hip-2-5-1-2]"]').removeProp('checked');
+                if ($(this).val() == 'n') {
+                    $('.opera_Ant').hide();
+                } else {
+                    $('.opera_Ant').show();
+                }
+            })
+
+            //实施输血联动
+            $('.transblood').find('input[type="radio"]').change(function () {
+                if ($(this).val() == 'y') {
+                    $('.yes').click()
+                } else {
+
+                }
+            })
+
+            //入院时间(Hip-10的入院时间根据基本信息中的入院的时间填写)
+            $('[name="Hip[Hip-0-2-2][Hip-0-2-2-1]"]').data('selectDate', function (date) {
+                var brithDay = $('[name="Hip[Hip-0-2-1][Hip-0-2-1]"]').val();
+                var diffYear = moment(date).diff(moment(brithDay), "year", true);
+                if (brithDay) {
+                    if (diffYear < 18 || diffYear > 100) {
+                        alert('入院年龄限于18岁至100岁！');
+                        $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').attr('id', '')
+                        $('[name="Hip[Hip-0-2-2][Hip-0-2-2-1]"]').val('');
+                        return
+                    } else {
+                        $('#age').val(Math.ceil(diffYear))
+                        $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').attr('id', 'endDate');
+                        $('[name="Hip[Hip-10-1][Hip-10-1-1]"]').val(moment(date).format('YYYY-MM-DD'));
+                    }
+                } else {
+                    alert("请先填写出生日期!");
+                    $('[name="Hip[Hip-0-2-2][Hip-0-2-2-1]').val('');
+                    $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').attr('id', '')
+                }
+            })
+
+            //出院日期----入院天数计算
+            $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').data('selectDate', function (date) {
+                var startTime = $('[name="Hip[Hip-0-2-2][Hip-0-2-2-1]"]').val();
+                $('[name="Hip[Hip-10-1][Hip-10-1-2]"]').val(moment(date).format('YYYY-MM-DD'));
+                var start_time = $('[name="Hip[Hip-10-1][Hip-10-1-1]"]').val();
+                var days = moment(date).diff(moment(start_time), "day")
+                if (startTime == "") {
+                    $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').val("")
+                    alert("请先选择入院日期时间！");
+                    return;
+                }
+                if (moment(date).diff(moment(startTime), "days") == 0) {
+                    alert("入院时间和出院时间不能在同一天!");
+                    $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').val("");
+                } else if (moment(date).diff(moment(startTime), "days") >= 120) {
+                    $("#big120").modal();
+                } else {
+                    $('[name="Hip[Hip-10-1][Hip-10-1-3]"]').val(Math.ceil(days));
+                }
+            })
+
+            $("#big120 .cancel").click(function () {
+                $("#big120").modal("hide")
+            })
+            $("#big120 .sure").click(function () {
+                $('#big120').on('hidden.bs.modal', function (e) {
+                    location.hash = "hospitalAdmin/reported";
+                })
+                $("#big120").modal("hide")
+            })
+
+            //手术开始时间
+            $('[name="Hip[Hip-0-2-4][Hip-0-2-4-1]"]').data('selectDate', function (date) {
+                var ruYuanTime = $('[name="Hip[Hip-0-2-2][Hip-0-2-2-1]"]').val();
+                var diffDay = moment(date).diff(moment(ruYuanTime), 'day');
+                if (ruYuanTime) {
+                    if (diffDay < 0) {
+                        alert('手术时间应大于入院时间！');
+                        $('[name="Hip[Hip-0-2-4][Hip-0-2-4-1]"]').val('');
+                        return;
+                    }
+                } else {
+                    alert('请先填写入院时间！');
+                    $('[name="Hip[Hip-0-2-4][Hip-0-2-4-1]"]').val('');
+                    return;
+                }
+            })
+            //手术结束时间
+            $('[name="Hip[Hip-0-2-5][Hip-0-2-5-1]"]').data('selectDate', function (date) {
+                var chuyuanTime = $('[name="Hip[Hip-0-2-3][Hip-0-2-3]"]').val();
+                var shoushuStart = $('[name="Hip[Hip-0-2-4][Hip-0-2-4-1]"]').val();
+                var diffDay = moment(chuyuanTime).diff(moment(date), 'day');
+                if (shoushuStart && chuyuanTime) {
+                    if (diffDay < 0) {
+                        alert('出院时间应大于手术结束时间！');
+                        $('[name="Hip[Hip-0-2-5][Hip-0-2-5-1]"]').val('');
+                        return;
+                    }
+                } else {
+                    alert('请先填写手术时间！');
+                    $('[name="Hip[Hip-0-2-5][Hip-0-2-5-1]"]').val('');
+                    return;
+                }
+                //手术后康复时机（天）
+                if ($('[name="Hip[Hip-5-2][Hip-5-2-1]"]').val()) {
+                    var val = $('[name="Hip[Hip-5-2][Hip-5-2-1]"]').val();
+                    var days = moment(val).diff(moment(date), 'days');
+                    $('[name="Hip[Hip-5-2][Hip-5-2-2]"]').val(days);
+                }
+            })
+            //计算时间差
+            $('[name="Hip[Hip-5-1][Hip-5-1]"]').click(function () {
+                setTimeout(function () {
+                    $('[name="Hip[Hip-5-2][Hip-5-2-1]"]').data('selectDate', function (date) {
+                        var endTime = $('[name="Hip[Hip-0-2-5][Hip-0-2-5-1]"]').val();
+                        if (endTime == '') {
+                            alert("请先选择术后日期时间！");
+                            $('[name="Hip[Hip-5-2][Hip-5-2-1]"]').val('');
+                            return;
+                        } else {
+                            var days = moment(date).diff(moment(endTime), "days")
+                            $('[name="Hip[Hip-5-2][Hip-5-2-2]"]').val(days)
+                        }
+                    })
+                }, 100)
+            })
+
+            //计算抗菌药物使用时间
+            $('[name="Hip[Hip-2-1][Hip-2-1]"]').click(function () {
+                setTimeout(function () {
+                    $('[name="Hip[Hip-2-6-1][Hip-2-6-1-1]"]').data('selectDate', function (date) {
+                        var startTime = $('[name="Hip[Hip-2-4][Hip-2-4-1]"]').val();
+                        var endTime = $('[name="Hip[Hip-2-6-1][Hip-2-6-1-1]"]').val();
+                        if (startTime == '') {
+                            alert("请先填写术前使用首剂抗菌药物起始时间！");
+                            $('[name="Hip[Hip-2-6-1][Hip-2-6-1-1]"]').val('');
+                            return;
+                        } else {
+                            $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').attr('disabled', true)
+                            var days = moment(endTime).diff(moment(startTime), "hours");
+                            if (days < 0) {
+                                alert('术前使用首剂抗菌药物起始时间须大于使用术后抗菌药物停止使用时间');
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-1-1]"]').val("");
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('-1');
+                                $('.because').hide()
+                            } else if (days <= 24 && days >= 0) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('a');
+                                $('.because').hide()
+                            } else if (days > 24 && days <= 48) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('b');
+                                $('.because').hide()
+                            } else if (days > 48 && days <= 72) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('c');
+                                $('.because').hide()
+                            } else if (days > 72) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('d')
+                                $('.because').show()
+                            }
+                        }
+                    });
+                    $('[name="Hip[Hip-2-4][Hip-2-4-1]"]').data('selectDate', function (date) {
+                        var startTime = $('[name="Hip[Hip-2-4][Hip-2-4-1]"]').val();
+                        var endTime = $('[name="Hip[Hip-2-6-1][Hip-2-6-1-1]"]').val();
+                        if (endTime) {
+                            $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').attr('disabled', true)
+                            var days = moment(endTime).diff(moment(startTime), "hours");
+                            if (days < 0) {
+                                alert('术前使用首剂抗菌药物起始时间须大于使用术后抗菌药物停止使用时间');
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-1-1]"]').val("");
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('-1');
+                                $('.because').hide();
+                            } else if (days <= 24 && days >= 0) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('a');
+                                $('.because').hide();
+                            } else if (days > 24 && days <= 48) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('b');
+                                $('.because').hide();
+                            } else if (days > 48 && days <= 72) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('c');
+                                $('.because').hide();
+                            } else if (days > 72) {
+                                $('[name="Hip[Hip-2-6-1][Hip-2-6-2]"]').val('d')
+                                $('.because').show();
+                            }
+                        }
+                    })
+                }, 100)
+            })
+
+            $('.form-5').on('change', '[name="Hip[Hip-2-6-1][Hip-2-6-2]"]', function () {
+                if ($(this).val() == 'd') {
+                    $('.because').show();
+                } else {
+                    $('.because').hide();
+                }
+            })
+            //Hip1-2手术部位
+            $('[name="Hip[Hip-1-2-1][Hip-1-2-1]"]').click(function () {
+                if ($(this).val() == 'n') {
+                    $('.oneway,.twoway').removeProp("checked");
+                    $('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]').val('');
+                } else {
+                    setTimeout(function () {
+                        $('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]').change(function () {
+                            $('[name="Hip[Hip-1-2-1][Hip-1-2-2-2]"]').val('');//左侧评分值
+                            $('[name="Hip[Hip-1-2-1][Hip-1-2-2-4]"]').val('-1');//左侧评估结果
+                            $('[name="Hip[Hip-1-2-1][Hip-1-2-2-1]"]').val('');//右侧评分值
+                            $('[name="Hip[Hip-1-2-1][Hip-1-2-2-3]"]').val('-1');//右侧评估结果
+                            if ($('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]:checked').val() == 'left') {
+                                $('[name="Hip[Hip-1-3-1][Hip-1-3-2]"]').val('a').attr('disabled', 'true');
+                                //Hip-4输血的单双侧
+                                $('.oneway').prop("checked", true);
+                                $("#simple").show();
+                                $("#double").hide();
+                            } else if ($('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]:checked').val() == 'right') {
+                                $('[name="Hip[Hip-1-3-1][Hip-1-3-2]"]').val('b').attr('disabled', 'true');
+                                //Hip-4输血的单双侧
+                                $('.oneway').prop("checked", true);
+                                $("#simple").show();
+                                $("#double").hide();
+                            } else if ($('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]:checked').val() == 'both') {
+                                $('[name="Hip[Hip-1-3-1][Hip-1-3-2]"]').val('c').attr('disabled', 'true');
+                                //Hip-4输血的单双侧
+                                $('.twoway').prop("checked", true);
+                                $("#simple").hide();
+                                $("#double").show();
+                            } else {
+                                $('[name="Hip[Hip-1-3-1][Hip-1-3-2]"]').val('').attr("disabled", 'true');
+                            }
+                        })
+                    }, 100)
+                }
+            })
+            //Hip4输血
+            $('[name="Hip[Hip-4-1-1][Hip-4-1-1]"]').click(function () {
+                setTimeout(function () {
+                    if ($('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]:checked').val() == 'left') {
+                        $('[name="Hip[Hip-4-2-1][Hip-4-2-1-1]"][value="单侧"]').prop("checked", true);
+                        $("#simple").show();
+                        $("#double").hide();
+                    } else if ($('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]:checked').val() == 'right') {
+                        $('[name="Hip[Hip-4-2-1][Hip-4-2-1-1]"][value="单侧"]').prop("checked", true);
+                        $("#simple").show();
+                        $("#double").hide();
+                    } else if ($('[name="Hip[Hip-1-2-1][Hip-1-2-2-0]"]:checked').val() == 'both') {
+                        $('[name="Hip[Hip-4-2-1][Hip-4-2-1-1]"][value="双侧"]').prop("checked", true);
+                        $("#simple").hide();
+                        $("#double").show();
+                    } else {
+                        $('.oneway,.twoway').removeProp("checked");
+                    }
+                }, 100)
+            })
+        })
+    })
+</script>
+<style>
+    .inputText,.outputText{
+        width: 100px;
+    }
+    .pfA,.pfB{
+        width: 150px;
+    }
+</style>

@@ -1,0 +1,583 @@
+<!--
+ * @Description: 中高危风险患者预防静脉血栓栓塞症 VTE
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-03-01 13:35:41
+ * @FilePath: \single-disease\public\static\drgs\form-36.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- Caprini血栓风险因素评估 -->
+    <div id="CapriniTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Knee---Caprini血栓风险因素评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 800px;">
+            <div class="modal-content">
+                <div class="scoreHeader">Caprini血栓风险因素评估</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>危险因素（可多选）</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>2分</td>
+                                <td>3分</td>
+                                <td>5分</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">年龄41-60岁</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">年龄61-74岁</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">年龄≥75岁</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">脑卒中( ＜1个月)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">小手术</div>
+                                </td>
+                              
+                                <td>
+                                    <div score="2" class="check-item">关节镜手术</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">VTE史</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">择期关节置换术</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">体质指数>25 kg/m²</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">大型开放手术( > 45 min)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">VTE家族史</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">髋、骨盆或下肢骨折</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">下肢肿胀</div>
+                                </td>
+                                
+                                <td>
+                                    <div score="2" class="check-item">腹腔镜手术( >45 min)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">凝血因子V Leiden突变</div>
+                                </td>
+                                <td>
+                                    <div score="5" class="check-item">急性脊髓损伤( <1个月)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">静脉曲张</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">恶性肿瘤</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">凝血酶原G20210A突变</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">妊娠或产后</div>
+                                </td>
+                               
+                                <td>
+                                    <div score="2" class="check-item">卧床( >72 h)</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">狼疮抗凝物阳性</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">有不明原因或者习惯性流产史</div>
+                                </td>
+                                
+                                <td><div score="2" class="check-item">石膏固定</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">抗心磷指抗体阳性</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">口服避孕药或激素替代疗法</div>
+                                </td>
+                                
+                                <td><div score="2" class="check-item">中央静脉通路</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">血清同型半胱氨酸升高</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">脓毒症( ＜I个月)</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">肝素诱导的血小板减少症</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">严重肺病.包括肺炎( ＜1个月)</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">其他先天性或获得性血栓形成倾向</div>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">肺功能异常</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">急性心肌梗死</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">充血性心力衰竭( ＜1个月)</div>
+                                </td>
+                               
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">炎性肠病史</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div score="1" class="check-item">卧床患者</div>
+                                </td>
+                                
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 深静脉血栓（DVT）Wells评分 -->
+    <div id="WellsTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">深静脉血栓（DVT）Wells评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">+1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age1">肿瘤活动期</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age2">近期卧床 >3天 或 4周内行大手术</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">与对侧相比，小腿肿胀 >3cm  </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">同侧浅表静脉显露（非静脉曲张）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">整个下肢肿胀</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">沿深静脉走行局限性压痛  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">可凹性水肿，有症状侧下肢更重</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">偏瘫、轻瘫、近期行下肢石膏固定术</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>-2分</td>
+                                <td>
+                                    <div score="-2" class="check-item">除DVT外的其他病因诊断为可能或很可能</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 肺栓塞（PE）Wells评分 -->
+    <div id="PEWellsTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">肺栓塞（PE）Wells评分</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">+1.5分</td>
+                                <td>
+                                    <div score="1.5" class="check-item check-age1">既往PE或DVT病史   </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1.5分</td>
+                                <td>
+                                    <div score="1.5" class="check-item check-age2">心率>100次/分   
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">近期外科手术或制动  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">DVT的临床表现  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">诊断为其他疾病的可能性小于PE  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">咯血  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>+1分</td>
+                                <td>
+                                    <div score="1" class="check-item">肿瘤  
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表2内科住院患者静脉血栓栓塞症风险评估表 -->
+    <div id="PaduaTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="NIHSS评分表">
+        <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+            <div class="modal-content">
+                <div class="scoreHeader">内科住院患者静脉血栓栓塞症风险评估表</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80px;">3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age1">活动性恶性肿瘤，患者先前有局部或远端转移和(或)6个月内接受过化疗和放疗   </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age2">既往静脉血栓栓塞症  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">制动.患者身体原因或遵医嘱需卧床休息至少3d  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item">已有血栓形成倾向，抗凝血酶缺陷症.蛋白C或S缺乏，LeidenV因子凝血酶原G20210A突变、抗磷脂抗体综合征
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item">近期(≤1个月)创伤或外科手术  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">年龄≥70岁  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">心脏和(或)呼吸衰竭  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">急性心肌梗死和(或)缺血性脑卒中  
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">急性感染和(或)风湿性疾病 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">肥胖(体质指数≥30 kg/m² )
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">正在进行激素治疗
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('VTE-2.0')
+var create = new create();
+    create.createRender("VTE",function() {
+        //评分表
+    $("#create_174").after('<a id="CapriniScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+    // $("#create_177").after('<a id="WellsTable1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+    // $("#create_180").after('<a id="PEWellsTable1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+    $("#create_177").after('<a id="PaduaTable1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+    
+    //Caprini血栓风险
+    $("#CapriniScore").on("click", function () {
+        $("#CapriniTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+    })
+
+    $("#CapriniTable .calculate").click(function () {
+        capriniSorce($(this).data("score"));
+        $("#CapriniTable").modal("hide");
+    })
+    //capriniTable评分表判断事件
+    function capriniSorce(score) {
+        var grace = score;
+        $('#create_174').val(grace);
+        $('#create_174').blur();
+        $('#create_174').change();
+    }
+    //深静脉血栓（DVT）Wells评分
+    $("#WellsTable1").on("click", function () {
+        $("#WellsTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+    })
+
+    $("#WellsTable .calculate").click(function () {
+        capriniSorce1($(this).data("score"));
+        $("#WellsTable").modal("hide");
+    })
+    //深静脉血栓（DVT）Wells评分评分表判断事件
+    function capriniSorce1(score) {
+        var grace = score;
+        $('#create_177').val(grace);
+        $('#create_177').blur();
+        $('#create_177').change();
+    }
+    //肺栓塞（PE）Wells评分
+    $("#PEWellsTable1").on("click", function () {
+        $("#PEWellsTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+    })
+
+    $("#PEWellsTable .calculate").click(function () {
+        capriniSorce2($(this).data("score"));
+        $("#PEWellsTable").modal("hide");
+    })
+    //肺栓塞（PE）Wells评分评分表判断事件
+    function capriniSorce2(score) {
+        var grace = score;
+        $('#create_180').val(grace);
+        $('#create_180').blur();
+        $('#create_180').change();
+    }
+    //肺栓塞（PE）Wells评分
+    $("#PaduaTable1").on("click", function () {
+        $("#PaduaTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+    })
+
+    $("#PaduaTable .calculate").click(function () {
+        capriniSorce3($(this).data("score"));
+        $("#PaduaTable").modal("hide");
+    })
+    // VTE-1  实施血栓风险因素评估工具选择：修改选项a的title显示
+    $('#create_172 option[value="a"]').attr('title', '特别提示：手术患者不包含已纳入报送“围手术期预防深静脉血栓,TKR,THR,CABG,AVR,MVR,ASD,VSD,STEMI,STK"单病种质量监测信息项者');
+    $('#create_172 option[value="b"]').attr('title', '');
+    //肺栓塞（PE）Wells评分评分表判断事件
+    function capriniSorce3(score) {
+        var grace = score;
+        $('#create_177').val(grace);
+        $('#create_177').blur();
+        $('#create_177').change();
+    }
+    });
+</script>
+<style>
+    .input_remarkVTE_316{
+        width: 140% !important;
+    }
+</style>

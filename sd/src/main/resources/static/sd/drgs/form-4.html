@@ -1,0 +1,173 @@
+<!--
+ * @Description: 社区获得性肺炎（儿童，首次住院）
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-06-18 10:29:25
+ * @FilePath: \single-disease\public\static\drgs\form-4.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('Cap-2.0.1')
+    var create = new create();
+    create.createRender("Cap", function () {
+        /**
+         * 是否需进行抗感染治疗 联动   抗感染治疗药物选择  
+         * 是：a-e    
+         * 否:  f UTD
+         * */
+        var eles = $('.create_63')
+        for (var i = 0; i < eles.length; i++) {
+            $(eles[i]).on('change', function () {
+                var link_ele = $(".create_94")
+                for (var j = 0; j < link_ele.length; j++) {
+                    if (($(link_ele[j]).val() == 'f' || $(link_ele[j]).val() == 'UTD') && $(this).get(0).value == 'y' && $(this).get(0).checked) {
+                        //是   隐藏   f  || UTD 
+                        $(link_ele[j]).next().hide()
+                        $(link_ele[j]).next().next().hide()
+                        $(link_ele[j]).get(0).checked = false
+                        $(link_ele[j]).change();
+                        $(link_ele[j]).blur();
+                    } else if (($(link_ele[j]).val() != 'f' && $(link_ele[j]).val() != 'UTD') && $(this).get(0).value == 'y' && $(this).get(0).checked) {
+                        //是  显示   a-e
+                        $(link_ele[j]).next().show()
+                        $(link_ele[j]).next().next().show()
+                        // $(link_ele[j]).get(0).checked = false
+                        $(link_ele[j]).change();
+                        $(link_ele[j]).blur();
+                    } else if (($(link_ele[j]).val() != 'f' && $(link_ele[j]).val() != 'UTD') && $(this).get(0).value == 'n' && $(this).get(0).checked) {
+                        //否   隐藏   a-e
+                        $(link_ele[j]).next().hide()
+                        $(link_ele[j]).next().next().hide()
+                        $(link_ele[j]).get(0).checked = false
+                        $(link_ele[j]).change();
+                        $(link_ele[j]).blur();
+                    } else if (($(link_ele[j]).val() == 'f' || $(link_ele[j]).val() == 'UTD') && $(this).get(0).value == 'n' && $(this).get(0).checked) {
+                        //否   显示   f || utd
+                        if ($(link_ele[j]).val() == 'f') {
+                            $(link_ele[j]).get(0).checked = true
+                            $(link_ele[j]).change();
+                            $(link_ele[j]).blur();
+                        }
+                        $(link_ele[j]).next().show()
+                        $(link_ele[j]).next().next().show()
+                    }
+                }
+            })
+        }
+        /**
+         * 抗感染治疗药物选择  点无法确定项，其他项不可选择
+         * */
+
+        var chackInput = $(".create_94")
+        for (var i = 0; i < chackInput.length; i++) {
+            $(chackInput[i]).on('change', function () {
+                if ($(this).get(0).value == 'UTD' && $(this).get(0).checked) {
+                    for (var j = 0; j < chackInput.length; j++) {
+                        if ($(chackInput[j]).get(0).value != 'UTD') {
+                            $(chackInput[j]).get(0).checked = false
+                        }
+                    }
+
+                } else {
+                    for (var j = 0; j < chackInput.length; j++) {
+                        if ($(chackInput[j]).get(0).value == 'UTD') {
+                            $(chackInput[j]).get(0).checked = false
+                        }
+                    }
+                }
+            })
+        }
+
+        disabledRadioOfCap2and9();
+
+        // cap-2指标判断
+        // 动脉血气分析
+        $('#create_31').on('input', function() {
+          var value = $(this).val();
+          var res = checkPaO2(value);
+          selectRadioOfCap2and9(res, '#itemCap_322');
+        });
+        // 指氧仪检查
+        $('#create_32').on('input', function() {
+          var value = $(this).val();
+          var res = checkSatO2(value);
+          selectRadioOfCap2and9(res, '#create_Cap_323');
+        });
+
+        // cap-9
+        // 动脉血气
+        $('#create_120').on('input', function() {
+          var value = $(this).val();
+          var res = checkPaO2(value);
+          selectRadioOfCap2and9(res, '#itemCap_326');
+        });
+        // 脉搏血氧饱和度
+        $('#create_261').on('input', function() {
+          var value = $(this).val();
+          var res = checkSatO2(value);
+          selectRadioOfCap2and9(res, '#itemCap_328');
+        });
+
+        // cap-2和cap-9的部分指标禁用选择
+        function disabledRadioOfCap2and9(params) {
+          $('#itemCap_322').find('input[name="Cap-2-4-5"]').each(function(i,v){
+            v.disabled = true;
+          });
+          $('#itemCap_324').find('input[name="Cap-2-4-6"]').each(function(i,v){
+            v.disabled = true;
+          });
+          $('#itemCap_326').find('input[name="Cap-9-2-2-3"]').each(function(i,v){
+            v.disabled = true;
+          });
+          $('#itemCap_328').find('input[name="Cap-9-2-2-4"]').each(function(i,v){
+            v.disabled = true;
+          });
+        }
+        // cap-2和cap-9的部分指标自动选择
+        function selectRadioOfCap2and9(res, idSelector) {
+          if(res) {
+            $(idSelector).find('input[value="y"]').get(0).checked = true;
+          } else {
+            $(idSelector).find('input[value="n"]').get(0).checked = true;
+          }
+        }
+    })
+    // 动脉血气分析值
+    function checkPaO2(val) {
+      if(val < 80 || val > 100) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    // 指氧仪检查值判断/脉搏血氧饱和度
+    function checkSatO2(val) {
+      if(val < 95 || val > 97) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+</script>

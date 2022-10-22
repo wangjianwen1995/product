@@ -1,0 +1,110 @@
+<!--
+ * @Description: 严重脓毒症和脓毒症休克早期治疗 SEP
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-03-09 10:06:32
+ * @FilePath: \single-disease\public\static\drgs\form-35.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('SEP-2.0')
+var create = new create();
+    create.createRender("SEP",function() {
+        // 患者病情评估结果
+        // A = "a-d"中>2条任意
+        // B = A +（e或f任意一条）
+        // C =  B + ( l-r任意一条) + (j或k任意一条)
+        // D = C + ( g或h或i任意一条)
+        // E = C /D (l-r 任意≥2项)
+        // F = "a-d"中≤2条
+        $("#create_36 input").change(function() {
+            var a = inputVal("SEP-1-1-1"),
+                b = inputVal("SEP-1-1-2"),
+                c = inputVal("SEP-1-1-3"),
+                d = inputVal("SEP-1-1-4"),
+                e = inputVal("SEP-1-1-5");
+            // A
+            if(a.length > 2) {
+                $("#item211").show();
+                $("select[name=SEP-1-2-1]").val("a");
+                // B
+                b.forEach(item => {
+                    if(item === "a" || item === "b") {
+                        $("select[name=SEP-1-2-1]").val("b");
+                        // C
+                        if(d.length >= 1 && e.length >= 1) {
+                            $("select[name=SEP-1-2-1]").val("c");
+                            // D
+                            if(c.length >= 1) {
+                                $("select[name=SEP-1-2-1]").val("d");
+                                // E
+                                if(e.length >= 2) {
+                                    $("select[name=SEP-1-2-1]").val("e"); 
+                                }
+                            }
+                            // E
+                            if(e.length >= 2) {
+                                $("select[name=SEP-1-2-1]").val("e");
+                            }
+                        }
+                    }
+                })
+            // F
+            }else {
+                $("#item211").hide();
+                $("select[name=SEP-1-2-1]").val("f");
+            }
+        });
+        var tips;
+        $('#item57').on('mouseenter', '.form-1-2[key="y2"]', function() {
+          var that = this;
+          var content = setTipsHTML();
+          tips =layer.tips(content,that,{tips:[3,'#fff'],time:0,area: 'auto',maxWidth: 800});
+        });
+        $('#item57').on('mouseleave', '.form-1-2[key="y2"]', function() {
+          layer.close(tips);
+        });
+        // 获取病情评估关键要素每项的值
+        function inputVal(name) {
+            var arr = []
+            $("input[name="+name+"]:checked").each(function(i){
+                arr.push($(this).val());
+            });
+            return arr;
+        }
+        // 生成附表A的内容
+        function setTipsHTML() {
+          var html = '<div style="color: #000;">';
+          html += '<p>附表A</p>';
+          html += '<p>o 在严重败血症出现之前24小时内，接受手术前或术后预防性抗菌药物治疗，并在预防性抗菌药物使用后进行血液培养标本采集的外科住院患者。</p>';
+          html += '<p>o 在严重败血症出现之前24小时内，医院开始进行抗菌药物治疗，并在抗菌药物剂量开始后的某个时段提取了血液培养标本的住院患者。</p>';
+          html += '<p>o 在严重败血症出现之前24小时内，到达医院之前就已经开始使用抗菌药物，随后抽取血培养标本的患者。</p>';
+          html += '<p>o 医生记录了涉及患者安全的延迟原因，根据患者病情需要必须首先使用抗菌药物，再采集血培养标本的患者。</p>';
+          html += '<p>o 医生记录了因患者病情恶化无法得到静脉注射治疗,  曾多次进行血液培养标本采集未成功的患者。</p>';
+          html += '<p>o 产科患者为胎破裂膜、B组链球菌或剖腹产，并在产前给予预防性抗菌药物治疗, 在预防性抗菌药物使用后，进行血液培养标本采集的患者。</p>';
+          html += '</div>'
+          return html;
+        }
+    });
+</script>

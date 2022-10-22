@@ -1,0 +1,79 @@
+server:
+  application:
+    name: 病案首页数据质控系统
+  port: 23310
+  servlet:
+    session:
+      timeout: 3600s
+productName: 病案首页数据质控系统
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_merge
+      #dl_hpqc
+      username: sa
+      password: ckboar123!@#
+      #url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_da
+      #username: sa
+      #password: sa123
+
+
+    secondary:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://140.143.190.251:1433;databaseName=dl_dc
+      username: sa
+      password: ckboar123!@#
+      #url: jdbc:sqlserver://127.0.0.1:1433;databaseName=dl_da
+      #username: sa
+  jpa:
+    database: sql_server
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+#  mvc:
+#    static-path-pattern: /static/**
+#  resources:-asspath:static/**,file:static/**
+pagehelper:
+  auto-dialect: true
+  #分页参数合理化 pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+sa-token:
+  token-name: sxdl
+  timeout: 6691200
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  #activity-timeout: -1
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  #is-concurrent: false
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  #is-share: true
+  #token-style: uuid
+  #is-log: false
+  is-print: false
+logging:
+  level:
+    com.sxdl.hp.dao : debug
+HBI:
+  name: 山西雕龙演示
+  url: http://127.0.0.1:23306
+  isNew: 1
+  #jar包运行的
+  #publicKey: 3c8dd64ea0c6c5fe4513ebafd5f6940347118995f8b9f6c397b58a4a11a8e662
+  #jar0715
+  #publicKey: b4038bea6d8bebaffa20d0b5ca645ee4bfcfb1e3e597a7bc47552b39fe77d026
+  #呵呵呵呵的
+  #publicKey: ea0cb8d33655a11b656621a68690dbffafb805787c11af25745a06fb2d6023c9
+  #exe运行的
+  publicKey: 89d253b6338bd1d9a3796e3382fb3828aeaba2ea5f8deffef1aac78f73850d56
+basePackage: com.sxdl.analyse.controller
+dcip: http://140.143.190.251:23300
+hpip: http://140.143.190.251:23305
+#qcTable: dl_merge.dbo.homepage
+qcTable: homepage
+fzbmNumSql: select '手术信息' as homeType ,'辅助编码' as classify,'[提示]根据收费编码信息检测，可能手术编码缺失' as message,COUNT(distinct A.BAH) num,'' as message_id FROM TB_PATIENT_PAY_INFO A LEFT JOIN TB_OPER_FEE_AUTODZ B ON A.FEE_CODE=B.FEE_CODE LEFT JOIN HOMEPAGE C   ON A.BAH=C.BAH WHERE CHARINDEX(B.OPER_CODE,C.SSJCZBMALLC) =0 AND B.OPER_CODE IS NOT NULL @@@
+fzbmHzSql: select distinct c.id,c.a_id,DateName(year,c.CYSJ)  CHYear,c.zxflag, A.BAH bah,A.xm,c.cykb,c.cykbmc,A.CYRQ as CYSJ,isnull(ZYZD_JBBM,'无')ZYZD_JBBM ,isnull(zyzd,'无') zyzd,isnull(SSJCZBM1,'无')  SSJCZBM1   , isnull(SSJCZMC1,'无') SSJCZMC1 , isnull(zyys,'未知')   zyys  ,isnull(bmy,'未知')    bmy ,isnull(c.zycs,0) zycs FROM TB_PATIENT_PAY_INFO A LEFT JOIN TB_OPER_FEE_AUTODZ B ON A.FEE_CODE=B.FEE_CODE LEFT JOIN HOMEPAGE C   ON A.BAH=C.BAH WHERE CHARINDEX(B.OPER_CODE,C.SSJCZBMALLC) =0 AND B.OPER_CODE IS NOT NULL @@@
+fzbmsql:  select DISTINCT A.BAH,A.PAY_ITEM,A.ZYH,A.CYRQ,A.FEE_CODE,A.PAY_NAME,B.OPER_CODE,B.LC3_0MC,C.SSJCZBMALLC ,A.ZYCS,A.XM,C.CYKB,C.ZYZD,C.BMY FROM TB_PATIENT_PAY_INFO A LEFT JOIN TB_OPER_FEE_AUTODZ B ON A.FEE_CODE=B.FEE_CODE LEFT JOIN HOMEPAGE C   ON A.BAH=C.BAH WHERE CHARINDEX(B.OPER_CODE,C.SSJCZBMALLC) =0 AND B.OPER_CODE IS NOT NULL @@@
+

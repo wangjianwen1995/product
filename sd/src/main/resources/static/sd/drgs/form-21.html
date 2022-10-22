@@ -1,0 +1,3232 @@
+<!--
+ * @Description: 帕金森病 PD
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2021-12-01 11:02:25
+ * @FilePath: \single-disease\public\static\drgs\form-21.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+    <!-- 入院1周完成筛查认知功能障碍(MMSE)评估分值 -->
+    <div id="MMSETable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" STEMI---TIMI危险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">入院1周完成筛查认知功能障碍(MMSE)评估分值层</div>
+                <div class="scoreTable">
+                    <table class="multiple">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>认知功能障碍(MMSE)评估(可多选)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10分</td>
+                                <td>
+                                    <div score="10" class="check-item">I定向力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">II记忆力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5分</td>
+                                <td>
+                                    <div score="5" class="check-item check-age4">III注意力和计算力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age5">IV回忆能力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age6">V语言能力</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOG-Q -->
+    <div id="FOG-QTable" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" STEMI---TIMI危险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">入院1周完成筛查认知功能障碍(MMSE)评估分值层</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>您在过去一个月中遇到过“冻结事件”吗？当你开始行走，转弯或在狭窄的空间或拥挤的地方行走时，你的脚会有短暂时间出现好像粘在地上(或被磁铁吸住)的感觉？</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">我过去一个月没有经历过这样的感觉或情况</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">我在过去一个月里经历过这样的感觉或情况</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>您经历冻结事件的发生频率如何？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">很少，每周不到一次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">偶尔，大约每周一次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">经常，大约每天一次（1周2次以上）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">频繁，一天不止一次</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>你在转弯过程中发生冻结事件的频率是多少？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">从来没有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">很少，大约一个月</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">偶尔，大约每周一次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">经常，大约每天一次（1周2次以上）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">频繁，一天不止一次</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>你转弯时最长的冻结时间有多长？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">很短，1秒</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">短，2 - 5秒</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">长，5到30秒</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">很长，超过30秒不能行走</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>您多久经历一次迈步起始冻结事件？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">从来没有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">很少，大约一个月一次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">偶尔，大约每周一次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">经常，大约每天一次（1周2次以上）</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">频繁，一天不止一次</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th> 迈步起始时，您发生最长的冻结事件有多长时间？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">很短，1秒</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">短，2 - 5秒</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">长，5到30秒</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">很长，超过30秒不能行走</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>冻结事件对日常行走有多大影响？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">完全没有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻度，稍缓慢但是完全独立</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度，缓慢，偶尔需要帮助或是助行器</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重，需要帮助或助行器，否则不能行走</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>冻结事件会引起您的不安全感和害怕摔倒感吗？
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">完全没有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>您的冻结事件是否会影响您的日常活动？(评估冻结对日常活动的影响，而不是整个疾病对日常生活的影响)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">完全没有，我继续照常做事</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻度，很少日常活动受限</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度，大量(约一半)的日常活动受限</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">重度，大多数日常活动时非常受限</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>您发生冻结的地点是?
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>室外户内两者同时
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>服用抗帕金森病药物治疗后冻结步态是否有改善?
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>无改善部分改善完全改善
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>下面哪种方式可以改善您的步态?
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>无药物治疗步态训练其他
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>您最近半年内出现过摔倒吗，如向前摔倒、转弯时摔倒或不明原因的摔倒？（不包括障碍物或地面滑引起的跌倒）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 第一部分：日常生活非运动症状体验 -->
+    <div id="Table1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" STEMI---TIMI危险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">精神、行为和情绪</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>智力损害</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻微智力损害，持续健忘，能部分回忆过去的事件，无其他困难</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">
+                                        中等记忆损害，有定向障碍，解决复杂问题有中等程度的困难，在家中生活功能有轻度但肯定的损害，有时需要鼓励</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">
+                                        严重记忆损害伴时间及(经常有)地点定向障碍，解决问题有严重困难4=严重记忆损害，仅保留人物定向，不能作出判断或解决问题，生活需要更多的他人帮助</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>思维障碍(由于痴呆或药物中毒)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">生动的梦境</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">"良性"幻觉，自知力良好</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">偶然或经常的幻觉或妄想, 无自知力,可能影响日常活动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">持续的幻觉、妄想或富于色彩的精神病，不能自我照料</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>抑郁
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">悲观和内疚时间比正常多，持续时间不超过1周</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">持续抑郁( 1周或以上) </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">持续抑郁伴自主神经症状(失眠、食欲减退、体重下降、兴趣降低) </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">持续抑郁伴自主神经症状和自杀念头或意愿</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>动力或始动力
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">比通常缺少决断力，较被动</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">对选择性(非常规) 活动无兴趣或动力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">对每天的(常规)活动无兴趣或动力</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">退缩，完全无动力</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 第二部分：日常生活运动症状体验： -->
+    <div id="Table2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" STEMI---TIMI危险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">日常生活活动</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>言语（接受）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻微受影响，无听懂困难</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度受影响,有时要求重复才听懂</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重受影响,经常要求重复才听懂</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">经常不能理解</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>唾液分泌
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">口腔内唾液分泌轻微但肯定增多，可能有夜间流涎</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中等程度的唾液分泌过多，可能有轻微流涎</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显过多的唾液伴流涎</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显流涎，需持续用纸巾或手帕擦拭</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>吞咽
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">极少呛咳</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">偶然呛咳
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">需进软食 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">需要鼻饲或胃造瘘进食</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>书写
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻微缓慢或字变小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度缓慢或字变小，所有字迹均清楚</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重受影响，不是所有字迹均清楚</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">大多数字迹不清楚</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>切割食物和使用餐具
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">稍慢和笨拙，但不需要帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">尽管慢和笨拙，但能切割多数食物，需要某种程度的帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">需要他人帮助切割食物，但能自己缓慢进食</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">需要喂食</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>着装
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">略慢，不需帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">偶尔需要帮助扣扣及将手臂放进袖里</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">需要相当多的帮助，但还能独立做某些事情</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">完全需要帮助</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>个人卫生
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">稍慢，但不需要帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">需要帮助淋浴或盆浴,或做个人卫生很慢</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">洗脸、刷牙、梳头及洗澡均需帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">保留导尿或其他机械帮助</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>翻身和整理床单
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">稍慢且笨拙，但无需帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">能独立翻身或整理床单，但很困难</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">能起始，但不能完成翻身或整理床单</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">完全需要帮助</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>跌跤(与冻结“freezing”无关者)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">偶有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">有时有，少于每天1次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">平均每天1次</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">多于每天1次</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>行走中冻结
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">少见，可有启动困难</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">有时有冻结</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">经常有，偶有因冻结跌跤</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">经常因冻结跌跤</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>行走
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻微困难，可能上肢不摆动或倾向于拖步</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度困难，但稍需或不需帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重行走困难，需要帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">即使给予帮助也不能行走</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>震颤
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">轻微，不常有</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度,感觉烦恼</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重，许多活动受影响</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">明显，大多数活动受影响</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>与帕金森病有关的感觉主诉
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">偶然有麻木、麻刺感或轻微疼痛</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">经常有麻木、麻刺感或轻微疼痛，不痛苦</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">经常的痛苦感</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">极度的痛苦感</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 第三部分：运动功能检查： -->
+    <div id="Table3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" STEMI---TIMI危险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">运动检查</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>言语（表达）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">表达、理解和(或)音量轻度下降</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">单音调，含糊但可听懂，中度受损</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显损害，难以听懂</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">无法听懂</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>面部表情
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">略呆板，可能是正常的“面无表情“</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">轻度但肯定是面部表情差</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">中度表情呆板，有时张口</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">面具脸，几乎完全没有表情，口张开在1/4英寸(0.6cm)或以上</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>静止性震颤（面部、嘴唇、下颌）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，有时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度小而持续，或中等幅度间断出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，多数时间出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，多数时间出现</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>静止性震颤（右上肢）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，有时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度小而持续，或中等幅度间断出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，多数时间出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，多数时间出现</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>静止性震颤（左上肢）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，有时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度小而持续，或中等幅度间断出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，多数时间出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，多数时间出现</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>静止性震颤（右下肢）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，有时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度小而持续，或中等幅度间断出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，多数时间出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，多数时间出现</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>静止性震颤（左下肢）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，有时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度小而持续，或中等幅度间断出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，多数时间出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，多数时间出现</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>手部动作性或姿势性震颤(右上肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，活动时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度中等，活动时出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，持物或活动时出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，影响进食</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>手部动作性或姿势性震颤(左上肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，活动时出现</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">幅度中等，活动时出现
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">幅度中等，持物或活动时出现 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">幅度大，影响进食</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>强直(颈部)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，或仅在镜像运动及加强试验时可查出</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">轻到中度
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显，但活动范围不受限 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">严重，活动范围受限</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>强直(右上肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，或仅在镜像运动及加强试验时可查出</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">轻到中度
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显，但活动范围不受限 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">严重，活动范围受限</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>强直(左上肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，或仅在镜像运动及加强试验时可查出</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">轻到中度
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显，但活动范围不受限 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">严重，活动范围受限</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>强直(右下肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，或仅在镜像运动及加强试验时可查出</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">轻到中度
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显，但活动范围不受限 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">严重，活动范围受限</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>强直(左下肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度，或仅在镜像运动及加强试验时可查出</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">轻到中度
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">明显，但活动范围不受限 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">严重，活动范围受限</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>手指拍打试验(拇食指尽可能大幅度、快速地做连续对掌动作;右手)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常(>15次/5秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢和(或)幅度减小(11~14次/5秒)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中等障碍，有肯定的早期疲劳现象,运动中可以有偶尔的停顿(7~10次/秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始困难或运动中有停顿(3~6次/5秒) </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作( 0~ 2次/5秒)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>手指拍打试验(拇食指尽可能大幅度、快速地做连续对掌动作;左手)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常(>15次/5秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢和(或)幅度减小(11~14次/5秒)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中等障碍，有肯定的早期疲劳现象,运动中可以有偶尔的停顿(7~10次/秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始困难或运动中有停顿(3~6次/5秒) </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作( 0~ 2次/5秒)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>手运动(尽可能大幅度地做快速连续的伸掌握拳动作，右手)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常(>15次/5秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢和(或)幅度减小(11~14次/5秒)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中等障碍，有肯定的早期疲劳现象,运动中可以有偶尔的停顿(7~10次/秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始困难或运动中有停顿(3~6次/5秒) </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作( 0~ 2次/5秒)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>手运动(尽可能大幅度地做快速连续的伸掌握拳动作，左手)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常(>15次/5秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢和(或)幅度减小(11~14次/5秒)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中等障碍，有肯定的早期疲劳现象,运动中可以有偶尔的停顿(7~10次/秒)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始困难或运动中有停顿(3~6次/5秒) </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作( 0~ 2次/5秒)</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>轮替动作(两手垂直或水平作最大幅度的旋前和旋后动作，右手)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢或幅度减小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度障碍，有肯定的早期疲劳现象，偶在运动中出现停顿
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始时经常犹豫或运动中有停顿</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>轮替动作(两手垂直或水平作最大幅度的旋前和旋后动作，左手)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢或幅度减小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度障碍，有肯定的早期疲劳现象，偶在运动中出现停顿
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始时经常犹豫或运动中有停顿</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>腿部灵活性(连续快速地脚后跟踏地，腿完全抬高，幅度约为2厘米，右下肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢或幅度减小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度障碍，有肯定的早期疲劳现象，偶在运动中出现停顿
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始时经常犹豫或运动中有停顿</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>腿部灵活性(连续快速地脚后跟踏地，腿完全抬高，幅度约为2厘米，左下肢)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度减慢或幅度减小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度障碍，有肯定的早期疲劳现象，偶在运动中出现停顿
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重障碍，动作起始时经常犹豫或运动中有停顿</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">几乎不能执行动作</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>起立(患者双手臂抱胸从直背木或金属椅子站起)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">缓慢，或可能需要试1次以上</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">需扶扶手站起
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">向后倒的倾向，必须试几次才能站起，但不需帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">没有帮助不能站起</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>姿势
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常直立
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">不很直，轻度前倾,可能是正常老年人的姿势</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度前倾，肯定是不正常，可能有轻度的向一侧倾斜
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重前倾伴脊柱后突，可能有中度的向一侧倾斜</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">显著屈曲，姿势极度异常</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>步态
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">行走缓慢，可有曳步，步距小，但无慌张步态或前冲步态</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">行走困难，但还不需要帮助，可有某种程度的慌张步态、小步或前冲.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重异常步态，行走需帮助</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">即使给予帮助也不能行走</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>姿势的稳定性(突然向后拉双肩时所引起姿势反应，患者应睁眼直立,双脚略分开并做好准备)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">正常
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">后倾，无需帮助可自行恢复</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">无姿势反应， 如果不扶可能摔倒.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">非常不稳，有自发的失去平衡现象</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">不借助外界帮助不能站立</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>躯体少动(梳头缓慢，手臂摆动减少，幅度减小，整体活动减少)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">略慢，似乎是故意的，在某些人可能是正常的，幅度可能减小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">运动呈轻度缓慢和减少，肯定不正常，或幅度减小
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">中度缓慢，运动缺乏或幅度小</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">明显缓慢，运动缺乏或幅度小</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 第四部分：运动并发症 -->
+    <div id="Table4" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+        aria-labelledby=" STEMI---TIMI危险评估">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">治疗的并发症</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>A.异动症</th>
+                            </tr>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>持续时间: (异动症存在时间所占1天觉醒状态时间的比例-病史信息)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">1%~25%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">26%~50%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">51%~ 75%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">76%~ 100%</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>残疾: (异动症所致残疾的程度一病史信息， 可经诊室检查修正)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无残疾</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻度残疾</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度残疾</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重残疾</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">完全残疾</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>痛性异动症所致疼痛的程度
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无痛性异动症</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">轻微</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">中度 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">严重 </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">极度</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>清晨肌张力障碍
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>B.临床波动
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>“关”是否能根据服药时间预测
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">不能</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">能</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>关”是否不能根据服药时间预测
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">不是</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">是</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>”关”是否会突然出现(如在数秒内出现)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">不会</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">会</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>“关”平均所占每天觉醒状态时间的比例
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item check-age3">1%~25%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2分</td>
+                                <td>
+                                    <div score="2" class="check-item check-age3">26%~50%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3分</td>
+                                <td>
+                                    <div score="3" class="check-item check-age3">51%~ 75%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4分</td>
+                                <td>
+                                    <div score="4" class="check-item check-age3">76%~ 100%</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>C.其他并发症
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>患者有无食欲减退、 恶心或呕吐
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>患者是否有睡眠障碍(如失眠或睡眠过多)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"></th>
+                                <th>患者是否有直立性低血压或头晕
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0分</td>
+                                <td>
+                                    <div score="0" class="check-item">无</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1分</td>
+                                <td>
+                                    <div score="1" class="check-item">有</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 简易精神状态评价量表（MMSE） -->
+    <div id="MMSETables1" class="modal fade bs-example-modal-sm otherTable" tabindex="-1" role="dialog"
+        aria-labelledby="简易精神状态评价量表（MMSE">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">简易精神状态评价量表（MMSE）</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 260px;"></th>
+                                <th colspan="2">定向力（10分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.今年是哪一年</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>现在是什么季节？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>现在是几月份？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>今天是几号？
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>今天是星期几？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+
+                            <tr>
+                                <td>2.你住在那个省？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>你住在那个县（区）？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>你住在那个乡（街道）？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>咱们现在在那个医院？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>咱们现在在第几层楼？</td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 简易精神状态评价量表（MMSE） 记忆力筛查结果：-->
+    <div id="MMSETables2" class="modal fade bs-example-modal-sm otherTable" tabindex="-1" role="dialog"
+        aria-labelledby="简易精神状态评价量表（MMSE">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">简易精神状态评价量表（MMSE）</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 260px;"></th>
+                                <th colspan="4">记忆力（3分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3.告诉你三种东西，我说完后，请你重复一遍并记住，待会还会问你（各1分，共3分）</td>
+                                <td>
+                                    <div score="3" class="check-item">3分</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">2分</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 简易精神状态评价量表（MMSE） 注意力和计算力（5分）：-->
+    <div id="MMSETables3" class="modal fade bs-example-modal-sm otherTable" tabindex="-1" role="dialog"
+        aria-labelledby="简易精神状态评价量表（MMSE">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">简易精神状态评价量表（MMSE）</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 260px;"></th>
+                                <th colspan="6">注意力和计算力（5分）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4.100-7=？连续减5次（93、86、79、72、65。各1分，共5分。若错了，但下一个答案正确，只记一次错误）</td>
+                                <td>
+                                    <div score="5" class="check-item">5分</div>
+                                </td>
+                                <td>
+                                    <div score="4" class="check-item">4分</div>
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">3分</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">2分</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 简易精神状态评价量表（MMSE） 回忆能力（3分）：-->
+    <div id="MMSETables4" class="modal fade bs-example-modal-sm otherTable" tabindex="-1" role="dialog"
+        aria-labelledby="简易精神状态评价量表（MMSE">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">简易精神状态评价量表（MMSE）</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 260px;"></th>
+                                <th colspan="4">回忆能力（3分）
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5.现在请你说出我刚才告诉你让你记住的那些东西？
+                                </td>
+                                <td>
+                                    <div score="3" class="check-item">3分</div>
+                                </td>
+                                <td>
+                                    <div score="2" class="check-item">2分</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 简易精神状态评价量表（MMSE） 注意力和计算力（5分）：-->
+    <div id="MMSETables5" class="modal fade bs-example-modal-sm otherTable" tabindex="-1" role="dialog"
+        aria-labelledby="简易精神状态评价量表（MMSE">
+        <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+            <div class="modal-content">
+                <div class="scoreHeader">简易精神状态评价量表（MMSE）</div>
+                <div class="scoreTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 260px;"></th>
+                                <th colspan="4">语言能力(9分)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th style="width: 260px;"></th>
+                                <th colspan="4">6．命名能力
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>出示手表，问这个是什么东西？
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>出示钢笔，问这个是什么东西
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>7．复述能力   我现在说一句话，请跟我清楚的重复一遍（四十四只石狮子）！
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>8.阅读能力（闭上你的眼睛）请你念念这句话，并按上面意思去做！
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>9.三步命令   我给您一张纸请您按我说的去做，现在开始：“用右手拿着这张纸，用两只手将它对折起来，放在您的左腿上。”（每个动作1分，共3分）
+                                </td>
+                                <td><div score="3" class="check-item">3分</div>
+                                </td>
+                                <td><div score="2" class="check-item">2分</div>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>10.书写能力要求受试者自己写一句完整的句子
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>11.结构能力（出示图案）请你照上面图案画下来！
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div score="1" class="check-item">1分</div>
+                                </td>
+                                <td>
+                                    <div score="0" class="check-item">0分</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="resultScore">得分：
+                    <span class="num">0</span><span class="num-score">分</span></div>
+                <div class="scoreFooter">
+                    <button class="calculate btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<script>
+    console.log('PD-2.0')
+var create = new create();
+    create.createRender("PD", function () {
+        // $("#create_155").after('<a id="MMSEScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_205").after('<a id="FOG-QScore" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_121").after('<a id="Score1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_122").after('<a id="Score2" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_123").after('<a id="Score3" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_124").after('<a id="Score4" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_250").after('<a id="MMSETable1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_251").after('<a id="MMSETable2" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_260").after('<a id="MMSETable3" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_261").after('<a id="MMSETable4" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        $("#create_262").after('<a id="MMSETable5" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>')
+        //评分表
+        $("#MMSEScore").on("click", function () {
+            $("#MMSETable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#MMSETable .calculate").click(function () {
+            $('#create_155').val($(this).data("score"))
+            $("#MMSETable").modal("hide");
+            $('#create_155').blur();
+            $('#create_155').change();
+        })
+        //评分表
+        $("#FOG-QScore").on("click", function () {
+            $("#FOG-QTable").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#FOG-QTable .calculate").click(function () {
+            $('#create_205').val($(this).data("score"))
+            $("#FOG-QTable").modal("hide");
+            $('#create_205').blur();
+            $('#create_205').change();
+        })
+        //评分表
+        $("#Score1").on("click", function () {
+            $("#Table1").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#Table1 .calculate").click(function () {
+            $('#create_121').val($(this).data("score"))
+            $("#Table1").modal("hide");
+            $('#create_121').blur();
+            $('#create_121').change();
+        })
+        //评分表
+        $("#Score2").on("click", function () {
+            $("#Table2").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#Table2 .calculate").click(function () {
+            $('#create_122').val($(this).data("score"))
+            $("#Table2").modal("hide");
+            $('#create_122').blur();
+            $('#create_122').change();
+        })
+        //评分表
+        $("#Score3").on("click", function () {
+            $("#Table3").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#Table3 .calculate").click(function () {
+            $('#create_123').val($(this).data("score"))
+            $("#Table3").modal("hide");
+            $('#create_123').blur();
+            $('#create_123').change();
+        })
+        //评分表
+        $("#Score4").on("click", function () {
+            $("#Table4").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#Table4 .calculate").click(function () {
+            $('#create_124').val($(this).data("score"))
+            $("#Table4").modal("hide");
+            $('#create_124').blur();
+            $('#create_124').change();
+        })
+        //评分表
+        $("#MMSETable1").on("click", function () {
+            $("#MMSETables1").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#MMSETables1 .calculate").click(function () {
+            $('#create_250').val($(this).data("score"))
+            $("#MMSETables1").modal("hide");
+            $('#create_250').blur();
+            $('#create_250').change();
+        })
+        //评分表
+        $("#MMSETable2").on("click", function () {
+            $("#MMSETables2").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#MMSETables2 .calculate").click(function () {
+            $('#create_251').val($(this).data("score"))
+            $("#MMSETables2").modal("hide");
+            $('#create_251').blur();
+            $('#create_251').change();
+        })
+        //评分表
+        $("#MMSETable3").on("click", function () {
+            $("#MMSETables3").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#MMSETables3 .calculate").click(function () {
+            $('#create_260').val($(this).data("score"))
+            $("#MMSETables3").modal("hide");
+            $('#create_260').blur();
+            $('#create_260').change();
+        })
+        //评分表
+        $("#MMSETable4").on("click", function () {
+            $("#MMSETables4").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#MMSETables4 .calculate").click(function () {
+            $('#create_261').val($(this).data("score"))
+            $("#MMSETables4").modal("hide");
+            $('#create_261').blur();
+            $('#create_261').change();
+        })
+        //评分表
+        $("#MMSETable5").on("click", function () {
+            $("#MMSETables5").modal().find(".check-item").removeClass("active").end().find(".num").html(0);
+        })
+        $("#MMSETables5 .calculate").click(function () {
+            $('#create_262').val($(this).data("score"))
+            $("#MMSETables5").modal("hide");
+            $('#create_262').blur();
+            $('#create_262').change();
+        })
+
+        $(".otherTable .check-item").click(function () {
+            // 同行只允许选择一个
+            $(this).parent().siblings().children().removeClass('active')
+        })
+        var eleHtml = '<div id="electrocar" class="end-report-content">' +
+                      '<img class="end-img" src="../img/report-warn.png"/>' +
+                      '<span class="end-title">该病例不符合上报要求</span>' +
+                      '<p class="end-content">存在帕金森病绝对排除标准，无需填报</p></div>';
+        //绝对排除标准直接赋值
+        $(".create_36").change(function () {
+            if ($(".create_36").attr("disabled") != 'disabled') {
+              if($(this).val() !== "UTD" && $(this).get(0).checked === false) {
+                return;
+              }
+                if ($(this).val() !== "UTD") {
+                    $(this).get(0).checked = false;
+                    $(this).parent("div").find("input[value=UTD]").get(0).checked = true;
+                    layer.open({
+                        type: 1,
+                        offset: "150px",
+                        area: ["424px", "192px"],
+                        id: 'layerId',
+                        content: eleHtml,
+                        btn: ['继续填报', '退出填报'],
+                        btnAlign: 'r', //按钮居中
+                        skin: "end-report",
+                        move: false,
+                        title: false,
+                        shade: 0.6, //遮罩透明度
+                        closeBtn: 0,
+                        yes: function () {
+                            layer.closeAll();
+                        },
+                        btn2: function (index) {
+                            window.history.go(-1)
+                            layer.close(index);
+                        }
+                    });
+                }
+            }
+        })
+    });
+</script>

@@ -1,0 +1,25 @@
+[
+  {"col":"PRIMAEYKEY varchar(250) NOT NULL,","name": "PRIMAEYKEY","zh": "主键" },
+  {"col":"CQSJ varchar(250) null,","name": "CQSJ","zh": "用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"},
+  {"col":"drplus_extract_detailed_id  int  NOT NULL,","name": "drplus_extract_detailed_id","zh": "抽取id,无需对映"},
+
+  {"col":"palg_no varchar(200) null,","name": "palg_no","zh": "病理号" },
+  {"col":"ipt_patn_disediag_type_code varchar(50) null,","name": "ipt_patn_disediag_type_code","zh": "住院患者疾病诊断类型代码" },
+  {"col":"disediag_type varchar(200) null,","name": "disediag_type","zh": "疾病诊断类型" },
+  {"col":"maindiag_flag varchar(50) null,","name": "maindiag_flag","zh": "主诊断标志" },
+  {"col":"diag_code varchar(50) null,","name": "diag_code","zh": "诊断代码" },
+  {"col":"diag_name varchar(100) null,","name": "diag_name","zh": "诊断名称" },
+  {"col":"inhosp_diag_code varchar(50) null,","name": "inhosp_diag_code","zh": "院内诊断代码" },
+  {"col":"inhosp_diag_name varchar(100) null,","name": "inhosp_diag_name","zh": "院内诊断名称" },
+  {"col":"adm_dise_cond_name varchar(300) null,","name": "adm_dise_cond_name","zh": "入院疾病病情名称" },
+  {"col":"adm_dise_cond_code varchar(50) null,","name": "adm_dise_cond_code","zh": "入院疾病病情代码" },
+  {"col":"adm_cond varchar(500) null,","name": "adm_cond","zh": "入院病情" },
+  {"col":"adm_cond_code varchar(50) null,","name": "adm_cond_code","zh": "入院时病情代码" },
+  {"col":"high_diag_evid varchar(200) null,","name": "high_diag_evid","zh": "最高诊断依据" },
+  {"col":"bkup_deg varchar(100) null,","name": "bkup_deg","zh": "分化程度" },
+  {"col":"bkup_deg_code varchar(200) null,","name": "bkup_deg_code","zh": "分化程度代码" },
+  {"col":"vali_flag varchar(50) not null,","name": "vali_flag","zh": "有效标志" },
+  {"col":"ipt_medcas_hmpg_sn varchar(200) not null,","name": "ipt_medcas_hmpg_sn","zh": "住院病案首页流水号" },
+  {"col":"mdtrt_sn varchar(200) not null,","name": "mdtrt_sn","zh": "就医流水号" }
+
+]

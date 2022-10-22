@@ -1,0 +1,11 @@
+[
+  {"col":"PRIMAEYKEY varchar(250) NOT NULL,","name": "PRIMAEYKEY","zh": "主键" },
+  {"col":"CQSJ varchar(250) null,","name": "CQSJ","zh": "用来抽取和上报展示的时间字段,必须是标准时间,数据可以和出院时间一致,由于其他平台存在结算时间故而存在"},
+  {"col":"drplus_extract_detailed_id  int  NOT NULL,","name": "drplus_extract_detailed_id","zh": "抽取id,无需对映"},
+
+  {"col":"scs_cutd_ward_type varchar(100) null,","name": "scs_cutd_ward_type","zh": "重症监护病房类型" },
+  {"col":"scs_cutd_inpool_time varchar(100) null,","name": "scs_cutd_inpool_time","zh": "重症监护进入时间" },
+  {"col":"scs_cutd_exit_time varchar(100) null,","name": "scs_cutd_exit_time","zh": "重症监护退岀时间" },
+  {"col":"scs_cutd_sum_dura varchar(100) null,","name": "scs_cutd_sum_dura","zh": "重症监护合计时长" }
+
+]

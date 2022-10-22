@@ -1,0 +1,566 @@
+<!--
+ * @Description: 急性肺血栓栓塞症 APTE
+ * @LastEditors: yuexiaoyan yuexiaoyan@ewell.cc
+ * @LastEditTime: 2022-06-17 16:22:35
+ * @FilePath: \single-disease\public\static\drgs\form-62.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css" />
+<link rel="stylesheet" href="../js/layui/css/layui.css" />
+
+<body>
+  <div id="form-content" class="container-fluid">
+    <form class="form-horizontal">
+      <div id="dragslot" class="container" style="width:100%;padding:0;">
+        <div id="contend" class="slot-list"></div>
+        <div class="submit-button"></div>
+      </div>
+    </form>
+  </div>
+  <div
+    id="GRACETable1"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="是否行临床可能性评分表"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">简化的Wells评估分值</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-8">
+              <table class="multiple">
+                <thead>
+                  <tr>
+                    <th colspan="2">简化的Wells评分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">PTE或DVT病史</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td><div score="1" class="check-item">4周内制动或手术</div></td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">活动性肿瘤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">心率(次/ min)≥100</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">咯血</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">DVT症状或体征</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">其他鉴别诊断的可能性低于PTE</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="GRACETable2"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby=" 是否行临床可能性评分表"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">修订的Geneva评估分值</div>
+        <div class="scoreTable">
+          <div class="row" style="margin: 0 auto;">
+            <div class="col-md-10">
+              <table class="multiple">
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">PTE或DVT病史</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">1个月内手术或骨折</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">活动性肿瘤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">咯血</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">单侧下肢疼痛</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">下肢深静脉触痛及单侧下肢水肿</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">年龄>65岁</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-10" style="margin-top:10px">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="text-align:center"></th>
+                    <th>心率(次/ min)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1分</td>
+                    <td>
+                      <div score="1" class="check-item">75~94</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2分</td>
+                    <td>
+                      <div score="2" class="check-item">≥95</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="GRACETable3"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby=" 肺血栓栓塞症危险分层评估标准"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">肺血栓栓塞症危险分层评估标准</div>
+        <div class="scoreTable scoreTable3">
+          <div class="row">
+            <div class="col-md-12">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="text-align:center">危险分层</th>
+                    <th>休克或低血压</th>
+                    <th>影像学（右心室功能不全）ª</th>
+                    <th>实验室指标（心脏生物学标志物升高）<sup>b</sup></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="check-item" score="a">
+                    <td>高危</td>
+                    <td>
+                      <div score="1">+</div>
+                    </td>
+                    <td>
+                      <div score="1">+</div>
+                    </td>
+                    <td>
+                      <div score="1">+ / -</div>
+                    </td>
+                  </tr>
+                  <tr class="check-item" score="b">
+                    <td>中高危</td>
+                    <td>
+                      <div score="1">-</div>
+                    </td>
+                    <td>
+                      <div score="1">+</div>
+                    </td>
+                    <td>
+                      <div score="1">+</div>
+                    </td>
+                  </tr>
+                  <tr class="check-item" score="c">
+                    <td>中低危</td>
+                    <td>
+                      <div score="1">-</div>
+                    </td>
+                    <td>
+                      <div score="1">+ / -<sup>c</sup></div>
+                    </td>
+                    <td>
+                      <div score="1">+ / +<sup>c</sup></div>
+                    </td>
+                  </tr>
+                  <tr class="check-item" score="d">
+                    <td>低危</td>
+                    <td>
+                      <div score="1">-</div>
+                    </td>
+                    <td>
+                      <div score="1">-</div>
+                    </td>
+                    <td>
+                      <div score="1">-</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" style="text-align: left">
+                      <div>
+                        a:右心功能不全(VTD)的诊断标准:影像学证据包括超声 心动图或 CP提示 VTD,超声检查符合下述表现: (1 )
+                        右心室扩张 (右心室舒张末期内径/左心室舒张末期内径 >1.0 或 0.9);(2 ) 右
+                        心室游离壁运动幅度减低;(3) 三尖瓣反流速度增快;(4 ) 三尖瓣环收缩期位移减低( <17 mm) 。
+                        CTPA检查符合以下条件也可诊断 VTD:四腔心层面发现的右心室扩张( 右心室舒张末期内径/左心室
+                        舒张末期内径 >1.0 或0.9) 。
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" style="text-align: left">
+                      <div>
+                        b :心脏生物学标志物包括心肌损伤标 志物(心脏肌钙蛋白 P或 1)和心衰标志物(BNK、NP-proBNK);
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" style="text-align: left;">
+                      <div>
+                        c:影像学和实验室指标两者之一 阳性
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore" style="display:none">得分： <span class="num"></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="GRACETable4"
+    class="modal fade bs-example-modal-sm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="病情严重程度评估（PESI评分）"
+  >
+    <div class="modal-dialog modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content">
+        <div class="scoreHeader">病情严重程度评估（PESI评分）</div>
+        <div class="scoreTable">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="multiple">
+                <thead>
+                  <tr>
+                    <th colspan="2">病情严重程度评估（PESI评分）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>以年龄为分数</td>
+                    <td>
+                      <div score="0" class="check-item">年龄</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10分</td>
+                    <td>
+                      <div score="10" class="check-item">男性</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>30分</td>
+                    <td>
+                      <div score="30" class="check-item">肿瘤</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10分</td>
+                    <td>
+                      <div score="10" class="check-item">慢性心力衰竭</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10分</td>
+                    <td>
+                      <div score="10" class="check-item">慢性肺部疾病</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>20分</td>
+                    <td>
+                      <div score="20" class="check-item">脉搏>110次/分</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>30分</td>
+                    <td>
+                      <div score="30" class="check-item">收缩压&lt100mmHg</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>20分</td>
+                    <td>
+                      <div score="20" class="check-item">呼吸频率>30次/分</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>20分</td>
+                    <td>
+                      <div score="20" class="check-item">体温&lt36℃</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>20分</td>
+                    <td>
+                      <div score="20" class="check-item">动脉氧饱和&lt90%</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>60分</td>
+                    <td>
+                      <div score="60" class="check-item">精神状态改变</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="resultScore">得分： <span class="num">0</span><span class="num-score">分</span></div>
+        <div class="scoreFooter">
+          <button class="calculate btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>
+  document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");
+</script>
+<script>
+  console.log('APTE');
+  var create = new create();
+  create.createRender('APTE', function() {
+    // 添加评分表
+    // APTE-1 临床可能性评估: 是否行临床可能性评分======是, 简化的Wells评分
+    $('#create_APTE_277').after(
+      '<a id="GRACEScore1" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_APTE_277').attr('disabled', true);
+
+    $('#GRACEScore1').on('click', function() {
+      $('#GRACETable1').modal();
+    });
+    $('#GRACETable1 .calculate').click(function() {
+      $('#create_APTE_277').val($(this).data('score'));
+      $('#GRACETable1').modal('hide');
+      $('#create_APTE_277').blur();
+    });
+
+    // APTE-1 临床可能性评估: 是否行临床可能性评分======是, 修订的Geneva评分量表
+    $('#create_APTE_280').after(
+      '<a id="GRACEScore2" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">评分工具计算</a></span>'
+    );
+    $('#create_APTE_280').attr('disabled', true);
+    
+   
+    $('#GRACEScore2').on('click', function() {
+      $('#GRACETable2').modal();
+    });
+    $('#GRACETable2 .calculate').click(function() {
+      $('#create_APTE_280').val($(this).data('score'));
+      $('#GRACETable2').modal('hide');
+      $('#create_APTE_280').blur();
+    });
+
+    // APTE-1-4-5 肺血栓栓塞症危险分层评估结论:是否行肺血栓栓塞症危险分层评估======是, 分层评估标准表
+    // $('#create_APTE_360').after(
+    //   '<a id="GRACEScore3" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">分层评估计算</a></span>'
+    // );
+    // $('#create_APTE_360').attr('disabled', true);
+    // $('#GRACEScore3').on('click', function() {
+    //   $('#GRACETable3').modal();
+    // });
+    // $('#GRACETable3 .calculate').click(function() {
+    //   $('#create_APTE_360').val($(this).data('score'));
+    //   $('#GRACETable3').modal('hide');
+    //   $('#create_APTE_360').blur();
+    // });
+
+    // APTE-6-2-2 出院前病情严重程度评估：出院前是否行病情严重程度评估（PESI评分）======是, PESI评分值
+    $('#create_APTE_467').after(
+      '<a id="GRACEScore4" style="font-size:12px;margin-left:12px" href="javascript:" class="score-table">PESI评分值</a></span>'
+    );
+    $('#create_APTE_467').attr('disabled', true);
+    $('#GRACEScore4').on('click', function() {
+      var dateNum = new Date($('#create_CM_16').val()).getTime() - new Date($('#create_CM_13').val()).getTime();
+      var age = Math.floor(dateNum / 1000 / 60 / 60 / 24 / 365) || 0;    //判断年龄
+      console.log(age);
+      var scoreSum = $('#GRACETable4')
+        .find('td')
+        .eq(1)
+        .find('.check-item');
+      scoreSum.attr('score', age);        //给以年龄为分数的score赋值
+      $('#GRACETable4').modal();
+    });
+    $('#GRACETable4 .calculate').click(function() {
+      $('#create_APTE_467').val($(this).data('score')); 
+      $('#GRACETable4').modal('hide');
+      $('#create_APTE_467').blur();
+    });
+
+    /**
+     * 肺血栓栓塞症危险分层评估结论   评分表事件
+     */
+    $(document).on('click', '.scoreTable3 .check-item', function() {
+      if (
+        $(this)
+          .closest('table')
+          .hasClass('Choice')
+      ) {
+        $(this)
+          .toggleClass('active')
+          .parent('tr');
+        $(this)
+          .parent()
+          .siblings()
+          .each(function() {
+            $(this)
+              .find('.check-item')
+              .removeClass('active');
+          });
+      } else {
+        $(this).toggleClass('active');
+        var index = $(this)
+          .toggleClass('active')
+          .index();
+        $(this)
+          .siblings()
+          .removeClass('active');
+      }
+      var scoreTable = $(this).closest('.scoreTable');
+      var result = $(this).attr('score');
+      var num = scoreTable.siblings('.resultScore').find('.num');
+      num.text(num.data('text') ? num.data('text')(result) : result);
+      scoreTable
+        .siblings('.scoreFooter')
+        .find('.calculate')
+        .data('score', result);
+    });
+
+
+    // APTE-2: 氧合评估和氧疗   APTE-2: 氧合评估和氧疗选择是
+    // 实施首次氧合评估时是否有吸氧(FiO₂)：
+    // 是：氧合指数(mmHg) = PaO₂动脉血氧分压 (mmHg) / 吸入氧浓度 FiO₂(%)
+    // 否：氧合指数(mmHg) = PaO₂动脉血氧分压 (mmHg) / 0.21 
+
+    // 动脉血气分析/指氧仪检查:选择动脉血气分析(PaO₂动脉血氧分压)，则氧合指数(mmHg)输入框禁用
+    $('#create_APTE_369').change(function(){
+      if($('#create_APTE_369').val()=='a'){
+        $('#create_APTE_373').attr('disabled', true);
+      }
+    })
+    
+    // 氧合指数(mmHg)输入框赋值
+    function mmScore(){
+      var val2=$('#create_APTE_372').val()
+      var lastVal=''
+      if($('#create_APTE_366:checked').val()=='y'){    // 是
+        var val1=$('#create_APTE_368').val()
+        lastVal=(val2/(val1/100)).toFixed(2)
+      }
+      else{    //否
+        lastVal=(val2/0.21).toFixed(2)
+      }
+      $('#create_APTE_373').val(lastVal)
+    }
+
+    // 实施首次氧合评估时是否有吸氧(FiO₂)：单选框选项改变
+    var item=$('#create_APTE_366').siblings('.form-1-2 ')
+    item.click(function(){
+      mmScore()
+    })
+    
+    // 吸入氧浓度 FiO₂(%)值改变
+    $('#create_APTE_368').change(function(){
+      mmScore()
+    })
+
+    // PaO₂动脉血氧分压 值改变
+    $('#create_APTE_372').change(function(){
+      mmScore()
+    })
+  });
+</script>

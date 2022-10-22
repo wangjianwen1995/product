@@ -1,0 +1,48 @@
+<!--
+ * @Description: LC 肺癌
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2022-01-10 09:10:25
+ * @FilePath: \single-disease\public\static\drgs\form-16.html
+-->
+<link rel="stylesheet" href="../js/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/report-style.css">
+<link rel="stylesheet" href="../js/layui/css/layui.css">
+<style>
+  #itemLC_277, #itemLC_278, #itemLC_243{
+    margin-top: 24px!important;
+  }
+</style>
+<body>
+    <div id="form-content" class="container-fluid">
+        <form class="form-horizontal">
+            <div id="dragslot" class="container" style="width:100%;padding:0;">
+                <div id="contend" class="slot-list"></div>
+                <div class="submit-button"></div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/httpx.js"></script>
+<script type="text/javascript" src="../js/dragslot.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/page.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/base64.js"></script>
+<script type="text/javascript" src="../js/layui/layui.all.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/create.js?v=" + Date.now() + "'><\/script>");</script>
+<script type="text/javascript" src="../js/My97Date/WdatePicker.js"></script>
+<script>document.write("<script type='text/javascript' src='../js/form.js?v=" + Date.now() + "'><\/script>");</script>
+<!-- <script>document.write("<script type='text/javascript' src='../js/tools.js?v=" + Date.now() + "'><\/script>");</script> -->
+
+<script>
+    console.log('LC-2.0')
+var create = new create();
+    create.createRender("LC",function() {
+      // // 术后化疗/放疗 主要诊断ICD-10
+      // checkCommonICD('#create_LC_247', '#create_LC_248');
+      // // 术后化疗/放疗 治疗性操作 ICD-9-CMN-3
+      // checkCommonICD('#create_LC_250', '#create_LC_253');
+      // // 术后化疗/放疗 其他诊断ICD-10
+      // checkCommonICD('#create_LC_411', '#create_LC_412');
+    });
+</script>
